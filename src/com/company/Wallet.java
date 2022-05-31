@@ -1,7 +1,27 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Wallet {
-    private Coin coin;
-    private double amount;
-    private String description; //descripción de la wallet? por ej, 'wallet de BTC para pago de sueldos'
+    private List<Coin> coinList = new ArrayList();
+
+    public List<Coin> getCoins() {
+        return coinList;
+    }
+
+    public void setCoins(List<Coin> coins) {
+        coinList = coins;
+    }
+
+    @Override
+    public String toString() {
+        return "Wallet{" +
+                "Coins=" + coinList +
+                '}';
+    }
+
+    public void addCoinToWallet(Coin coin){
+        coinList.add(coin);
+    }
 }
