@@ -1,44 +1,31 @@
 package com.company;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
+import java.util.regex.*;
+
 public class User {
 
-    private UUID walletId = UUID.randomUUID();
+    private UUID walletId;
     private String userName;
     private String name;
     private String lastName;
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     private String email;
     private String password;
 
     private List<Transaction> transactionList = new ArrayList<>();
     private List<Wallet> walletList = new ArrayList<>();
 
-    //Al constructor vacio lo uso como para poder registrarse de una al programa. Aunque podemos ver de hacerlo en una funcion
-    //si es que vamos a hacer un user tipo admin.
     public User() {
-        Scanner read = new Scanner(System.in);
-        System.out.println("Nombre: ");
-        this.name = read.next();
-        System.out.println("Apellido: ");
-        this.lastName = read.next();
-        System.out.println("Fecha de nacimiento: ");
-        this.dateOfBirth = read.next();
-        if(calcutaleAge(dateOfBirth) == false){System.exit(1);}
-        System.out.println("Nombre de usuario: ");
-        this.userName = read.next();
-        //Aca realizar una funcion para que busque si no esta en uso el user name.
-        System.out.println("Email: ");
-        this.email = read.next();
-        //Lo mismo que el user name.
-        System.out.println("Contraseña: ");
-        this.password = read.next();
+
     }
 
-    public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
+    public User(String userName, String name, String lastName, LocalDate dateOfBirth, String email, String password) {
         this.userName = userName;
         this.name = name;
         this.lastName = lastName;
@@ -47,9 +34,12 @@ public class User {
         this.password = password;
     }
 
-
     public UUID getWalletId() {
         return walletId;
+    }
+
+    public void setWalletId(UUID walletId) {
+        this.walletId = walletId;
     }
 
     public String getUserName() {
@@ -76,9 +66,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getDateOfBirth() {return dateOfBirth;}
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -101,9 +93,19 @@ public class User {
     public List<Transaction> getTransactionList() {
         return transactionList;
     }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
+
     public List<Wallet> getWalletList() {
         return walletList;
     }
+
+    public void setWalletList(List<Wallet> walletList) {
+        this.walletList = walletList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -117,47 +119,36 @@ public class User {
                 '}';
     }
 
-    //Esta es la funcion de calular edad para saber si es mayor o menor,
-    //Use un return de tipo BOOLEAN para que sea veritificar TRUE o FALSE, pero puede refactorizarla a que retorne la edad.
-    public boolean calcutaleAge(String ageBorn){
-        boolean b;
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate yearOfBorn = LocalDate.parse(ageBorn,fmt);
-        Period age = Period.between(yearOfBorn,LocalDate.now());
-        if(age.getYears()<18){
-            System.out.println("Usted es menor de edad no se puede regristrar");
-            b = false;
-            return b;
-        }
-        else {
-            b = true;
-            return b;
-        }
-    }
 
-///Esto es lo que hizo Tincho del registro. Lo deje comentado por si no les llega a gustar o convencer lo que hice yo.
-   /* public User register() {
+    public User register() {
         User user = new User();
         Scanner read = new Scanner(System.in);
 
         System.out.println("Bienvenido al sistema de registro de usuarios.");
-        userNameCreate();
+        // NOMBRE DE USUARIO
+        userNameValidation();
+        // NOMBRE
         nameValidation();
+        // APELLIDO
         lastNameValidation();
         // FECHA NACIMIENTO
-
+        dateOfBirthValidation(); ////WIP EL PASAJE A DD/MM/YYYY.
         // EMAIL
         //emailValidation(); ////WIP, NO LO VALIDA
         // CONTRASEÑA
         passwordValidation();
         // WALLET ID
         walletIdValidation();
+        // BILLETERA
+        walletListValidation();
+        // LISTADO DE TRANSACCIONES
+        transactionListValidation();
 
         return user;
     }
 
 
-    private void userNameCreate() {
+    private void userNameValidation() {
         Scanner read = new Scanner(System.in);
         System.out.println("Ingrese nombre de usuario: ");
         this.userName = read.next();
@@ -255,7 +246,7 @@ public class User {
     private void transactionListValidation(){
         List<Transaction> transactionList = new ArrayList<>();
     }
-*/
+
 }
 
 
