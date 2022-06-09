@@ -117,4 +117,5 @@ public class User {
         Matcher matcher = pattern.matcher(mail);
         return matcher.matches();
     }
+
 }
