@@ -1,13 +1,6 @@
 package com.company;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SequenceWriter;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -18,51 +11,31 @@ public class Main {
     public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
     public static final String JSON_CANCELLED_TRANSACTIONS = "cancelled_transactions.json"; //Archivo con registros de transacciones canceladas (se cancelaron por el emisor antes de ser validadas por completo)
 
+    public static JsonManager admin = new JsonManager();
 
     public static void main(String[] args) {
 
-    }
+        User user = new User("Tincho","Martin", "Miranda", "18/04/1998","tincho@gmail.com", "tutuca123");
+        User user1 = new User("fran","fran", "Miranda", "18/04/1998","fran@gmail.com", "tutuca123");
+        User user2 = new User("tomi","tomi", "Miranda", "18/04/1998","tomi@gmail.com", "tutuca123");
+
+        List<User> users = new ArrayList<>();
+
+        users.add(user);
+        users.add(user1);
+        users.add(user2);
 
 
+        //admin.writeToJsonUser(JSON_USERS,users);
 
 
-    // ---- Agrego esto por acá, son los métodos que logré armar para recorrer Json. De esta forma, habría que hacer métodos para c/u de los JSON ----
-    // ---- Quizá con Genéricos se podría usar un mismo método para todos los Json de las distintas clases. ----
-
-    // metodo para escribir en un json una lista de Users.
-    public static void writeToJsonUser (String file, List<User> userList)
-    {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            File f = new File(file);
-            FileWriter fileWriter = new FileWriter(file);
-            SequenceWriter sequenceWriter = mapper.writerWithDefaultPrettyPrinter().writeValuesAsArray(fileWriter);
-            sequenceWriter.writeAll(userList);
-            sequenceWriter.close();
+        List<User> listita = admin.readJsonUser(JSON_USERS);
+        for (User users1:listita) {
+            System.out.println(users1);
         }
-        catch (IOException e)
-        {
-            System.out.println("Hubo un error: " + e.getMessage());
-        }
-    }
 
-    // metodo para leer e imprimir un json de objetos User.
-    public static void printJsonUser(String file)
-    {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            User[] userArray= objectMapper.readValue(new File(file),User[].class);
-            List<User> personaList = new ArrayList(Arrays.asList(userArray));
 
-            for (User u : personaList)
-            {
-                System.out.println(u);
-            }
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
 }
