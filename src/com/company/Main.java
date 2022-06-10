@@ -26,7 +26,7 @@ public class Main {
         users.add(user2);
 
 
-        //admin.writeToJsonUser(JSON_USERS,users);
+        //admin.writeToJson(JSON_USERS,users);
 
 
         List<User> listita = admin.readJsonUser(JSON_USERS);

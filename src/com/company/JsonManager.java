@@ -17,14 +17,14 @@ public class JsonManager {
 
     // metodo para escribir en un json una lista de Users.
 
-    public void writeToJsonUser (String file, List<User> userList)
+    public <T> void writeToJson (String file, List<T> list)
     {
         ObjectMapper mapper = new ObjectMapper();
         try {
             File f = new File(file);
             FileWriter fileWriter = new FileWriter(file);
             SequenceWriter sequenceWriter = mapper.writerWithDefaultPrettyPrinter().writeValuesAsArray(fileWriter);
-            sequenceWriter.writeAll(userList);
+            sequenceWriter.writeAll(list);
             sequenceWriter.close();
         }
         catch (IOException e)
