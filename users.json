@@ -1,0 +1,31 @@
+[ {
+  "walletId" : "f27c9f77-b8c0-45b5-9264-54163620bc20",
+  "userName" : "Tincho",
+  "name" : "Martin",
+  "lastName" : "Miranda",
+  "dateOfBirth" : "18/04/1998",
+  "email" : "tincho@gmail.com",
+  "password" : "tutuca123",
+  "transactionList" : [ ],
+  "walletList" : [ ]
+}, {
+  "walletId" : "49aaf662-e800-46a9-86da-35711f3543b5",
+  "userName" : "fran",
+  "name" : "fran",
+  "lastName" : "Miranda",
+  "dateOfBirth" : "18/04/1998",
+  "email" : "fran@gmail.com",
+  "password" : "tutuca123",
+  "transactionList" : [ ],
+  "walletList" : [ ]
+}, {
+  "walletId" : "ce8f55a3-e290-40d9-8417-9dfcf6f5ceae",
+  "userName" : "tomi",
+  "name" : "tomi",
+  "lastName" : "Miranda",
+  "dateOfBirth" : "18/04/1998",
+  "email" : "tomi@gmail.com",
+  "password" : "tutuca123",
+  "transactionList" : [ ],
+  "walletList" : [ ]
+} ]
