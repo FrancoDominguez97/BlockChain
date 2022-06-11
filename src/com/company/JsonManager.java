@@ -2,6 +2,7 @@ package com.company;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -56,9 +57,23 @@ public class JsonManager {
     {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
+
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
             List<User> userList = new ArrayList(Arrays.asList(userArray));
             return userList;
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public List<Transaction> readJsonPending(String file)
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+
+            Transaction[] pendingArray= objectMapper.readValue(new File(file),Transaction[].class);
+            List<Transaction> pendingList = new ArrayList(Arrays.asList(pendingArray));
+            return pendingList;
         } catch (IOException e){
             e.printStackTrace();
             return null;
