@@ -1,11 +1,12 @@
 package com.company;
 
+import com.company.login.LoginData;
+import com.company.login.LoginPage;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
-
     public static final String JSON_BLOCKCHAIN = "blockchain.json"; //Archivo de transacciones ya validadas (el blockchain en sí)
     public static final String JSON_USERS = "users.json"; //Archivo con registros de todos los usuarios
     public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
@@ -14,6 +15,8 @@ public class Main {
     public static JsonManager admin = new JsonManager();
 
     public static void main(String[] args) {
+        LoginData loginData = new LoginData();
+        LoginPage loginPage = new LoginPage(loginData.getLoginInfo());
 
         User user = new User("Tincho","Martin", "Miranda", "18/04/1998","tincho@gmail.com", "tutuca123");
         User user1 = new User("fran","fran", "Miranda", "18/04/1998","fran@gmail.com", "tutuca123");
@@ -25,17 +28,13 @@ public class Main {
         users.add(user1);
         users.add(user2);
 
+        // admin.writeToJson(JSON_USERS,users);
 
-        //admin.writeToJson(JSON_USERS,users);
-
-
+        /*
         List<User> listita = admin.readJsonUser(JSON_USERS);
         for (User users1:listita) {
             System.out.println(users1);
         }
-
-
-
+        */
     }
-
 }
