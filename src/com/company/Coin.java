@@ -1,8 +1,10 @@
 package com.company;
 
+import com.company.enums.CoinName;
+
 public class Coin {
 
-    private String coinName;
+    private CoinName coinName;
     private String coinSymbol; //3 ó 4 caracteres que representan la moneda por ej: BTC para bitcoin.
     //private icon
     private double amount;
@@ -12,27 +14,19 @@ public class Coin {
 
     }
 
-    public Coin(String coinName, String coinSymbol, double amount, String description) {
+    public Coin(CoinName coinName, String coinSymbol, double amount, String description) {
         this.coinName = coinName;
         this.coinSymbol = coinSymbol;
         this.amount = amount;
         this.description = description;
     }
 
-    public String getCoinName() {
+    public CoinName getCoinName() {
         return coinName;
-    }
-
-    public void setCoinName(String coinName) {
-        this.coinName = coinName;
     }
 
     public String getCoinSymbol() {
         return coinSymbol;
-    }
-
-    public void setCoinSymbol(String coinSymbol) {
-        this.coinSymbol = coinSymbol;
     }
 
     public double getAmount() {
