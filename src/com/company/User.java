@@ -9,16 +9,13 @@ import java.util.regex.Pattern;
 
 public class User {
 
-    private UUID walletId = UUID.randomUUID();
     private String userName;
     private String name;
     private String lastName;
     private String dateOfBirth;
     private String email;
     private String password;
-
-    private List<Transaction> transactionList = new ArrayList<>();
-    private List<Wallet> walletList = new ArrayList<>();
+    private Wallet wallet = new Wallet(UUID.randomUUID());;
 
     public User() { }
     public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
@@ -29,7 +26,6 @@ public class User {
         this.email = email;
         this.password = password;
     }
-    public UUID getWalletId() { return walletId; }
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName; }
     public String getName() { return name; }
@@ -51,10 +47,6 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public List<Transaction> getTransactionList() { return transactionList; }
-    public List<Wallet> getWalletList() {
-        return walletList;
     }
     public void register() {
         Scanner read = new Scanner(System.in);
@@ -86,15 +78,13 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "walletId=" + walletId +
                 ", userName='" + userName + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", transactionList=" + transactionList +
-                ", walletList=" + walletList +
+                ", wallet=" + wallet +
                 '}';
     }
 
@@ -112,7 +102,7 @@ public class User {
         return b;
     }
     public boolean emailVerify(String mail) {
-        String regx = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+        String regx = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z.-]+$";
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(mail);
         return matcher.matches();
