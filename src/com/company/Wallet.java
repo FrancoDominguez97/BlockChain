@@ -14,21 +14,19 @@ public class Wallet {
     private List<Coin> coinList = new ArrayList();
     private UUID walletId;
     private List<Transaction>transferList = new ArrayList<>();
-
+  
     public Wallet(UUID walletId) {
         this.walletId = walletId;
     }
+    
+    public Wallet(){
+    }
+  
     public UUID getWalletId(){return walletId;}
-
-
+  
     public List<Coin> getCoins() {
         return coinList;
     }
-
-    public void setCoins(List<Coin> coins) {
-        coinList = coins;
-    }
-
     @Override
     public String toString() {
         return "Wallet{" +
@@ -59,7 +57,7 @@ public class Wallet {
     //ESTA FUNCION SE PUEDE REFACTORIZAR SI ENCONTRAMOS UNA MEJOR MANERA
     public void addTransferPendinJson(Transaction transaction){
         JsonManager json = new JsonManager();
-        List<Transaction> pendingList = json.readJsonPending(JSON_PENDING_TRANSACTIONS);
+        List<Transaction> pendingList = json.readJsonPendingTransfer(JSON_PENDING_TRANSACTIONS);
         pendingList.add(transaction);
         json.writeToJson(JSON_PENDING_TRANSACTIONS,pendingList);
     }

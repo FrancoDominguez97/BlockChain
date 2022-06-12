@@ -15,7 +15,9 @@ public class User {
     private String email;
     private String password;
     private Wallet wallet = new Wallet(UUID.randomUUID());
+  
     public User() { }
+  
     public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
         this.userName = userName;
         this.name = name;
@@ -46,6 +48,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public Wallet getWallet() {
         return wallet;
     }
@@ -103,7 +106,7 @@ public class User {
         return b;
     }
     public boolean emailVerify(String mail) {
-        String regx = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+        String regx = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z.-]+$";
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(mail);
         return matcher.matches();

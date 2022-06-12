@@ -66,11 +66,10 @@ public class JsonManager {
             return null;
         }
     }
-    public List<Transaction> readJsonPending(String file)
+    public List<Transaction> readJsonPendingTransfer(String file)
     {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-
             Transaction[] pendingArray= objectMapper.readValue(new File(file),Transaction[].class);
             List<Transaction> pendingList = new ArrayList(Arrays.asList(pendingArray));
             return pendingList;
