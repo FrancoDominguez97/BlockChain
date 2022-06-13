@@ -3,6 +3,7 @@ package com.company;
 import com.company.enums.Status;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -55,6 +56,7 @@ public class JsonManager {
     {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
+
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
             List<User> userList = new ArrayList(Arrays.asList(userArray));
             return userList;

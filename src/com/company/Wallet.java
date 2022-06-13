@@ -14,11 +14,16 @@ public class Wallet {
     private List<Coin> coinList = new ArrayList();
     private UUID walletId;
     private List<Transaction>transferList = new ArrayList<>();
-
+  
     public Wallet(UUID walletId) {
         this.walletId = walletId;
     }
+    
+    public Wallet(){
+    }
+  
     public UUID getWalletId(){return walletId;}
+  
     public List<Coin> getCoins() {
         return coinList;
     }

@@ -8,16 +8,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
-
     private String userName;
     private String name;
     private String lastName;
     private String dateOfBirth;
     private String email;
     private String password;
-    private Wallet wallet = new Wallet(UUID.randomUUID());;
-
+    private Wallet wallet = new Wallet(UUID.randomUUID());
+  
     public User() { }
+  
     public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
         this.userName = userName;
         this.name = name;
@@ -47,6 +47,10 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
     }
     public void register() {
         Scanner read = new Scanner(System.in);
@@ -84,7 +88,7 @@ public class User {
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", wallet=" + wallet +
+                ", wallet='" + wallet +'\'' +
                 '}';
     }
 
