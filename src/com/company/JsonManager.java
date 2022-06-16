@@ -12,6 +12,10 @@ import java.util.*;
 
 public class JsonManager {
 
+    public static final String JSON_BLOCKCHAIN = "blockchain.json"; //Archivo de transacciones ya validadas (el blockchain en sí)
+    public static final String JSON_USERS = "users.json"; //Archivo con registros de todos los usuarios
+    public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
+    public static final String JSON_CANCELLED_TRANSACTIONS = "cancelled_transactions.json";
     // ---- Agrego esto por acá, son los métodos que logré armar para recorrer Json. De esta forma, habría que hacer métodos para c/u de los JSON ----
     // ---- Quizá con Genéricos se podría usar un mismo método para todos los Json de las distintas clases. ----
 

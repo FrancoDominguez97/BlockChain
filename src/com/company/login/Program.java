@@ -8,21 +8,20 @@ import java.awt.event.ActionListener;
 public class Program implements ActionListener {
 
     JFrame frame = new JFrame();
-    JLabel programLabel = new JLabel();
+
     JButton transferencias = new JButton();
     JButton opcionesUser = new JButton();
     JButton minar = new JButton();
     JButton verMontos = new JButton();
     JButton cerrarSesion = new JButton();
 
+
     Program(String userID){
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
 
-        programLabel.setBounds(50,50, 200,35);
-        programLabel.setFont(new Font(null,Font.ITALIC,25));
-        programLabel.setText("Bienvenido, "+ userID +"!.");
+
 
         transferencias.setBounds(0,0, 250,200);
         opcionesUser.setBounds(250,0,250,200);
@@ -30,7 +29,29 @@ public class Program implements ActionListener {
         verMontos.setBounds(250,200,250,200);
         cerrarSesion.setBounds(0,400,500,100);
 
-        frame.add(programLabel);
+        transferencias.setText("Transferencias");
+        transferencias.setFont(new Font(null,Font.ITALIC,25));
+        opcionesUser.setText("Opciones Usuario");
+        opcionesUser.setFont(new Font(null,Font.ITALIC,25));
+        minar.setText("Minar");
+        minar.setFont(new Font(null,Font.ITALIC,25));
+        verMontos.setText("Ver Montos");
+        verMontos.setFont(new Font(null,Font.ITALIC,25));
+        cerrarSesion.setText("Cerrar Sesion");
+        cerrarSesion.setFont(new Font(null,Font.ITALIC,25));
+
+        transferencias.setFocusable(false);
+        opcionesUser.setFocusable(false);
+        minar.setFocusable(false);
+        verMontos.setFocusable(false);
+        cerrarSesion.setFocusable(false);
+
+        transferencias.addActionListener(this);
+        opcionesUser.addActionListener(this);
+        minar.addActionListener(this);
+        verMontos.addActionListener(this);
+        cerrarSesion.addActionListener(this);
+
         frame.add(transferencias);
         frame.add(opcionesUser);
         frame.add(minar);
@@ -64,9 +85,9 @@ public class Program implements ActionListener {
         }
 
         if (e.getSource() == cerrarSesion){
+            frame.dispose();
             LoginData loginData = new LoginData();
             LoginPage loginPage = new LoginPage(loginData.getLoginInfo());
-
         }
     }
 }

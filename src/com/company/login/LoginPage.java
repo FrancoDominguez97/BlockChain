@@ -1,5 +1,7 @@
 package com.company.login;
 
+import com.company.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,21 +23,21 @@ public class LoginPage implements ActionListener {
     JLabel UUIDpass = new JLabel("UUID pass");
     JLabel messageLabel = new JLabel();
 
-    HashMap<String,String> loginfo = new HashMap<String,String>();
+    HashMap<String,User> loginfo = new HashMap<String,User>();
 
-    public LoginPage(HashMap<String, String> loginInformation){
+    public LoginPage(HashMap<String, User> loginInformation){
         loginfo = loginInformation;
 
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
 
-        userIDLabel.setBounds(50,100,75,25);
+        UUIDpass.setBounds(50,100,75,25);
         userPasswordLabel.setBounds(50,150,75,25);
-        userIDField.setBounds(125,100,200,25);
+        UUIDpassField.setBounds(125,100,200,25);
         userPasswordField.setBounds(125,150,200,25);
-        UUIDpassField.setBounds(125,200,200,25);
-        UUIDpass.setBounds(50,200,200,25);
+        userIDField.setBounds(125,200,200,25);
+        userIDLabel.setBounds(50,200,200,25);
 
         messageLabel.setBounds(125,350,250,35);
         messageLabel.setFont(new Font(null,Font.PLAIN,25));
@@ -68,14 +70,18 @@ public class LoginPage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource()==registerButton){
+            User user = new User();
+            frame.dispose();
+            user.register();
             //llamada a registro
         }
         if(e.getSource()==loginButton){
-            String userID = userIDField.getText();
-            String pass = String.valueOf(userPasswordField.getPassword());
 
-            if(loginfo.containsKey(userID)){
-                if(loginfo.get(userID).equals(pass)){
+            String uuidPass = String.valueOf(UUIDpassField.getPassword()); //asi seria para comparar tambien el uuid password para el ingreso.
+            String pass = String.valueOf(userPasswordField.getPassword());
+            String userID = userIDField.getText();
+            if(loginfo.containsKey(uuidPass)){
+                if(loginfo.get(uuidPass).getPassword().equals(pass) && loginfo.get(uuidPass).getUserName().equals(userID)){
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login exitoso");
                     frame.dispose();
