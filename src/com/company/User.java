@@ -1,9 +1,14 @@
 package com.company;
 
+import com.company.Visuals.Registro;
+
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +25,24 @@ public class User {
     private List<Transaction> transactionList = new ArrayList<>();
     private List<Wallet> walletList = new ArrayList<>();
 
+    JFrame frame = new JFrame();
+
+    JLabel nameVisual = new JLabel("Nombre");
+    JTextField nameField = new JTextField();
+    JLabel lastNameVisual = new JLabel("Apellido");
+    JTextField lastNameField = new JTextField();
+    JLabel userNameVisual = new JLabel("Username");
+    JTextField userNameField = new JTextField();
+    JLabel passVisual = new JLabel("Password");
+    JPasswordField passwordField = new JPasswordField();
+    JLabel dateVisual = new JLabel("FechaNacimiento");
+    JTextField dateField = new JTextField();
+    JLabel emailVisual = new JLabel("Email");
+    JTextField emailField = new JTextField();
+
+    JButton guardar = new JButton();
+    JButton limpiar = new JButton();
+
     public User() { }
     public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
         this.userName = userName;
@@ -29,7 +52,7 @@ public class User {
         this.email = email;
         this.password = password;
     }
-    public UUID getWalletId() { return walletId; }
+    public String getWalletId() { return walletId.toString(); }
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName; }
     public String getName() { return name; }
@@ -56,31 +79,9 @@ public class User {
     public List<Wallet> getWalletList() {
         return walletList;
     }
+
     public void register() {
-        Scanner read = new Scanner(System.in);
-        System.out.println("Nombre: ");
-        this.name = read.next();
-        System.out.println("Apellido: ");
-        this.lastName = read.next();
-        System.out.println("Fecha de nacimiento: ");
-        this.dateOfBirth = read.next();
-        if (calcutaleAge(dateOfBirth) == false) {
-            System.out.println("Usted es menor de edad no se puede regristrar");
-            System.exit(1);
-        }
-        System.out.println("Nombre de usuario: ");
-        //Aca realizar una funcion para que busque si no esta en uso el user name.
-        this.userName = read.next();
-        //searchUserName(userName);
-        System.out.println("Email: ");
-        this.email = read.next();
-        if(emailVerify(email) == false){
-            System.out.println("Mail invalido, reigrese.");
-            this.email = read.next();
-        }
-        //searchMail(email);
-        System.out.println("Contraseña: ");
-        this.password = read.next();
+        Registro registro = new Registro();
     }
 
     @Override
@@ -98,11 +99,9 @@ public class User {
                 '}';
     }
 
-    //Esta es la funcion de calular edad para saber si es mayor o menor,
-    //Use un return de tipo BOOLEAN para que sea veritificar TRUE o FALSE, pero puede refactorizarla a que retorne la edad.
     public boolean calcutaleAge(String ageBorn) {
         boolean b = true;
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate yearOfBorn = LocalDate.parse(ageBorn, fmt);
         Period age = Period.between(yearOfBorn, LocalDate.now());
         if (age.getYears() < 18) {
@@ -119,3 +118,4 @@ public class User {
     }
 
 }
+
