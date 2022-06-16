@@ -1,9 +1,9 @@
 package com.company;
 
-import com.company.enums.Status;
+import com.company.Transferencias.Transaction;
+import com.company.Usuarios.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.io.File;
 import java.io.FileWriter;

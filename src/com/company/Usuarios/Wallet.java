@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.Transferencias.Transaction;
+import com.company.Usuarios.Coin;
 import com.company.enums.Reason;
 import com.company.enums.Status;
 
