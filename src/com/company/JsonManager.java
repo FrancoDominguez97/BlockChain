@@ -1,14 +1,14 @@
 package com.company;
 
+import com.company.enums.Status;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class JsonManager {
 
@@ -60,6 +60,7 @@ public class JsonManager {
     {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
+
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
             List<User> userList = new ArrayList(Arrays.asList(userArray));
             return userList;
@@ -68,4 +69,37 @@ public class JsonManager {
             return null;
         }
     }
+    public List<Transaction> readJsonPendingTransfer(String file)
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Transaction[] pendingArray= objectMapper.readValue(new File(file),Transaction[].class);
+            List<Transaction> pendingList = new ArrayList(Arrays.asList(pendingArray));
+            return pendingList;
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    ///Este seria el prototipo de la validacion de las transferencias. Hay que mejorarlo mucho todavia
+    ///Podemos hacer varios metodos primero para achicar lo que seria el metodo de validacion.
+
+    /*public void validationTransfer (String file){
+        List<Transaction> listPending = readJsonPendingTransfer(file);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                for (Transaction transfer: listPending) {
+                    if (transfer.getStatus() == Status.PENDING && transfer.getValidationCounter()<4){
+                        List<User> listUser = readJsonUser(file);
+                        for (User userBlock: listUser) {
+                            if(userBlock.trueBlock == true)
+                                transfer.setValidationCounter(transfer.getValidationCounter()+1);
+                        }
+                    }
+                }
+            }
+        }, 200,1000);
+    }*/
 }
