@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static final String JSON_BLOCKCHAIN = "blockchain.json"; //Archivo de transacciones ya validadas (el blockchain en sí)
-    public static final String JSON_USERS = "users.json"; //Archivo con registros de todos los usuarios
-    public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
-    public static final String JSON_CANCELLED_TRANSACTIONS = "cancelled_transactions.json"; //Archivo con registros de transacciones canceladas (se cancelaron por el emisor antes de ser validadas por completo)
-
     public static JsonManager admin = new JsonManager();
 
     public static void main(String[] args) {
