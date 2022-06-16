@@ -11,26 +11,23 @@ import java.util.UUID;
 public class Wallet {
     public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
 
-    private List<Coin> coinList = new ArrayList();
-    private UUID walletId;
+    private List<Coin> coinList = new ArrayList<>();
     private List<Transaction>transferList = new ArrayList<>();
-  
-    public Wallet(UUID walletId) {
-        this.walletId = walletId;
-    }
-    
+
     public Wallet(){
     }
-  
-    public UUID getWalletId(){return walletId;}
-  
+
     public List<Coin> getCoins() {
         return coinList;
     }
+
+    public List<Transaction> getTransferList() {
+        return transferList;
+    }
+
     @Override
     public String toString() {
         return "Wallet{" +
-                "WalletId=" + walletId +
                 "Coins=" + coinList +
                 "Transaction=" + transferList +
                 '}';
