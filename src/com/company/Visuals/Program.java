@@ -1,4 +1,6 @@
-package com.company.login;
+package com.company.Visuals;
+
+import com.company.login.LoginData;
 
 import javax.swing.*;
 import java.awt.*;

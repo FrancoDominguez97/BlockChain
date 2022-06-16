@@ -1,8 +1,8 @@
 package com.company.Visuals;
 
 
-import com.company.JsonManager;
-import com.company.User;
+import com.company.JSON.JsonManager;
+import com.company.Usuarios.User;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

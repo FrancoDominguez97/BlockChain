@@ -1,4 +1,4 @@
-package com.company;
+package com.company.JSON;
 
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.User;

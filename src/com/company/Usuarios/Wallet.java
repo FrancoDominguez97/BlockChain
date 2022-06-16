@@ -1,5 +1,6 @@
-package com.company;
+package com.company.Usuarios;
 
+import com.company.JSON.JsonManager;
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.Coin;
 import com.company.enums.Reason;

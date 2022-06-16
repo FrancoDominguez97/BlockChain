@@ -1,7 +1,9 @@
 package com.company;
 
+import com.company.JSON.JsonManager;
+import com.company.Usuarios.User;
 import com.company.login.LoginData;
-import com.company.login.LoginPage;
+import com.company.Visuals.LoginPage;
 
 import java.util.ArrayList;
 import java.util.List;

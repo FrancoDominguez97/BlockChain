@@ -1,6 +1,7 @@
-package com.company.login;
+package com.company.Visuals;
 
-import com.company.User;
+import com.company.Usuarios.User;
+import com.company.Visuals.Program;
 
 import javax.swing.*;
 import java.awt.*;

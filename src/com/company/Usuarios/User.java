@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Usuarios;
 
 import com.company.Visuals.Registro;
 

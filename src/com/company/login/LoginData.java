@@ -1,8 +1,7 @@
 package com.company.login;
 
-import com.company.JsonManager;
-import com.company.User;
-import com.company.Wallet;
+import com.company.JSON.JsonManager;
+import com.company.Usuarios.User;
 
 import java.util.HashMap;
 import java.util.List;
