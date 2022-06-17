@@ -3,6 +3,7 @@ package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
 import com.company.Usuarios.User;
+import com.company.login.LoginData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,11 +28,15 @@ public class Registro implements ActionListener {
 
     JButton guardar = new JButton();
     JButton limpiar = new JButton();
+    JButton back = new JButton();
 
     public Registro() {
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
+
+        ImageIcon backImage = new ImageIcon("flecha.png");
+        back.setIcon(backImage);
 
         nameVisual.setBounds(50, 40, 75, 25);
         nameField.setBounds(160, 40, 200, 25);
@@ -61,6 +66,12 @@ public class Registro implements ActionListener {
         limpiar.setText("Limpiar");
         limpiar.setFocusable(false);
 
+        back.setBounds(0,0, 50,25);
+        back.addActionListener(this);
+
+        back.setFocusable(false);
+
+
         frame.add(nameVisual);
         frame.add(nameField);
 
@@ -81,6 +92,7 @@ public class Registro implements ActionListener {
 
         frame.add(guardar);
         frame.add(limpiar);
+        frame.add(back);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
@@ -123,6 +135,11 @@ public class Registro implements ActionListener {
             userNameField.setText("");
             emailField.setText("");
             dateField.setText("");
+        }
+        if (e.getSource() == back){
+            frame.dispose();
+            LoginData loginData = new LoginData();
+            LoginPage loginPage = new LoginPage(loginData.getLoginInfo());
         }
     }
 }
