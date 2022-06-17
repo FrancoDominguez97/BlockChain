@@ -1,7 +1,6 @@
 package com.company.Visuals;
 
 import com.company.Usuarios.User;
-import com.company.Visuals.Program;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,7 +73,6 @@ public class LoginPage implements ActionListener {
             User user = new User();
             frame.dispose();
             user.register();
-            //llamada a registro
         }
         if(e.getSource()==loginButton){
 
@@ -86,7 +84,7 @@ public class LoginPage implements ActionListener {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login exitoso");
                     frame.dispose();
-                    Program program = new Program(userID);
+                    Program program = new Program(uuidPass);
                 }
                 else{
                     messageLabel.setForeground(Color.red);
