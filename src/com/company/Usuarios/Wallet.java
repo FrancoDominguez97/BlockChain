@@ -2,7 +2,7 @@ package com.company.Usuarios;
 
 import com.company.JSON.JsonManager;
 import com.company.Transferencias.Transaction;
-import com.company.Usuarios.Coin;
+import com.company.enums.CoinName;
 import com.company.enums.Reason;
 import com.company.enums.Status;
 
@@ -18,6 +18,8 @@ public class Wallet {
     private List<Transaction>transferList = new ArrayList<>();
 
     public Wallet(){
+        Coin coin = new Coin(CoinName.UTNCOIN,"UTN",100,"La mejor moneda de Mar del Plata");
+        addCoinToWallet(coin);
     }
 
     public List<Coin> getCoins() {
