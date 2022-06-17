@@ -102,4 +102,13 @@ public class JsonManager {
             }
         }, 200,1000);
     }*/
+
+    public User searchUserByIdWallet(String file, String walletId) {
+        List<User> list = readJsonUser(file);
+        for (User userFound : list) {
+            if (userFound.getWalletId().equals(walletId))
+                return userFound;
+        }
+        return null;
+    }
 }
