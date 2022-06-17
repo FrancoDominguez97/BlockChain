@@ -41,17 +41,8 @@ public class Coin {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public String toString() {
-        return "Coin{" +
-                "coinName='" + coinName + '\'' +
-                ", coinSymbol='" + coinSymbol + '\'' +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
-                '}';
+        return amount + " " + coinName;
     }
 }
