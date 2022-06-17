@@ -17,13 +17,13 @@ public class Program implements ActionListener {
     JButton verMontos = new JButton();
     JButton cerrarSesion = new JButton();
 
+    String userConnected;
 
     Program(String userID){
+         this.userConnected = userID;
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
-
-
 
         transferencias.setBounds(0,0, 250,200);
         opcionesUser.setBounds(250,0,250,200);
@@ -65,6 +65,7 @@ public class Program implements ActionListener {
         frame.setResizable(false);
         frame.setLayout(null);
         frame.setVisible(true);
+
     }
 
     @Override
@@ -75,6 +76,8 @@ public class Program implements ActionListener {
         }
 
         if (e.getSource() == opcionesUser){
+            frame.dispose();
+            Options options = new Options(userConnected);
             //codigo de opcionesUser
         }
 
@@ -83,7 +86,8 @@ public class Program implements ActionListener {
         }
 
         if (e.getSource() == verMontos){
-            //codigo de ver saldos, billetera y eso
+            frame.dispose();
+            CheckAmounts checkAmounts = new CheckAmounts(userConnected);
         }
 
         if (e.getSource() == cerrarSesion){
