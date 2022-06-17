@@ -1,6 +1,7 @@
 package com.company.Usuarios;
 
 import com.company.Visuals.Registro;
+import com.company.enums.CoinName;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -123,6 +124,13 @@ public class User {
         return matcher.matches();
     }
 
+    public Coin getCoin(String coinName){
+        for (Coin coinFound: wallet.getCoins()) {
+            if(coinFound.getCoinName().equals(CoinName.valueOf(coinName)))
+                return coinFound;
+        }
+        return null;
+    }
 }
 
 
