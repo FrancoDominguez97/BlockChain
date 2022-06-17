@@ -1,5 +1,6 @@
 package com.company.Visuals;
 
+import com.company.Usuarios.Admin;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -80,11 +81,19 @@ public class LoginPage implements ActionListener {
             String pass = String.valueOf(userPasswordField.getPassword());
             String userID = userIDField.getText();
             if(loginfo.containsKey(uuidPass)){
-                if(loginfo.get(uuidPass).getPassword().equals(pass) && loginfo.get(uuidPass).getUserName().equals(userID)){
+                User auxUser = loginfo.get(uuidPass);
+                if(auxUser.getPassword().equals(pass) && auxUser.getUserName().equals(userID)){
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login exitoso");
                     frame.dispose();
-                    Program program = new Program(uuidPass);
+                    if(auxUser instanceof Admin) //si es admin:  //Checkear con team: no es necesario el if acá si lo ponemos adentro del constructor de Program
+                    {
+                        //Corremos Program específico de admin
+                    }
+                    else
+                    { //No es admin:
+                        Program program = new Program(uuidPass);
+                    }
                 }
                 else{
                     messageLabel.setForeground(Color.red);

@@ -1,5 +1,5 @@
 [ {
-  "walletId" : "217625fd-2527-4abd-b9bc-8847f44ccfa3",
+  "walletId" : "fbaccab7-3fc8-4356-9c6f-942d03d5ce2f",
   "userName" : "Tincho",
   "name" : "Martin",
   "lastName" : "Miranda",
@@ -16,7 +16,7 @@
     } ]
   }
 }, {
-  "walletId" : "d1cc3cee-2ce5-4e23-b1ef-4f15f5ee0d2d",
+  "walletId" : "fb910675-5d6c-4b25-a454-bd648d278b0a",
   "userName" : "fran",
   "name" : "fran",
   "lastName" : "Miranda",
@@ -33,12 +33,29 @@
     } ]
   }
 }, {
-  "walletId" : "41c2f400-76d2-4ecc-ae90-ff6180a8acf9",
+  "walletId" : "594aaab7-5e49-42ac-b35e-caa0690c5570",
   "userName" : "tomi",
   "name" : "tomi",
   "lastName" : "Miranda",
   "dateOfBirth" : "18/04/1998",
   "email" : "tomi@gmail.com",
+  "password" : "tutuca123",
+  "wallet" : {
+    "transferList" : [ ],
+    "coins" : [ {
+      "coinName" : "UTNCOIN",
+      "coinSymbol" : "UTN",
+      "amount" : 100.0,
+      "description" : "La mejor moneda de Mar del Plata"
+    } ]
+  }
+}, {
+  "walletId" : "eb43c279-ca34-4b03-bf75-447e421bee4a",
+  "userName" : "admin",
+  "name" : "admin",
+  "lastName" : "istrator",
+  "dateOfBirth" : "01/01/1993",
+  "email" : "admin@gmail.com",
   "password" : "tutuca123",
   "wallet" : {
     "transferList" : [ ],
