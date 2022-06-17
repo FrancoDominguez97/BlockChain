@@ -84,4 +84,5 @@ public class Transaction {
                 ", reason=" + reason +
                 '}';
     }
+    // logo en 2D para tiempo de espera de aprobacion de transaccion.
 }
