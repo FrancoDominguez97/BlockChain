@@ -1,13 +1,11 @@
 package com.company.Visuals;
 
-import com.company.login.LoginData;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Program implements ActionListener {
+public class ProgramAdmin implements Menu, ActionListener {
 
     JFrame frame = new JFrame();
 
@@ -19,8 +17,15 @@ public class Program implements ActionListener {
 
     String userConnected;
 
-    Program(String userID){
-         this.userConnected = userID;
+    public ProgramAdmin(String userID)
+    {
+        this.userConnected = userID;
+    }
+
+
+    @Override
+    public void show() {
+
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
@@ -31,9 +36,9 @@ public class Program implements ActionListener {
         verMontos.setBounds(250,200,250,200);
         cerrarSesion.setBounds(0,400,500,100);
 
-        transferencias.setText("Transferencias");
+        transferencias.setText("AAAAAA");
         transferencias.setFont(new Font(null,Font.ITALIC,25));
-        opcionesUser.setText("Opciones Usuario");
+        opcionesUser.setText("Opciones ADMIN");
         opcionesUser.setFont(new Font(null,Font.ITALIC,25));
         minar.setText("Minar");
         minar.setFont(new Font(null,Font.ITALIC,25));
@@ -65,7 +70,6 @@ public class Program implements ActionListener {
         frame.setResizable(false);
         frame.setLayout(null);
         frame.setVisible(true);
-
     }
 
     @Override
@@ -92,8 +96,9 @@ public class Program implements ActionListener {
 
         if (e.getSource() == cerrarSesion){
             frame.dispose();
-            LoginData loginData = new LoginData();
-            LoginPage loginPage = new LoginPage(loginData.getLoginInfo());
+            LoginPage loginPage = new LoginPage();
         }
     }
+
+
 }

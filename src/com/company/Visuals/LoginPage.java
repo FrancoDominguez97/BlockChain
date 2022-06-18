@@ -1,5 +1,6 @@
 package com.company.Visuals;
 
+import com.company.JSON.JsonManager;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -25,8 +26,8 @@ public class LoginPage implements ActionListener {
 
     HashMap<String,User> loginfo = new HashMap<String,User>();
 
-    public LoginPage(HashMap<String, User> loginInformation){
-        loginfo = loginInformation;
+    public LoginPage(){
+        loginfo = JsonManager.hashMapFromJson(JsonManager.JSON_USERS);
 
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
@@ -80,11 +81,14 @@ public class LoginPage implements ActionListener {
             String pass = String.valueOf(userPasswordField.getPassword());
             String userID = userIDField.getText();
             if(loginfo.containsKey(uuidPass)){
-                if(loginfo.get(uuidPass).getPassword().equals(pass) && loginfo.get(uuidPass).getUserName().equals(userID)){
+                User auxUser = loginfo.get(uuidPass);
+                if(auxUser.getPassword().equals(pass) && auxUser.getUserName().equals(userID)){
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login exitoso");
                     frame.dispose();
-                    Program program = new Program(uuidPass);
+
+                    auxUser.getMenu().show();
+
                 }
                 else{
                     messageLabel.setForeground(Color.red);
