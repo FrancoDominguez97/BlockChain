@@ -87,7 +87,7 @@ public class LoginPage implements ActionListener {
                     messageLabel.setText("Login exitoso");
                     frame.dispose();
 
-                    auxUser.getMenu().show();
+                    auxUser.obtenerMenu().show();
 
                 }
                 else{

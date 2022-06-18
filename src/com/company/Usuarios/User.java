@@ -105,7 +105,7 @@ public class User {
         this.admin = admin;
     }
 
-    public Menu getMenu()
+    public Menu obtenerMenu()
     {
         if (this.admin)
         {
