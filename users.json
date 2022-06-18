@@ -1,5 +1,5 @@
 [ {
-  "walletId" : "fbaccab7-3fc8-4356-9c6f-942d03d5ce2f",
+  "walletId" : "9a078115-ebae-4602-bebc-8722a2c39c25",
   "userName" : "Tincho",
   "name" : "Martin",
   "lastName" : "Miranda",
@@ -14,9 +14,10 @@
       "amount" : 100.0,
       "description" : "La mejor moneda de Mar del Plata"
     } ]
-  }
+  },
+  "admin" : false
 }, {
-  "walletId" : "fb910675-5d6c-4b25-a454-bd648d278b0a",
+  "walletId" : "f46d13f0-9726-48e3-8397-e583d6d698ab",
   "userName" : "fran",
   "name" : "fran",
   "lastName" : "Miranda",
@@ -31,9 +32,10 @@
       "amount" : 100.0,
       "description" : "La mejor moneda de Mar del Plata"
     } ]
-  }
+  },
+  "admin" : false
 }, {
-  "walletId" : "594aaab7-5e49-42ac-b35e-caa0690c5570",
+  "walletId" : "06255cf0-b915-4de6-94dd-126d84c91d33",
   "userName" : "tomi",
   "name" : "tomi",
   "lastName" : "Miranda",
@@ -48,13 +50,14 @@
       "amount" : 100.0,
       "description" : "La mejor moneda de Mar del Plata"
     } ]
-  }
+  },
+  "admin" : false
 }, {
-  "walletId" : "eb43c279-ca34-4b03-bf75-447e421bee4a",
+  "walletId" : "81ee7256-342b-4e80-9089-4860e31b83c2",
   "userName" : "admin",
   "name" : "admin",
-  "lastName" : "istrator",
-  "dateOfBirth" : "01/01/1993",
+  "lastName" : "istrador",
+  "dateOfBirth" : "21/06/1986",
   "email" : "admin@gmail.com",
   "password" : "tutuca123",
   "wallet" : {
@@ -65,5 +68,6 @@
       "amount" : 100.0,
       "description" : "La mejor moneda de Mar del Plata"
     } ]
-  }
+  },
+  "admin" : true
 } ]

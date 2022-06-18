@@ -1,5 +1,8 @@
 package com.company.Usuarios;
 
+import com.company.Visuals.Menu;
+import com.company.Visuals.ProgramAdmin;
+import com.company.Visuals.ProgramUser;
 import com.company.Visuals.Registro;
 import com.company.enums.CoinName;
 
@@ -19,6 +22,7 @@ public class User {
     private String email;
     private String password;
     private Wallet wallet = new Wallet();
+    private boolean admin;
 
     public User() {
     }
@@ -30,6 +34,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.password = password;
+        this.admin = false;
     }
 
     public String getUserName() {
@@ -91,6 +96,26 @@ public class User {
     public void register() {
         Registro registro = new Registro();
     }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public Menu getMenu()
+    {
+        if (this.admin)
+        {
+            return new ProgramAdmin(walletId.toString());
+        }else
+        {
+            return new ProgramUser(walletId.toString());
+        }
+    }
+
 
     @Override
     public String toString() {

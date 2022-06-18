@@ -2,6 +2,7 @@ package com.company.JSON;
 
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.User;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
 
@@ -19,9 +20,11 @@ public class JsonManager {
     // ---- Agrego esto por acá, son los métodos que logré armar para recorrer Json. De esta forma, habría que hacer métodos para c/u de los JSON ----
     // ---- Quizá con Genéricos se podría usar un mismo método para todos los Json de las distintas clases. ----
 
+
+
     // metodo para escribir en un json una lista de Users.
 
-    public <T> void writeToJson (String file, List<T> list)
+    public static <T> void writeToJson (String file, List<T> list)
     {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -38,7 +41,7 @@ public class JsonManager {
     }
 
     // metodo para leer e imprimir un json de objetos User.
-    public void printJsonUser(String file)
+    public static void printJsonUser(String file)
     {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -56,7 +59,7 @@ public class JsonManager {
         }
     }
 
-    public List<User> readJsonUser(String file)
+    public static List<User> readJsonUser(String file) //No se puede generalizar por ser necesario obtener .class
     {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -69,7 +72,28 @@ public class JsonManager {
             return null;
         }
     }
-    public List<Transaction> readJsonPendingTransfer(String file)
+
+    public static HashMap<String,User> hashMapFromJson(String file)
+    {
+        List<User> users = readJsonUser(file);
+        HashMap<String, User> loginInfo = new HashMap<>();
+        for (User user: users) {
+            loginInfo.put(user.getWalletId(), user);
+        }
+        return loginInfo;
+    }
+
+    public static void hashMapToJson(String file,HashMap<String, User> hashMap)
+    {
+        List<User> users = new ArrayList<>();
+        hashMap.forEach((k, v) -> {
+            users.add(v);
+        });
+        writeToJson(JsonManager.JSON_USERS,users);
+    }
+
+
+    public static List<Transaction> readJsonPendingTransfer(String file)
     {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -103,7 +127,7 @@ public class JsonManager {
         }, 200,1000);
     }*/
 
-    public User searchUserByIdWallet(String file, String walletId) {
+    public static User searchUserByIdWallet(String file, String walletId) {
         List<User> list = readJsonUser(file);
         for (User userFound : list) {
             if (userFound.getWalletId().equals(walletId))

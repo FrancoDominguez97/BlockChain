@@ -3,11 +3,13 @@ package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
 import com.company.Usuarios.User;
-import com.company.login.LoginData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Registro implements ActionListener {
 
@@ -30,7 +32,12 @@ public class Registro implements ActionListener {
     JButton limpiar = new JButton();
     JButton back = new JButton();
 
+    HashMap<String,User> loginfo = new HashMap<>();
+
     public Registro() {
+
+        loginfo = JsonManager.hashMapFromJson(JsonManager.JSON_USERS);
+        
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
@@ -106,7 +113,7 @@ public class Registro implements ActionListener {
             User user = new User();
             JsonManager admin = new JsonManager(); // este admin es para que me deje guardar en el archivo JSON
             //aca creo la lista para guardar el nuevo dato ahi y pasarlo al archivo JSON.
-            //List<User> users = new ArrayList<>();
+            List<User> users = new ArrayList<>();
 
 
             user.setName(nameField.getText());
@@ -125,8 +132,13 @@ public class Registro implements ActionListener {
             }
             //searchMail(email); Aca realizar una funcion para que busque si esta en uso o no el mail, basicamente es la misma q para username.
             user.setPassword(String.valueOf(passwordField.getPassword()));
+            loginfo.put(user.getWalletId(),user);
+         /*   loginfo.forEach((k, v) -> {
+                System.out.format("key: %s, value: %s", k,v); //Imprimir el hashmap para debuggeo
+            });*/
 
             //aca iria el admin.writeToJson();
+            JsonManager.hashMapToJson(JsonManager.JSON_USERS,loginfo);
         }
         if (e.getSource()==limpiar){
             nameField.setText("");
@@ -138,8 +150,8 @@ public class Registro implements ActionListener {
         }
         if (e.getSource() == back){
             frame.dispose();
-            LoginData loginData = new LoginData();
-            LoginPage loginPage = new LoginPage(loginData.getLoginInfo());
+            //LoginData loginData = new LoginData();
+            LoginPage loginPage = new LoginPage();
         }
     }
 }

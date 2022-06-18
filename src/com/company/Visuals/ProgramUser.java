@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Program implements ActionListener {
+
+public class ProgramUser implements Menu, ActionListener {
 
     JFrame frame = new JFrame();
 
@@ -14,11 +15,19 @@ public class Program implements ActionListener {
     JButton minar = new JButton();
     JButton verMontos = new JButton();
     JButton cerrarSesion = new JButton();
-
     String userConnected;
 
-    Program(String userID){
-         this.userConnected = userID;
+
+    public ProgramUser(String userID)
+    {
+        this.userConnected = userID;
+    }
+
+
+
+
+    @Override
+    public void show() {
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
@@ -63,7 +72,6 @@ public class Program implements ActionListener {
         frame.setResizable(false);
         frame.setLayout(null);
         frame.setVisible(true);
-
     }
 
     @Override
@@ -90,8 +98,8 @@ public class Program implements ActionListener {
 
         if (e.getSource() == cerrarSesion){
             frame.dispose();
-            //LoginData loginData = new LoginData();
             LoginPage loginPage = new LoginPage();
         }
     }
+
 }
