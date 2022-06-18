@@ -67,7 +67,8 @@ public class CheckAmounts implements ActionListener {
         }
         if (e.getSource() == back){
             frame.dispose();
-            Program program = new Program(userConnected);
+            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+            user.getMenu().show();
         }
     }
 }
