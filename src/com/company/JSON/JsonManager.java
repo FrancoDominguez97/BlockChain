@@ -97,17 +97,21 @@ public class JsonManager {
     }
 
 
-    public static List<Transaction> readJsonPendingTransfer(String file)
+    public static List<Transaction> readJsonTransfer(String file)
     {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            Transaction[] pendingArray= objectMapper.readValue(new File(file),Transaction[].class);
-            List<Transaction> pendingList = new ArrayList(Arrays.asList(pendingArray));
-            return pendingList;
-        } catch (IOException e){
-            e.printStackTrace();
-            return null;
+        File f = new File(file);
+        if (f.exists())
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                Transaction[] pendingArray= objectMapper.readValue(new File(file),Transaction[].class);
+                List<Transaction> pendingList = new ArrayList(Arrays.asList(pendingArray));
+                return pendingList;
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
+        return null;
     }
     ///Este seria el prototipo de la validacion de las transferencias. Hay que mejorarlo mucho todavia
     ///Podemos hacer varios metodos primero para achicar lo que seria el metodo de validacion.

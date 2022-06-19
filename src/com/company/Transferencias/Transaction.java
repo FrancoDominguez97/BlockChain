@@ -1,10 +1,14 @@
 package com.company.Transferencias;
 
+import com.company.JSON.JsonManager;
+import com.company.Usuarios.User;
 import com.company.enums.Status;
 import com.company.enums.Reason;
 import com.company.Usuarios.Coin;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Transaction {
@@ -14,7 +18,7 @@ public class Transaction {
     private UUID receiverId;
     private LocalDateTime dateTime;
     private Coin coin;
-    private int validationCounter = 0;
+    private List<String> userValidations = new ArrayList<>(); //Lista de walletID que validaron la transaccion
     private Status status;
     private Reason reason;
 
@@ -47,12 +51,13 @@ public class Transaction {
     public Coin getCoin() {
         return coin;
     }
-    public int getValidationCounter() {
-        return validationCounter;
+
+    public List<String> getUserValidations() {
+        return userValidations;
     }
 
-    public void setValidationCounter(int validationCounter) {
-        this.validationCounter = validationCounter;
+    public void setUserValidations(List<String> userValidations) {
+        this.userValidations = userValidations;
     }
 
     public Status getStatus() {
@@ -79,10 +84,59 @@ public class Transaction {
                 ", receiverId=" + receiverId +
                 ", dateTime=" + dateTime +
                 ", coin=" + coin +
-                ", validationCounter=" + validationCounter +
+                ", userValidations=" + userValidations +
                 ", status=" + status +
                 ", reason=" + reason +
                 '}';
     }
+
+    public boolean checkValidated(String userID)
+    {
+        //User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userID);
+
+        for(String validationUser : userValidations)
+        {
+            if(validationUser.equals(userID))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int validate(String userID)
+    {
+        if(userValidations.size()<3)
+        {
+            userValidations.add(userID);
+            if(userValidations.size()==3)
+            {
+                // remover de lista pendiente, sumar a aceptada.
+                this.moveToBlockchain();
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public void moveToBlockchain()
+    {
+        List<Transaction> pendingList = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
+        List<Transaction> acceptedList = JsonManager.readJsonTransfer(JsonManager.JSON_BLOCKCHAIN);
+
+        for(Transaction t : pendingList)
+        {
+            if(t.getId().equals(this.id))
+            {
+                this.status = Status.ACCEPTED;
+                pendingList.remove(t);
+                acceptedList.add(t);
+                JsonManager.writeToJson(JsonManager.JSON_BLOCKCHAIN,acceptedList);
+                JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
+            }
+        }
+    }
+
+
     // logo en 2D para tiempo de espera de aprobacion de transaccion.
 }

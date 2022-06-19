@@ -116,7 +116,7 @@ public class Wallet {
     //ESTA FUNCION SE PUEDE REFACTORIZAR SI ENCONTRAMOS UNA MEJOR MANERA
     public void addTransferPendinJson(Transaction transaction){
         JsonManager json = new JsonManager();
-        List<Transaction> pendingList = json.readJsonPendingTransfer(JSON_PENDING_TRANSACTIONS);
+        List<Transaction> pendingList = json.readJsonTransfer(JSON_PENDING_TRANSACTIONS);
         pendingList.add(transaction);
         json.writeToJson(JSON_PENDING_TRANSACTIONS,pendingList);
     }

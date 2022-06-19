@@ -89,6 +89,7 @@ public class ProgramUser implements Menu, ActionListener {
 
         if (e.getSource() == minar){
             //codigo de validaciones de blockchains
+            Minar minar = new Minar(userConnected);
         }
 
         if (e.getSource() == verMontos){
