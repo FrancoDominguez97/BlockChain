@@ -28,10 +28,16 @@ public class Minar implements ActionListener{
         JLabel text = new JLabel("Presione el boton para minar");
         JButton startDigging = new JButton("Minar!");
         JButton back = new JButton();
+        JLabel label = new JLabel("No hay Transacciones Pendientes de Validacion.");
 
         String userConnected;
         public Minar(String userID) {
             this.userConnected = userID;
+
+            label.setBounds(50,400,400,35);
+            label.setFont((new Font(null,Font.BOLD,17)));
+            label.setVisible(false);
+            frame.add(label);
 
             frame.setTitle("TP FINAL LABORATORIO 3");
             ImageIcon image = new ImageIcon("logo.png");
@@ -87,10 +93,7 @@ public class Minar implements ActionListener{
                 else
                 {
                     // imprimir "no hay transacciones pendientes"
-                    JLabel label = new JLabel("No hay Transacciones Pendientes de Validacion.");
-                    label.setBounds(100,400,400,35);
-                    label.setFont((new Font(null,Font.BOLD,20)));
-                    frame.add(label);
+                    label.setVisible(true);
                 }
             }
             if (e.getSource() == back){
