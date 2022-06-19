@@ -9,10 +9,10 @@ public class ProgramAdmin implements Menu, ActionListener {
 
     JFrame frame = new JFrame();
 
-    JButton transferencias = new JButton();
-    JButton opcionesUser = new JButton();
-    JButton minar = new JButton();
-    JButton verMontos = new JButton();
+    JButton verUsers = new JButton();
+    JButton changeValue = new JButton();
+    JButton coinMovements = new JButton();
+    JButton verTransactions = new JButton();
     JButton cerrarSesion = new JButton();
 
     String userConnected;
@@ -30,39 +30,39 @@ public class ProgramAdmin implements Menu, ActionListener {
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
 
-        transferencias.setBounds(0,0, 250,200);
-        opcionesUser.setBounds(250,0,250,200);
-        minar.setBounds(0,200,250,200);
-        verMontos.setBounds(250,200,250,200);
+        verUsers.setBounds(0,0, 250,200);
+        changeValue.setBounds(250,0,250,200);
+        coinMovements.setBounds(0,200,250,200);
+        verTransactions.setBounds(250,200,250,200);
         cerrarSesion.setBounds(0,400,500,100);
 
-        transferencias.setText("AAAAAA");
-        transferencias.setFont(new Font(null,Font.ITALIC,25));
-        opcionesUser.setText("Opciones ADMIN");
-        opcionesUser.setFont(new Font(null,Font.ITALIC,25));
-        minar.setText("Minar");
-        minar.setFont(new Font(null,Font.ITALIC,25));
-        verMontos.setText("Ver Montos");
-        verMontos.setFont(new Font(null,Font.ITALIC,25));
+        verUsers.setText("Ver Users"); // con lista desplegable por usuario, cuando selecciona un user le tira todos los datos. Ahi mismo que haya un boton de borrado de user.
+        verUsers.setFont(new Font(null,Font.ITALIC,25));
+        changeValue.setText("Cambiar valor de coin");
+        changeValue.setFont(new Font(null,Font.ITALIC,20));
+        coinMovements.setText("Agregar/Retirar coin");
+        coinMovements.setFont(new Font(null,Font.ITALIC,20));
+        verTransactions.setText("Ver transacciones");
+        verTransactions.setFont(new Font(null,Font.ITALIC,25));
         cerrarSesion.setText("Cerrar Sesion");
         cerrarSesion.setFont(new Font(null,Font.ITALIC,25));
 
-        transferencias.setFocusable(false);
-        opcionesUser.setFocusable(false);
-        minar.setFocusable(false);
-        verMontos.setFocusable(false);
+        verUsers.setFocusable(false);
+        changeValue.setFocusable(false);
+        coinMovements.setFocusable(false);
+        verTransactions.setFocusable(false);
         cerrarSesion.setFocusable(false);
 
-        transferencias.addActionListener(this);
-        opcionesUser.addActionListener(this);
-        minar.addActionListener(this);
-        verMontos.addActionListener(this);
+        verUsers.addActionListener(this);
+        changeValue.addActionListener(this);
+        coinMovements.addActionListener(this);
+        verTransactions.addActionListener(this);
         cerrarSesion.addActionListener(this);
 
-        frame.add(transferencias);
-        frame.add(opcionesUser);
-        frame.add(minar);
-        frame.add(verMontos);
+        frame.add(verUsers);
+        frame.add(changeValue);
+        frame.add(coinMovements);
+        frame.add(verTransactions);
         frame.add(cerrarSesion);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,23 +75,23 @@ public class ProgramAdmin implements Menu, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //wip
-        if (e.getSource() == transferencias){
-            //codigo de transferencias
+        if (e.getSource() == verUsers){
+            //codigo de ver Users
         }
 
-        if (e.getSource() == opcionesUser){
+        if (e.getSource() == changeValue){
             frame.dispose();
-            Options options = new Options(userConnected);
-            //codigo de opcionesUser
+
+            //codigo de cambio de valor de coin
         }
 
-        if (e.getSource() == minar){
-            //codigo de validaciones de blockchains
+        if (e.getSource() == coinMovements){
+            //codigo de agregado y retirado de coins
         }
 
-        if (e.getSource() == verMontos){
+        if (e.getSource() == verTransactions){
             frame.dispose();
-            CheckAmounts checkAmounts = new CheckAmounts(userConnected);
+            //codigo de historial de transacciones de todos los usuarios
         }
 
         if (e.getSource() == cerrarSesion){
