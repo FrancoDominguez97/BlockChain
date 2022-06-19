@@ -63,6 +63,41 @@ public class Wallet {
         }
         coinList.add(coin);
     }
+
+    public Coin searchCoinByName(String coin)
+    {
+        for(Coin c : coinList)
+        {
+            if(c.getCoinName().equals(coin))
+                return c;
+        }
+        return null;
+    }
+
+/*    public boolean swapCoin(String coinFrom, String coinTo, double amount){
+        // Habría que checkear que amount sea positivo distinto de 0 en el parámetro
+        Coin from = searchCoinByName(coinFrom);
+        Coin to = searchCoinByName(coinTo);
+        boolean possible = false;
+
+        if(to!=null && from!=null && amount>0)
+        {
+            if(from.getAmount()>=amount)
+            {
+                int indexFrom = coinList.indexOf(from);
+                int indexTo = coinList.indexOf(to);
+                from.setAmount(from.getAmount()-(amount+fee));
+                to.setAmount(to.getAmount()+amount);
+                coinList.set(indexFrom,from);
+                coinList.set(indexTo,to);
+
+                JsonManager.
+            }
+        }
+
+        return possible;
+    }*/
+
     public Transaction sendCoin(UUID sender, UUID receiver, Coin coin, double amount, Reason reason){
         LocalDateTime dateTransfer = LocalDateTime.now();
         for (Coin sendCoin: coinList) {

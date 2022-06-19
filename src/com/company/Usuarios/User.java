@@ -1,5 +1,6 @@
 package com.company.Usuarios;
 
+import com.company.JSON.JsonManager;
 import com.company.Visuals.Menu;
 import com.company.Visuals.ProgramAdmin;
 import com.company.Visuals.ProgramUser;
@@ -22,6 +23,7 @@ public class User {
     private String email;
     private String password;
     private Wallet wallet = new Wallet();
+    private double fee;
     private boolean admin;
 
     public User() {
@@ -34,6 +36,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.password = password;
+        this.fee = 0.02;
         this.admin = false;
     }
 
@@ -105,6 +108,14 @@ public class User {
         this.admin = admin;
     }
 
+    public double getFee() {
+        return fee;
+    }
+
+    public void setFee(double fee) {
+        this.fee = fee;
+    }
+
     public Menu obtenerMenu()
     {
         if (this.admin)
@@ -114,6 +125,30 @@ public class User {
         {
             return new ProgramUser(walletId.toString());
         }
+    }
+
+    //Método para swappear de una moneda a otra, retorna True si fue posible. Consume un fee de la coin a sacar montos.
+    public boolean swapCoin(String coinFrom, String coinTo, double amount){
+        Coin from = wallet.searchCoinByName(coinFrom);
+        Coin to = wallet.searchCoinByName(coinTo);
+        boolean possible = false;
+
+        if(to!=null && from!=null && amount>0)
+        {
+            if(from.getAmount()>=(amount+fee))
+            {
+                int indexFrom = wallet.getCoins().indexOf(from);
+                int indexTo = wallet.getCoins().indexOf(to);
+                from.setAmount(from.getAmount()-(amount+fee));
+                to.setAmount(to.getAmount()+amount);
+                wallet.getCoins().set(indexFrom,from);
+                wallet.getCoins().set(indexTo,to);
+
+                JsonManager.updateUser(this);
+                possible=true;
+            }
+        }
+        return possible;
     }
 
 
