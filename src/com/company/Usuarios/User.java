@@ -23,7 +23,7 @@ public class User {
     private String email;
     private String password;
     private Wallet wallet = new Wallet();
-    private double fee;
+    private double fee; // Porcentaje de comisión que se le cobrará a cada user.
     private boolean admin;
 
     public User() {
@@ -133,13 +133,13 @@ public class User {
         Coin to = wallet.searchCoinByName(coinTo);
         boolean possible = false;
 
-        if(to!=null && from!=null && amount>0)
+        if(to!=null && from!=null && amount>0) // Si alguna de las coins o el amount no cumplen, hay que informarlo por pantalla en la app
         {
-            if(from.getAmount()>=(amount+fee))
+            if(from.getAmount()>=(amount+amount*fee)) // Si la wallet no tiene monto suficiente de esa coin para swappear, hay que informarlo tambien
             {
                 int indexFrom = wallet.getCoins().indexOf(from);
                 int indexTo = wallet.getCoins().indexOf(to);
-                from.setAmount(from.getAmount()-(amount+fee));
+                from.setAmount(from.getAmount()-(amount+amount*fee));
                 to.setAmount(to.getAmount()+amount);
                 wallet.getCoins().set(indexFrom,from);
                 wallet.getCoins().set(indexTo,to);
