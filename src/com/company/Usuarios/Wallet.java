@@ -17,9 +17,7 @@ public class Wallet {
     private List<Coin> coinList = new ArrayList<>();
     private List<Transaction>transferList = new ArrayList<>();
 
-    public Wallet(){
-        Coin coin = new Coin(CoinName.UTNCOIN,"UTN",100,"La mejor moneda de Mar del Plata");
-        addCoinToWallet(coin);
+    public Wallet(){ //Vacío, antes creaba 100 UTNcoins y las añadía a la coinList. Eso traía duplicados al leer el json con ObjectMapper
     }
 
     public List<Coin> getCoins() {
@@ -38,7 +36,21 @@ public class Wallet {
                 '}';
     }
 
+    public void initialize()
+    {
+        Coin coin = new Coin(CoinName.UTNCOIN,"UTN",100,"La mejor moneda de Mar del Plata");
+        addCoinToWallet(coin);
+    }
+
+
     public void addCoinToWallet(Coin coin){
+        for(Coin c : coinList)
+        {
+            if(c.getCoinName().equals(coin.getCoinName()))
+            {
+                return;
+            }
+        }
         coinList.add(coin);
     }
     public Transaction sendCoin(UUID sender, UUID receiver, Coin coin, double amount, Reason reason){

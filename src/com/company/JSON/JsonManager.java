@@ -68,6 +68,7 @@ public class JsonManager {
         try {
 
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
+            System.out.println(Arrays.toString(userArray));
             List<User> userList = new ArrayList(Arrays.asList(userArray));
             return userList;
         } catch (IOException e){

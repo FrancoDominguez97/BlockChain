@@ -24,10 +24,11 @@ public class Options implements ActionListener {
     JPasswordField passwordField = new JPasswordField();
 
     String userConnected;
-    User user = new User();
+    User user;
     public Options(String UserID) {
         this.userConnected = UserID;
         this.user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
