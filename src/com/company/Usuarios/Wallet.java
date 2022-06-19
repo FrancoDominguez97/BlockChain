@@ -38,10 +38,20 @@ public class Wallet {
 
     public void initialize()
     {
-        Coin coin = new Coin(CoinName.UTNCOIN,"UTN",100,"La mejor moneda de Mar del Plata");
+        Coin coin = new Coin(CoinName.UTNCOIN,"UTN",100,"La mejor moneda de Mar del Plata",1.0);
         addCoinToWallet(coin);
     }
 
+    // método que calcula toodo el valor en dólares que contiene la wallet
+    public double totalUSDvalue()
+    {
+        double total = 0.0;
+        for (Coin coin : coinList)
+        {
+            total+= coin.calculateValueInUSD();
+        }
+        return total;
+    }
 
     public void addCoinToWallet(Coin coin){
         for(Coin c : coinList)
