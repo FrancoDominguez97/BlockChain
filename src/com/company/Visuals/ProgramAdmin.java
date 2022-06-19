@@ -1,5 +1,7 @@
 package com.company.Visuals;
 
+import com.company.Interfaces.Menu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -2,6 +2,7 @@ package com.company.Visuals;
 
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class Registro implements ActionListener {
 
     public Registro() {
 
-        loginfo = JsonManager.hashMapFromJson(JsonManager.JSON_USERS);
+        loginfo = JsonUser.hashMapFromJson(JsonManager.JSON_USERS);
         
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
@@ -105,24 +106,27 @@ public class Registro implements ActionListener {
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
+        User newUser = new User();
     }
+    public void registerNewUser(User newUser){
 
+
+
+        //return newUser;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==guardar){
             User user = new User();
-            JsonManager admin = new JsonManager(); // este admin es para que me deje guardar en el archivo JSON
-            //aca creo la lista para guardar el nuevo dato ahi y pasarlo al archivo JSON.
-            List<User> users = new ArrayList<>();
-
-
+            List<User> users = JsonUser.JsonToListUsers(JsonManager.JSON_USERS);
             user.setName(nameField.getText());
             user.setLastName(lastNameField.getText());
             user.setDateOfBirth(dateField.getText());
-            if (user.calcutaleAge((user.getDateOfBirth()))== false) {
-                JOptionPane.showMessageDialog(null, "Usted es menor de edad, no se puede registrar.");;
-                System.exit(1);
-            }
+            do {
+                JOptionPane.showMessageDialog(null, "Usted es menor de edad, no se puede registrar.");
+                dateField.requestFocus();
+                user.setDateOfBirth(dateField.getText());
+            } while (user.calcutaleAge((user.getDateOfBirth()))== false);
             user.setUserName(userNameField.getText());
             //searchUserName(userName); Aca realizar una funcion para que busque si no esta en uso el username.
             user.setEmail(emailField.getText());
@@ -138,7 +142,7 @@ public class Registro implements ActionListener {
             });*/
 
             //aca iria el admin.writeToJson();
-            JsonManager.hashMapToJson(JsonManager.JSON_USERS,loginfo);
+            JsonUser.hashMapToJson(JsonManager.JSON_USERS,loginfo);
         }
         if (e.getSource()==limpiar){
             nameField.setText("");

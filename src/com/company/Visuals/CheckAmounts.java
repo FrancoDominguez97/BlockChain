@@ -1,6 +1,7 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 import com.company.enums.CoinName;
 
@@ -57,18 +58,18 @@ public class CheckAmounts implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jButton) {
-            JsonManager admin = new JsonManager();
-            User user = admin.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+
+            User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             String selected = "Seleccionaste: " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
             jLabel.setText(selected);
 
             //crear una tabla donde aparezca cantidad y tipo de moneda
-            messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
+            //messageLabel.setText("Tenes: " + user.getWallet().getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
         }
         if (e.getSource() == back){
             frame.dispose();
-            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
-            user.getMenu().show();
+            User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+            user.showMenu().show();
         }
     }
 }

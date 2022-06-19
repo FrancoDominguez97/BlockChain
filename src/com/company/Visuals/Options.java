@@ -1,6 +1,7 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -47,8 +48,8 @@ public class Options implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == back){
             frame.dispose();
-            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
-            user.getMenu().show();
+            User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+            user.showMenu().show();
         }
     }
 }
