@@ -1,58 +1,100 @@
 package com.company.Transferencias;
 
+import com.company.enums.CoinName;
 import com.company.enums.Status;
 import com.company.enums.Reason;
-import com.company.Usuarios.Coin;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonProperty()
 public class Transaction {
 
-    private UUID id = UUID.randomUUID();
-    private UUID senderId;
-    private UUID receiverId;
-    private LocalDateTime dateTime;
-    private Coin coin;
-    private int validationCounter = 0;
+    private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private String id;
+    private String sender;
+    private String receiver;
+    private String dateTime;
+    private String[]userValidate = new String[3];
+    private double amount;
+    private CoinName coinName;
     private Status status;
     private Reason reason;
-
-    public Transaction(UUID senderId, UUID receiverId, LocalDateTime dateTime, Coin coin, Status status, Reason reason) {
-        this.senderId = senderId;
-        this.receiverId = receiverId;
-        this.dateTime = dateTime;
-        this.coin = coin;
+    public Transaction(String sender, String receiver, double amount, CoinName coinName, Status status, Reason reason) {
+        this.id = UUID.randomUUID().toString();
+        this.sender = sender;
+        this.receiver = receiver;
+        this.amount = amount;
+        this.coinName = coinName;
         this.status = status;
         this.reason = reason;
+        this.dateTime = fmt.format(LocalDateTime.now());
     }
+
+
 
     public Transaction() {
+        this.id = UUID.randomUUID().toString();
+        this.dateTime = fmt.format(LocalDateTime.now());
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
-    //Aca en los get de RECEIVERID y SENDERID deberia devolver el usuario tipo los datos principales del usuario.
 
-    public UUID getSenderId() {
-        return senderId;
+    public void setId(String id) {
+        this.id= id;
     }
-    public UUID getReceiverId() {
-        return receiverId;
+    public String getSender() {
+        return sender;
     }
-    public LocalDateTime getDateTime() {
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getDateTime() {
         return dateTime;
     }
-    public Coin getCoin() {
-        return coin;
-    }
-    public int getValidationCounter() {
-        return validationCounter;
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public void setValidationCounter(int validationCounter) {
-        this.validationCounter = validationCounter;
+    public String[] getUserValidate() {
+        return userValidate;
+    }
+
+    public void setUserValidate(String[] userValidate) {
+        this.userValidate = userValidate;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public CoinName getCoinName() {
+        return coinName;
+    }
+
+    public void setCoinName(CoinName coinName) {
+        this.coinName = coinName;
     }
 
     public Status getStatus() {
@@ -70,19 +112,53 @@ public class Transaction {
     public void setReason(Reason reason) {
         this.reason = reason;
     }
+    public boolean recorrerArreglo(String wallet){
+        int i = 0;
+        while (i<userValidate.length) {
+            if (userValidate[i] == wallet){
+                return true;
+            }
+            else{
+                i++;
+            }
+        }
+        return false;
+    }
+    public boolean arregloLleno(){
+        int i = 0;
+        while (i<userValidate.length){
+            if(userValidate[i] != null)
+                i++;
+        }
+        if (i<3){
+        return false;
+        }
+        return true;
+
+    }
+    public void addUserValidate(String walletUser){
+        int i = 0;
+        while (userValidate[i]!=null && i<userValidate.length) {
+            i++;
+        }
+        if (i<userValidate.length) {
+            userValidate[i] = walletUser;
+        }
+    }
 
     @Override
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", senderId=" + senderId +
-                ", receiverId=" + receiverId +
+                ", senderId=" + sender +
+                ", receiverId=" + receiver +
                 ", dateTime=" + dateTime +
-                ", coin=" + coin +
-                ", validationCounter=" + validationCounter +
                 ", status=" + status +
                 ", reason=" + reason +
                 '}';
     }
+
+
+
     // logo en 2D para tiempo de espera de aprobacion de transaccion.
 }
