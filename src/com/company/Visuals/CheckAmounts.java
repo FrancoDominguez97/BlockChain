@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class CheckAmounts implements ActionListener {
     JFrame frame = new JFrame();
 
-    String[] options = {CoinName.UTNCOIN.name(),CoinName.BITCOIN.name(),CoinName.ETHERIUM.name(),CoinName.LUNA.name()};
+    String[] options = {CoinName.UTNCOIN.name(),CoinName.BITCOIN.name(),CoinName.ETHEREUM.name(),CoinName.LUNA.name()};
 
     JComboBox<String> jComboBox = new JComboBox<>(options);
     JButton jButton = new JButton("Buscar");
@@ -61,14 +61,12 @@ public class CheckAmounts implements ActionListener {
             User user = admin.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             String selected = "Seleccionaste: " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
             jLabel.setText(selected);
-
-            //crear una tabla donde aparezca cantidad y tipo de moneda
             messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
         }
         if (e.getSource() == back){
             frame.dispose();
             User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
-            user.getMenu().show();
+            user.obtenerMenu().show();
         }
     }
 }

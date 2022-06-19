@@ -9,16 +9,18 @@ public class Coin {
     //private icon
     private double amount;
     private String description;
+    private double valueUSD;
 
     public Coin() {
 
     }
 
-    public Coin(CoinName coinName, String coinSymbol, double amount, String description) {
+    public Coin(CoinName coinName, String coinSymbol, double amount, String description, double valueUSD) {
         this.coinName = coinName;
         this.coinSymbol = coinSymbol;
         this.amount = amount;
         this.description = description;
+        this.valueUSD = valueUSD;
     }
 
     public CoinName getCoinName() {
@@ -41,8 +43,21 @@ public class Coin {
         return description;
     }
 
+    public double getValueUSD() {
+        return valueUSD;
+    }
+
+    public void setValueUSD(double valueUSD) {
+        this.valueUSD = valueUSD;
+    }
+
     @Override
     public String toString() {
         return amount + " " + coinName;
+    }
+
+    public double calculateValueInUSD()
+    {
+        return amount*valueUSD;
     }
 }

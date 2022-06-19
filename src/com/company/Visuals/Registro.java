@@ -132,12 +132,14 @@ public class Registro implements ActionListener {
             }
             //searchMail(email); Aca realizar una funcion para que busque si esta en uso o no el mail, basicamente es la misma q para username.
             user.setPassword(String.valueOf(passwordField.getPassword()));
+
+            user.getWallet().initialize();
+
             loginfo.put(user.getWalletId(),user);
          /*   loginfo.forEach((k, v) -> {
                 System.out.format("key: %s, value: %s", k,v); //Imprimir el hashmap para debuggeo
             });*/
 
-            //aca iria el admin.writeToJson();
             JsonManager.hashMapToJson(JsonManager.JSON_USERS,loginfo);
         }
         if (e.getSource()==limpiar){

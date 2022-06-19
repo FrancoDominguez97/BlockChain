@@ -2,14 +2,17 @@ package com.company.JSON;
 
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.User;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class JsonManager {
 
@@ -65,6 +68,7 @@ public class JsonManager {
         try {
 
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
+            System.out.println(Arrays.toString(userArray));
             List<User> userList = new ArrayList(Arrays.asList(userArray));
             return userList;
         } catch (IOException e){
@@ -127,12 +131,24 @@ public class JsonManager {
         }, 200,1000);
     }*/
 
+    // searchUser implementando java 8
     public static User searchUserByIdWallet(String file, String walletId) {
         List<User> list = readJsonUser(file);
-        for (User userFound : list) {
-            if (userFound.getWalletId().equals(walletId))
-                return userFound;
-        }
-        return null;
+        User user = list.stream().filter(us -> us.getWalletId().equals(walletId)).findFirst().orElse(null);
+        return user;
+    }
+
+    public static void updateUser (User user){
+        List<User> usersToUpdate = readJsonUser(JsonManager.JSON_USERS);
+        // funciona igual que un foreach
+        List<User> usersUpdated = usersToUpdate.stream()
+                .map(us -> {
+                    if (us.getWalletId().equals(user.getWalletId()))
+                        us = user;
+                    return us;
+                })
+                .collect(Collectors.toList());
+
+        writeToJson(JSON_USERS,usersUpdated);
     }
 }
