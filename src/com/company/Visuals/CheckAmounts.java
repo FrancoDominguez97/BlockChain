@@ -61,8 +61,6 @@ public class CheckAmounts implements ActionListener {
             User user = admin.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             String selected = "Seleccionaste: " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
             jLabel.setText(selected);
-
-            //crear una tabla donde aparezca cantidad y tipo de moneda
             messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
         }
         if (e.getSource() == back){
