@@ -13,7 +13,6 @@ public class Coin {
     public Coin() {
 
     }
-
     public Coin(CoinName coinName, String coinSymbol, double amount, String description) {
         this.coinName = coinName;
         this.coinSymbol = coinSymbol;
@@ -25,8 +24,16 @@ public class Coin {
         return coinName;
     }
 
+    public void setCoinName(CoinName coinName) {
+        this.coinName = coinName;
+    }
+
     public String getCoinSymbol() {
         return coinSymbol;
+    }
+
+    public void setCoinSymbol(String coinSymbol) {
+        this.coinSymbol = coinSymbol;
     }
 
     public double getAmount() {
@@ -39,6 +46,10 @@ public class Coin {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

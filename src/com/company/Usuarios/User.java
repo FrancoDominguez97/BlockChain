@@ -1,6 +1,6 @@
 package com.company.Usuarios;
 
-import com.company.Visuals.Menu;
+import com.company.Interfaces.Menu;
 import com.company.Visuals.ProgramAdmin;
 import com.company.Visuals.ProgramUser;
 import com.company.Visuals.Registro;
@@ -21,19 +21,20 @@ public class User {
     private String dateOfBirth;
     private String email;
     private String password;
-    private Wallet wallet = new Wallet();
+    private Wallet wallet;
     private boolean admin;
 
     public User() {
     }
 
-    public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
+    public User(String userName, String name, String lastName, String dateOfBirth, String email, String password, Wallet wallet) {
         this.userName = userName;
         this.name = name;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.password = password;
+        this.wallet = wallet;
         this.admin = false;
     }
 
@@ -105,7 +106,7 @@ public class User {
         this.admin = admin;
     }
 
-    public Menu getMenu()
+    public Menu showMenu()
     {
         if (this.admin)
         {
@@ -149,13 +150,6 @@ public class User {
         return matcher.matches();
     }
 
-    public Coin getCoin(String coinName){
-        for (Coin coinFound: wallet.getCoins()) {
-            if(coinFound.getCoinName().equals(CoinName.valueOf(coinName)))
-                return coinFound;
-        }
-        return null;
-    }
 }
 
 
