@@ -94,7 +94,7 @@ public class ProgramAdmin implements Menu, ActionListener {
 
         if (e.getSource() == verTransactions){
             frame.dispose();
-            //codigo de historial de transacciones de todos los usuarios
+            AdminTransactionsList adminTransactionsList = new AdminTransactionsList(userConnected);
         }
 
         if (e.getSource() == cerrarSesion){
