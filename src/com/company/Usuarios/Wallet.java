@@ -2,6 +2,7 @@ package com.company.Usuarios;
 
 import com.company.JSON.JsonManager;
 import com.company.JSON.JsonTransaction;
+import com.company.JSON.JsonUser;
 import com.company.Transferencias.Transaction;
 import com.company.enums.CoinName;
 import com.company.enums.Reason;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Wallet {
     public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
@@ -119,26 +121,20 @@ public class Wallet {
         return possible;
     }*/
 
-    public Transaction sendCoin(String sender, String receiver, Coin coin, double amount, Reason reason){
-        for (Coin sendCoin: coinList) {
-            if(sendCoin.getCoinName() == coin.getCoinName()){
-                if(sendCoin.getAmount() >= amount){
-                    Transaction transfer = new Transaction(sender, receiver,coin,reason);
-                    ///ACA HAY QUE HACER UNA FUNCION DONDE SE HAGA LA VALIDACION DE LA TRANSFERENCIA;
-                    transferList.add(transfer);
-                    addTransferPendinJson(transfer);
-                    return transfer;
-                }
-            }
-        }
-        return null;
+    public void updateTransactionInList(Transaction transaction)
+    {
+        // funciona igual que un foreach
+        List<Transaction> transactionUpdated = this.transferList.stream()
+                .map(t -> {
+                    if (t.getId().toString().equals(transaction.getId().toString()))
+                        t = transaction;
+                    return t;
+                })
+                .collect(Collectors.toList());
+        this.setTransferList(transactionUpdated);
     }
-    //ESTA FUNCION SE PUEDE REFACTORIZAR SI ENCONTRAMOS UNA MEJOR MANERA
-    public void addTransferPendinJson(Transaction transaction){
-        List<Transaction> pendingList = JsonTransaction.readJsonTransfer(JSON_PENDING_TRANSACTIONS);
-        pendingList.add(transaction);
-        JsonManager.writeToJson(JSON_PENDING_TRANSACTIONS,pendingList);
-    }
+
+
 
 
 }

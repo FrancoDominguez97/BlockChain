@@ -129,7 +129,7 @@ public class Transaction {
             userValidations.add(userID);
             JsonTransaction.updateTransaction(this);
             User emitter = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,this.senderId);
-            //emitter.getWallet().setTransferList(); ------------------------------------------------------------------------------------------------------
+            emitter.getWallet().updateTransactionInList(this);
 
             JsonUser.updateUser(emitter);
             if(userValidations.size()==3)
@@ -138,9 +138,12 @@ public class Transaction {
                 User receiver = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,this.receiverId);
 
                 receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).setAmount(receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).getAmount() + this.coin.getAmount());
-                JsonUser.updateUser(receiver);
 
-                this.moveToBlockchain();
+                this.moveToBlockchain(); //Lo saca de pending, lo manda a blockchain y cambia el status a ACCEPTED.
+                receiver.getWallet().getTransferList().add(this);
+                emitter.getWallet().updateTransactionInList(this);
+
+                JsonUser.updateUser(receiver);
                 JsonUser.updateUser(emitter);
                 return 1;
             }
@@ -149,22 +152,28 @@ public class Transaction {
     }
 
 
-
     public void moveToBlockchain()
     {
         List<Transaction> pendingList = JsonTransaction.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
         List<Transaction> acceptedList = JsonTransaction.readJsonTransfer(JsonManager.JSON_BLOCKCHAIN);
+        Transaction aux = null;
 
         for(Transaction t : pendingList)
         {
             if(t.getId().equals(this.id))
             {
-                this.status = Status.ACCEPTED;
-                pendingList.remove(t);
-                acceptedList.add(t);
-                JsonManager.writeToJson(JsonManager.JSON_BLOCKCHAIN,acceptedList);
-                JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
+                aux = t;
+                //break;
             }
+        }
+        if (aux!=null)
+        {
+            aux.setStatus(Status.ACCEPTED);
+            pendingList.remove(aux);
+            acceptedList.add(aux);
+
+            JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
+            JsonManager.writeToJson(JsonManager.JSON_BLOCKCHAIN,acceptedList);
         }
     }
 

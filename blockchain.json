@@ -1,1 +1,13 @@
-[ ]
+[ {
+  "id" : "30f8417a-5145-4671-acb5-18137e476215",
+  "senderId" : "06255cf0-b915-4de6-94dd-126d84c91d33",
+  "receiverId" : "7eafb264-e034-44fa-b5e2-67fc27f054a8",
+  "dateTime" : "20/06/2022 14:53:50",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 42.0
+  },
+  "userValidations" : [ "9a078115-ebae-4602-bebc-8722a2c39c25", "063af8cb-945e-4565-8b42-5c127d9b4550", "f46d13f0-9726-48e3-8397-e583d6d698ab" ],
+  "status" : "ACCEPTED",
+  "reason" : "OTHERS"
+} ]

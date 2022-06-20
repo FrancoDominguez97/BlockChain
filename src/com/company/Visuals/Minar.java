@@ -94,9 +94,11 @@ public class Minar implements ActionListener{
                     }
                     if(countValidatedOnce>0)
                     {
+                        System.out.println("validatedOnce: "+ countValidatedOnce);
                         totalReward = (double) countFullyValidated * reward;
                         if(totalReward>0)
                         {
+                            System.out.println("hubo reward.");
                             User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
                             user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).setAmount(user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).getAmount() + totalReward);
                             JsonUser.updateUser(user);

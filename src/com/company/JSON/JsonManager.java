@@ -29,6 +29,9 @@ public class JsonManager {
 
     public static <T> void writeToJson (String file, List<T> list)
     {
+        if(list.isEmpty())
+            list = new ArrayList<>();
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             File f = new File(file);
