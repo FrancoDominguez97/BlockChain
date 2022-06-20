@@ -97,6 +97,10 @@ public class CheckAmounts implements ActionListener {
             messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
             messageUSD.setText("Valor en U$D: " + new DecimalFormat("#.00000").format(user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())).calculateValueInUSD()));
             swap.setVisible(true);
+            confirmSwap.setVisible(false);
+            swapComboBox.setVisible(false);
+            swapBox.setVisible(false);
+            swapText.setVisible(false);
         }
         if (e.getSource() == back){
             frame.dispose();
@@ -114,6 +118,12 @@ public class CheckAmounts implements ActionListener {
             double amount = Double.parseDouble(swapBox.getText());
             System.out.println(amount);
             user.swapCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex()),swapComboBox.getItemAt(swapComboBox.getSelectedIndex()),amount);
+            JOptionPane.showMessageDialog(null, "Cambio de moneda exitoso!");
+            confirmSwap.setVisible(false);
+            swapComboBox.setVisible(false);
+            swapBox.setVisible(false);
+            swapText.setVisible(false);
+
         }
 
     }
