@@ -111,7 +111,7 @@ public class Transaction {
 
         for(String validationUser : userValidations)
         {
-            if(validationUser.equals(userID))
+            if(validationUser.equals(userID) && !senderId.equals(userID) && !receiverId.equals(userID))
             {
                 return true;
             }
@@ -125,6 +125,9 @@ public class Transaction {
         {
             userValidations.add(userID);
             JsonTransaction.updateTransaction(this);
+            User emitter = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,this.senderId);
+
+            JsonUser.updateUser(emitter);
             if(userValidations.size()==3)
             {
                 // remover de lista pendiente, sumar a aceptada, y SUMAR MONTO al receptor
@@ -134,6 +137,7 @@ public class Transaction {
                 JsonUser.updateUser(receiver);
 
                 this.moveToBlockchain();
+                JsonUser.updateUser(emitter);
                 return 1;
             }
         }

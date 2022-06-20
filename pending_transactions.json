@@ -7,7 +7,7 @@
     "coinName" : "UTNCOIN",
     "amount" : 7.0
   },
-  "userValidations" : [ ],
+  "userValidations" : [ "7eafb264-e034-44fa-b5e2-67fc27f054a8", "06255cf0-b915-4de6-94dd-126d84c91d33" ],
   "status" : "PENDING",
   "reason" : "RENT"
 }, {
@@ -19,7 +19,7 @@
     "coinName" : "UTNCOIN",
     "amount" : 8.0
   },
-  "userValidations" : [ ],
+  "userValidations" : [ "7eafb264-e034-44fa-b5e2-67fc27f054a8", "06255cf0-b915-4de6-94dd-126d84c91d33" ],
   "status" : "PENDING",
   "reason" : "OTHERS"
 }, {
@@ -31,7 +31,7 @@
     "coinName" : "UTNCOIN",
     "amount" : 9.0
   },
-  "userValidations" : [ ],
+  "userValidations" : [ "7eafb264-e034-44fa-b5e2-67fc27f054a8", "06255cf0-b915-4de6-94dd-126d84c91d33" ],
   "status" : "PENDING",
   "reason" : "OTHERS"
 } ]
