@@ -14,9 +14,6 @@ public class TransactionVisual implements ActionListener {
     JFrame frame = new JFrame();
     String[] options = {TransactionToDo.SELECCIONE.name(), TransactionToDo.NUEVA_TRANSFERENCIA.name(),TransactionToDo.HISTORIAL_TRANSFERENCIAS.name()};
 
-    public void setOptions(String[] options) {
-        this.options = options;
-    }
 
     JComboBox<String> jComboBox = new JComboBox<>(options);
     JButton search = new JButton("Buscar");
@@ -74,20 +71,21 @@ public class TransactionVisual implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == search){
-            JsonManager admin = new JsonManager();
-            User user = admin.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
-            if(jComboBox.getItemAt(jComboBox.getSelectedIndex()) == TransactionToDo.NUEVA_TRANSFERENCIA.name()){
+            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+            if(jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.NUEVA_TRANSFERENCIA.name())){
                 //NUEVA TRANSACCION
                 String selected = "Nueva transaccion:";
                 jLabel.setText(selected);
                 jLabel.setVisible(true);
+                ejemplo2.setVisible(false);
                 ejemplo.setVisible(true);
             }
-            if(jComboBox.getItemAt(jComboBox.getSelectedIndex()) == TransactionToDo.HISTORIAL_TRANSFERENCIAS.name()){
+            else if(jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.HISTORIAL_TRANSFERENCIAS.name())){
                 //HISTORIAL DE TRANSACCIONES
                 String selected = "Historial de transacciones:";
                 jLabel.setText(selected);
                 jLabel.setVisible(true);
+                ejemplo.setVisible(false);
                 ejemplo2.setVisible(true);
             }
             else{

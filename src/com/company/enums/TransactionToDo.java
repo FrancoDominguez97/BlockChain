@@ -1,9 +1,9 @@
 package com.company.enums;
 
 public enum TransactionToDo {
-    SELECCIONE(1),
-    NUEVA_TRANSFERENCIA(2),
-    HISTORIAL_TRANSFERENCIAS(3);
+    SELECCIONE(0),
+    NUEVA_TRANSFERENCIA(1),
+    HISTORIAL_TRANSFERENCIAS(2);
 
     int value;
     TransactionToDo(int value) {

@@ -79,6 +79,7 @@ public class ProgramUser implements Menu, ActionListener {
         //wip
         if (e.getSource() == transferencias){
             //codigo de transferencias
+            frame.dispose();
             TransactionVisual transactionVisual = new TransactionVisual(userConnected);
         }
 
