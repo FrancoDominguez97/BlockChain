@@ -34,8 +34,8 @@ public class CheckAmounts implements ActionListener {
 
         jComboBox.setBounds(80, 50, 140, 20);
         back.setBounds(0,0, 50,25);
-        messageLabel.setBounds(90, 200, 400,100);
-        messageUSD.setBounds(90, 280, 400,100);
+        messageLabel.setBounds(90, 125, 400,100);
+        messageUSD.setBounds(90, 150, 400,100);
         jButton.setBounds(100, 100, 90, 20);
 
         jLabel.setBounds(90, 100, 400, 100);
@@ -49,7 +49,7 @@ public class CheckAmounts implements ActionListener {
         frame.add(back);
 
         swap.setVisible(false);
-        swap.setBounds(100,350,130,30);
+        swap.setBounds(100,220,130,30);
         swap.addActionListener(this);
 
         jButton.addActionListener(this);
@@ -79,6 +79,7 @@ public class CheckAmounts implements ActionListener {
             user.obtenerMenu().show();
         }
         if (e.getSource() == swap) {
+
 
         }
     }

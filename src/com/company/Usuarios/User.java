@@ -216,6 +216,31 @@ public class User {
         }
         return null;
     }
+
+//    public boolean swapCoin(String coinFrom, String coinTo, double amount){
+//        // Habría que checkear que amount sea positivo distinto de 0 en el parámetro
+//        Coin from = this.getWallet().searchCoinByName(coinFrom);
+//        Coin to = this.getWallet().searchCoinByName(coinTo);
+//        boolean possible = false;
+//
+//        if(to!=null && from!=null && amount>0)
+//        {
+//            if(from.getAmount()>=(amount + amount*fee)) // Fee está en user, mover a wallet??? --------------------------------------------------------------
+//            {
+//                int indexFrom = this.getWallet().getCoins().indexOf(from);
+//                int indexTo = this.getWallet().getCoins().indexOf(to);
+//                from.setAmount(from.getAmount()-(amount+fee));
+//                to.setAmount(to.getAmount()+amount);
+//                this.getWallet().getCoins().set(indexFrom,from);
+//                this.getWallet().getCoins().set(indexTo,to);
+//
+//                JsonUser.updateUser(this);
+//            }
+//        }
+//
+//        return possible;
+//    }
+
 }
 
 

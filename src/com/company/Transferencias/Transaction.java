@@ -93,16 +93,13 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", senderId=" + senderId +
-                ", receiverId=" + receiverId +
-                ", dateTime=" + dateTime +
-                ", coin=" + coin +
-                ", userValidations=" + userValidations +
-                ", status=" + status +
-                ", reason=" + reason +
-                '}';
+        return "ID: " + id + "\n" +
+                "Sender: " + senderId + '\n' +
+                "Receiver: " + receiverId + "\n" +
+                "Fecha: " + dateTime + "\n" +
+                "Coin: " + coin + "\n" +
+                "Estado: " + status + "\n" +
+                "Razon: " + reason + "\n" +"\n";
     }
 
     public boolean checkValidated(String userID)
@@ -140,6 +137,7 @@ public class Transaction {
                 receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).setAmount(receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).getAmount() + this.coin.getAmount());
 
                 this.moveToBlockchain(); //Lo saca de pending, lo manda a blockchain y cambia el status a ACCEPTED.
+                this.setStatus(Status.ACCEPTED);
                 receiver.getWallet().getTransferList().add(this);
                 emitter.getWallet().updateTransactionInList(this);
 
@@ -168,9 +166,9 @@ public class Transaction {
         }
         if (aux!=null)
         {
-            aux.setStatus(Status.ACCEPTED);
             pendingList.remove(aux);
             acceptedList.add(aux);
+            aux.setStatus(Status.ACCEPTED);
 
             JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
             JsonManager.writeToJson(JsonManager.JSON_BLOCKCHAIN,acceptedList);
