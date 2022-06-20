@@ -93,13 +93,13 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "ID: " + id + "\n" +
+        return "\nID: " + id + "\n" +
                 "Sender: " + senderId + '\n' +
                 "Receiver: " + receiverId + "\n" +
                 "Fecha: " + dateTime + "\n" +
                 "Coin: " + coin + "\n" +
                 "Estado: " + status + "\n" +
-                "Razon: " + reason + "\n" +"\n";
+                "Razon: " + reason + "\n";
     }
 
     public boolean checkValidated(String userID)

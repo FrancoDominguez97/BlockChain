@@ -151,6 +151,7 @@ public class Registro implements ActionListener {
                 System.out.format("key: %s, value: %s", k,v); //Imprimir el hashmap para debuggeo
             });*/
             JsonUser.hashMapToJson(JsonManager.JSON_USERS,loginfo);
+            walletField.setEditable(false);
             walletField.setText(user.getWalletId());
             walletField.setVisible(true);
             walletVisual.setVisible(true);
