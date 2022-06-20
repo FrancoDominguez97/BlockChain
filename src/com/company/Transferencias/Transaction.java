@@ -115,7 +115,8 @@ public class Transaction {
                 User receiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,this.receiverId);
 
                 receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).setAmount(receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).getAmount() + this.coin.getAmount());
-                
+                JsonManager.updateUser(receiver);
+
                 this.moveToBlockchain();
                 return 1;
             }

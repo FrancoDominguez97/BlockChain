@@ -79,6 +79,7 @@ public class ProgramUser implements Menu, ActionListener {
         //wip
         if (e.getSource() == transferencias){
             //codigo de transferencias
+            TransactionVisual transactionVisual = new TransactionVisual(userConnected);
         }
 
         if (e.getSource() == opcionesUser){
@@ -89,6 +90,7 @@ public class ProgramUser implements Menu, ActionListener {
 
         if (e.getSource() == minar){
             //codigo de validaciones de blockchains
+            frame.dispose();
             Minar minar = new Minar(userConnected);
         }
 

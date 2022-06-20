@@ -74,7 +74,7 @@ public class Minar implements ActionListener{
             if (e.getSource() == startDigging) {
                 List<Transaction> pendingTransactions = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
 
-                if(pendingTransactions!= null)
+                if(!pendingTransactions.isEmpty())
                 {
                     int countFullyValidated = 0;
                     double totalReward = 0.0;
@@ -87,7 +87,7 @@ public class Minar implements ActionListener{
                     }
                     totalReward = (double) countFullyValidated * reward;
                     User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
-                    user.getWallet().searchCoinByName(String.valueOf(CoinName.UTNCOIN)).setAmount(user.getWallet().searchCoinByName(String.valueOf(CoinName.UTNCOIN)).getAmount() + totalReward);
+                    user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).setAmount(user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).getAmount() + totalReward);
                     JsonManager.updateUser(user);
                 }
                 else
