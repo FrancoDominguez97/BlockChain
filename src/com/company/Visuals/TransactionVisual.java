@@ -1,6 +1,7 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonTransaction;
 import com.company.JSON.JsonUser;
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.Coin;
@@ -18,7 +19,7 @@ import java.util.Objects;
 public class TransactionVisual implements ActionListener {
 
     JFrame frame = new JFrame();
-    String[] options = {TransactionToDo.SELECCIONE.name(), TransactionToDo.NUEVA_TRANSFERENCIA.name(),TransactionToDo.HISTORIAL_TRANSFERENCIAS.name()};
+    String[] options = {TransactionToDo.SELECCIONE.name(), TransactionToDo.NUEVA_TRANSFERENCIA.name(),TransactionToDo.HISTORIAL_TRANSFERENCIAS.name(),TransactionToDo.VER_BLOCKCHAIN.name()};
     String[] typeOfCoin = {CoinName.UTNCOIN.name(),CoinName.BITCOIN.name(),CoinName.ETHEREUM.name(),CoinName.LUNA.name()};
     String[] typeOfReason = {Reason.OTHERS.name(),Reason.FEE.name(),Reason.RENT.name(),Reason.SALARY.name()};
 
@@ -40,10 +41,15 @@ public class TransactionVisual implements ActionListener {
     JComboBox reasonBox = new JComboBox<>(typeOfReason);
 
     JFrame window = new JFrame("Historial de transacciones:");
+    JFrame windowBlockChain = new JFrame("BlockChain");
     JLabel historyOfTransactions = new JLabel();
+    JLabel blockChain = new JLabel();
     JTextPane text = new JTextPane();
+    JTextPane textBlockChain = new JTextPane();
     JScrollBar vertical = new JScrollBar();
+    JScrollBar verticalBlockChain = new JScrollBar();
     JScrollPane scrollbar = new JScrollPane();
+    JScrollPane scrollbarBlockChain = new JScrollPane();
 
     String userConnected;
     public TransactionVisual(String userID) {
@@ -52,6 +58,7 @@ public class TransactionVisual implements ActionListener {
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
         window.setIconImage(image.getImage());
+        windowBlockChain.setIconImage(image.getImage());
 
         ImageIcon backImage = new ImageIcon("flecha.png");
         back.setIcon(backImage);
@@ -90,6 +97,11 @@ public class TransactionVisual implements ActionListener {
         frame.add(jLabel);
         frame.add(send);
 
+        frame.add(blockChain);
+        frame.add(scrollbarBlockChain);
+        frame.add(verticalBlockChain);
+        frame.add(textBlockChain);
+
         frame.add(nameVisual);
         frame.add(nameField);
         frame.add(coinBox);
@@ -101,6 +113,12 @@ public class TransactionVisual implements ActionListener {
 
         nameField.setVisible(false);
         nameVisual.setVisible(false);
+
+        blockChain.setVisible(false);
+        windowBlockChain.setVisible(false);
+        scrollbarBlockChain.setVisible(false);
+        verticalBlockChain.setVisible(false);
+        textBlockChain.setVisible(false);
 
         amountField.setVisible(false);
         amountVisual.setVisible(false);
@@ -123,6 +141,7 @@ public class TransactionVisual implements ActionListener {
 
         historyOfTransactions.setBounds(30,30,400,200);
         historyOfTransactions.setVisible(false);
+        blockChain.setBounds(30,30,400,200);
         text.setBounds(10,20,400,800);
         text.setVisible(false);
         text.setEditable(false);
@@ -140,7 +159,27 @@ public class TransactionVisual implements ActionListener {
         scrollbar.setViewportView(text);
         window.getContentPane().add(scrollbar);
         window.setResizable(false);
+//Desde aca pegue
+        blockChain.setBounds(30,30,400,200);
+        blockChain.setVisible(false);
+        textBlockChain.setBounds(10,20,400,800);
+        textBlockChain.setVisible(false);
+        textBlockChain.setEditable(false);
+        windowBlockChain.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        windowBlockChain.add(blockChain);
+        windowBlockChain.setBounds(10,160,440,280);
+        windowBlockChain.setLayout(null);
+        windowBlockChain.setVisible(false);
 
+        windowBlockChain.add(textBlockChain);
+        windowBlockChain.getContentPane().setLayout(new BorderLayout());
+        scrollbarBlockChain.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollbarBlockChain.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollbarBlockChain.setVerticalScrollBar(verticalBlockChain);
+        scrollbarBlockChain.setViewportView(textBlockChain);
+        windowBlockChain.getContentPane().add(scrollbarBlockChain);
+        windowBlockChain.setResizable(false);
+/// Hasta aca
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLayout(null);
@@ -165,10 +204,16 @@ public class TransactionVisual implements ActionListener {
                 reasonBox.setVisible(true);
                 reasonVisual.setVisible(true);
                 send.setVisible(true);
-
-                System.out.println("apreto search");
-
-
+                window.setVisible(false);
+                historyOfTransactions.setVisible(false);
+                scrollbar.setVisible(false);
+                vertical.setVisible(false);
+                text.setVisible(false);
+                blockChain.setVisible(false);
+                windowBlockChain.setVisible(false);
+                scrollbarBlockChain.setVisible(false);
+                verticalBlockChain.setVisible(false);
+                textBlockChain.setVisible(false);
             }
 
             else if(jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.HISTORIAL_TRANSFERENCIAS.name())){
@@ -184,6 +229,11 @@ public class TransactionVisual implements ActionListener {
                 reasonBox.setVisible(false);
                 reasonVisual.setVisible(false);
                 send.setVisible(false);
+                blockChain.setVisible(false);
+                windowBlockChain.setVisible(false);
+                scrollbarBlockChain.setVisible(false);
+                verticalBlockChain.setVisible(false);
+                textBlockChain.setVisible(false);
 
                 window.setVisible(true);
                 historyOfTransactions.setVisible(true);
@@ -193,8 +243,7 @@ public class TransactionVisual implements ActionListener {
                 text.setVisible(true);
 
 
-            }
-            else{
+            } else if (jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.VER_BLOCKCHAIN.name())) {
                 jLabel.setVisible(false);
                 nameField.setVisible(false);
                 nameVisual.setVisible(false);
@@ -205,12 +254,40 @@ public class TransactionVisual implements ActionListener {
                 reasonBox.setVisible(false);
                 reasonVisual.setVisible(false);
                 send.setVisible(false);
+                window.setVisible(false);
+                historyOfTransactions.setVisible(false);
+                scrollbar.setVisible(false);
+                vertical.setVisible(false);
+                text.setVisible(false);
+
+                blockChain.setVisible(true);
+                windowBlockChain.setVisible(true);
+                scrollbarBlockChain.setVisible(true);
+                verticalBlockChain.setVisible(true);
+                textBlockChain.setText(JsonTransaction.printBlockChain().toString());
+                textBlockChain.setVisible(true);
+
+
+            } else{
+                jLabel.setVisible(false);
+                nameField.setVisible(false);
+                nameVisual.setVisible(false);
+                coinBox.setVisible(false);
+                coinVisual.setVisible(false);
+                amountField.setVisible(false);
+                amountVisual.setVisible(false);
+                reasonBox.setVisible(false);
+                reasonVisual.setVisible(false);
+                send.setVisible(false);
+                blockChain.setVisible(false);
+                windowBlockChain.setVisible(false);
+                scrollbarBlockChain.setVisible(false);
+                verticalBlockChain.setVisible(false);
+                textBlockChain.setVisible(false);
             }
         }
 
         if (e.getSource() == send) {
-
-            System.out.println("comienzo send");
             //validar lo q hay que mandar
             User userReceiver = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
             Transaction newTransaction = new Transaction();
@@ -249,9 +326,6 @@ public class TransactionVisual implements ActionListener {
             {
                 JOptionPane.showMessageDialog(null, "No Puede Transferirse a Si Mismo!");
             }
-
-            System.out.println("final");
-
 
             // Mostrar en visual cuánto es la fee que se le cobraría al usuario.
 
