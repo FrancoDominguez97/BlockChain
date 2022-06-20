@@ -7,16 +7,17 @@ import com.company.enums.Reason;
 import com.company.Usuarios.Coin;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class Transaction {
 
-    private UUID id = UUID.randomUUID();
+    private final UUID id = UUID.randomUUID();
     private String senderId;
     private String receiverId;
-    private LocalDateTime dateTime;
+    private final String dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").format(LocalDateTime.now());
     private Coin coin;
     private List<String> userValidations = new ArrayList<>(); //Lista de walletID que validaron la transaccion
     private Status status;
@@ -25,7 +26,6 @@ public class Transaction {
     public Transaction(String senderId, String receiverId, Coin coin, Reason reason) {
         this.senderId = senderId;
         this.receiverId = receiverId;
-        this.dateTime = LocalDateTime.now();
         this.coin = coin;
         this.status = Status.PENDING;
         this.reason = reason;
@@ -45,7 +45,7 @@ public class Transaction {
     public String getReceiverId() {
         return receiverId;
     }
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
     public Coin getCoin() {

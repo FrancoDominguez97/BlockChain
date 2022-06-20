@@ -68,12 +68,12 @@ public class JsonManager {
         try {
 
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
-            System.out.println(Arrays.toString(userArray));
+            //System.out.println(Arrays.toString(userArray));
             List<User> userList = new ArrayList(Arrays.asList(userArray));
             return userList;
         } catch (IOException e){
             e.printStackTrace();
-            return null;
+            return new ArrayList<>();
         }
     }
 
@@ -81,8 +81,11 @@ public class JsonManager {
     {
         List<User> users = readJsonUser(file);
         HashMap<String, User> loginInfo = new HashMap<>();
-        for (User user: users) {
-            loginInfo.put(user.getWalletId(), user);
+        if(!users.isEmpty())
+        {
+            for (User user: users) {
+                loginInfo.put(user.getWalletId(), user);
+            }
         }
         return loginInfo;
     }
