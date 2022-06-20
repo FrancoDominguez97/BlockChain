@@ -80,20 +80,32 @@ public class Minar implements ActionListener{
                 {
                     System.out.println("Lista no vacia");
                     int countFullyValidated = 0;
+                    int countValidatedOnce = 0;
                     double totalReward = 0.0;
                     for (Transaction t : pendingTransactions)
                     {
                         System.out.println("Recorro transactions");
-                        if(!t.checkValidated(userConnected))
+                        if(t.checkValidated(userConnected))
                         {
+                            countValidatedOnce+=1;
                             System.out.println("entro validacion");
                             countFullyValidated += t.validate(userConnected);
                         }
                     }
-                    totalReward = (double) countFullyValidated * reward;
-                    User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
-                    user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).setAmount(user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).getAmount() + totalReward);
-                    JsonUser.updateUser(user);
+                    if(countValidatedOnce<0)
+                    {
+                        totalReward = (double) countFullyValidated * reward;
+                        if(totalReward>0)
+                        {
+                            User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+                            user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).setAmount(user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).getAmount() + totalReward);
+                            JsonUser.updateUser(user);
+                        }
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Las Transacciones Disponibles No Son Aptas de Validacion.");
+                    }
                 }
                 else
                 {
