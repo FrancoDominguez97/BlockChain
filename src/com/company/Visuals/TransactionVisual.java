@@ -264,7 +264,7 @@ public class TransactionVisual implements ActionListener {
                 windowBlockChain.setVisible(true);
                 scrollbarBlockChain.setVisible(true);
                 verticalBlockChain.setVisible(true);
-                textBlockChain.setText(JsonTransaction.printBlockChain().toString());
+                textBlockChain.setText(JsonTransaction.printBlockChain().toString()/*+ las pendientes*/);
                 textBlockChain.setVisible(true);
 
 

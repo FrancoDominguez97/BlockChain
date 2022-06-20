@@ -15,6 +15,8 @@ public class ProgramAdmin implements Menu, ActionListener {
     JButton verTransactions = new JButton();
     JButton cerrarSesion = new JButton();
 
+
+
     String userConnected;
 
     public ProgramAdmin(String userID)
@@ -76,7 +78,6 @@ public class ProgramAdmin implements Menu, ActionListener {
     public void actionPerformed(ActionEvent e) {
         //wip
         if (e.getSource() == verUsers){
-            //codigo de ver Users
             frame.dispose();
             AdminCheckUsers adminCheckUsers = new AdminCheckUsers(userConnected);
         }
