@@ -39,6 +39,11 @@ public class TransactionVisual implements ActionListener {
     JLabel reasonVisual = new JLabel();
     JComboBox reasonBox = new JComboBox<>(typeOfReason);
 
+    JFrame window = new JFrame("Historial de transacciones:");
+    JLabel historyOfTransactions = new JLabel();
+    JTextPane text = new JTextPane();
+    JScrollBar vertical = new JScrollBar();
+    JScrollPane scrollbar = new JScrollPane();
 
     String userConnected;
     public TransactionVisual(String userID) {
@@ -46,6 +51,7 @@ public class TransactionVisual implements ActionListener {
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
         frame.setIconImage(image.getImage());
+        window.setIconImage(image.getImage());
 
         ImageIcon backImage = new ImageIcon("flecha.png");
         back.setIcon(backImage);
@@ -115,6 +121,26 @@ public class TransactionVisual implements ActionListener {
         search.setFocusable(false);
         send.setFocusable(false);
 
+        historyOfTransactions.setBounds(30,30,400,200);
+        historyOfTransactions.setVisible(false);
+        text.setBounds(10,20,400,800);
+        text.setVisible(false);
+        text.setEditable(false);
+        window.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        window.add(historyOfTransactions);
+        window.setBounds(10,160,440,280);
+        window.setLayout(null);
+        window.setVisible(false);
+
+        window.add(text);
+        window.getContentPane().setLayout(new BorderLayout());
+        scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollbar.setVerticalScrollBar(vertical);
+        scrollbar.setViewportView(text);
+        window.getContentPane().add(scrollbar);
+        window.setResizable(false);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLayout(null);
@@ -159,6 +185,13 @@ public class TransactionVisual implements ActionListener {
                 reasonVisual.setVisible(false);
                 send.setVisible(false);
 
+                window.setVisible(true);
+                historyOfTransactions.setVisible(true);
+                scrollbar.setVisible(true);
+                vertical.setVisible(true);
+                text.setText(user.getWallet().getTransferList().toString());
+                text.setVisible(true);
+
 
             }
             else{
@@ -199,7 +232,7 @@ public class TransactionVisual implements ActionListener {
                         newTransaction.setCoin(newCoin);
                         System.out.println(newTransaction);
                         user.transfer(newTransaction);
-                        System.out.println("se hizo transfer");
+                        JOptionPane.showMessageDialog(null, "Transaccion Exitosa! El Monto ha Sido Descontado, Esperando Validaciones.");
                     }
                     else
                     {

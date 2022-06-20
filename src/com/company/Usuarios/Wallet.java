@@ -50,7 +50,13 @@ public class Wallet {
     public void initialize()
     {
         Coin coin = new Coin(CoinName.UTNCOIN,"UTN",100,"La mejor moneda de Mar del Plata",1.0);
+        Coin coin2 = new Coin(CoinName.BITCOIN,"BTC",0,"La moneda de Satoshi",19886.0);
+        Coin coin3 = new Coin(CoinName.ETHEREUM,"ETH",0,"La mejor moneda de Mar del Plata",1092.0);
+        Coin coin4 = new Coin(CoinName.LUNA,"LUNA",0,"La mejor moneda de Mar del Plata",0.0005);
         addCoinToWallet(coin);
+        addCoinToWallet(coin2);
+        addCoinToWallet(coin3);
+        addCoinToWallet(coin4);
     }
 
     // método que calcula toodo el valor en dólares que contiene la wallet

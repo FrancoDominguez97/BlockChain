@@ -77,6 +77,8 @@ public class ProgramAdmin implements Menu, ActionListener {
         //wip
         if (e.getSource() == verUsers){
             //codigo de ver Users
+            frame.dispose();
+            AdminCheckUsers adminCheckUsers = new AdminCheckUsers(userConnected);
         }
 
         if (e.getSource() == changeValue){
