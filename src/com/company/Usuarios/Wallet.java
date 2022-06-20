@@ -1,6 +1,7 @@
 package com.company.Usuarios;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonTransaction;
 import com.company.Transferencias.Transaction;
 import com.company.enums.CoinName;
 import com.company.enums.Reason;
@@ -126,9 +127,8 @@ public class Wallet {
     }
     //ESTA FUNCION SE PUEDE REFACTORIZAR SI ENCONTRAMOS UNA MEJOR MANERA
     public void addTransferPendinJson(Transaction transaction){
-        JsonManager json = new JsonManager();
-        List<Transaction> pendingList = json.readJsonTransfer(JSON_PENDING_TRANSACTIONS);
+        List<Transaction> pendingList = JsonTransaction.readJsonTransfer(JSON_PENDING_TRANSACTIONS);
         pendingList.add(transaction);
-        json.writeToJson(JSON_PENDING_TRANSACTIONS,pendingList);
+        JsonManager.writeToJson(JSON_PENDING_TRANSACTIONS,pendingList);
     }
 }

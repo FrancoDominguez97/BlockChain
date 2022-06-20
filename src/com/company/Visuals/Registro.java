@@ -2,6 +2,7 @@ package com.company.Visuals;
 
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class Registro implements ActionListener {
 
     public Registro() {
 
-        loginfo = JsonManager.hashMapFromJson(JsonManager.JSON_USERS);
+        loginfo = JsonUser.hashMapFromJson(JsonManager.JSON_USERS);
         
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
@@ -140,7 +141,7 @@ public class Registro implements ActionListener {
                 System.out.format("key: %s, value: %s", k,v); //Imprimir el hashmap para debuggeo
             });*/
 
-            JsonManager.hashMapToJson(JsonManager.JSON_USERS,loginfo);
+            JsonUser.hashMapToJson(JsonManager.JSON_USERS,loginfo);
         }
         if (e.getSource()==limpiar){
             nameField.setText("");

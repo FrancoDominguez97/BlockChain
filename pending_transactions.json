@@ -1,1 +1,37 @@
-[ ]
+[ {
+  "id" : "39c4bc70-bd1a-4d4c-82f1-f9ae2bf98981",
+  "senderId" : "06255cf0-b915-4de6-94dd-126d84c91d33",
+  "receiverId" : "9a078115-ebae-4602-bebc-8722a2c39c25",
+  "dateTime" : "20/06/2022 09:17:14",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 7.0
+  },
+  "userValidations" : [ ],
+  "status" : "PENDING",
+  "reason" : "RENT"
+}, {
+  "id" : "fa2f33d2-5533-43a2-9ad7-5e49e83d510c",
+  "senderId" : "06255cf0-b915-4de6-94dd-126d84c91d33",
+  "receiverId" : "9a078115-ebae-4602-bebc-8722a2c39c25",
+  "dateTime" : "20/06/2022 09:20:02",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 8.0
+  },
+  "userValidations" : [ ],
+  "status" : "PENDING",
+  "reason" : "OTHERS"
+}, {
+  "id" : "37f45e10-c525-42c8-8682-f7008df4a514",
+  "senderId" : "06255cf0-b915-4de6-94dd-126d84c91d33",
+  "receiverId" : "9a078115-ebae-4602-bebc-8722a2c39c25",
+  "dateTime" : "20/06/2022 09:23:28",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 9.0
+  },
+  "userValidations" : [ ],
+  "status" : "PENDING",
+  "reason" : "OTHERS"
+} ]

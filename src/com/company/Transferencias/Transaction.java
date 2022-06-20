@@ -1,6 +1,8 @@
 package com.company.Transferencias;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonTransaction;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 import com.company.enums.Status;
 import com.company.enums.Reason;
@@ -122,14 +124,14 @@ public class Transaction {
         if(userValidations.size()<3)
         {
             userValidations.add(userID);
-            JsonManager.updateTransaction(this);
+            JsonTransaction.updateTransaction(this);
             if(userValidations.size()==3)
             {
                 // remover de lista pendiente, sumar a aceptada, y SUMAR MONTO al receptor
-                User receiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,this.receiverId);
+                User receiver = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,this.receiverId);
 
                 receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).setAmount(receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).getAmount() + this.coin.getAmount());
-                JsonManager.updateUser(receiver);
+                JsonUser.updateUser(receiver);
 
                 this.moveToBlockchain();
                 return 1;
@@ -142,8 +144,8 @@ public class Transaction {
 
     public void moveToBlockchain()
     {
-        List<Transaction> pendingList = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
-        List<Transaction> acceptedList = JsonManager.readJsonTransfer(JsonManager.JSON_BLOCKCHAIN);
+        List<Transaction> pendingList = JsonTransaction.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
+        List<Transaction> acceptedList = JsonTransaction.readJsonTransfer(JsonManager.JSON_BLOCKCHAIN);
 
         for(Transaction t : pendingList)
         {

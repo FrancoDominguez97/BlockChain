@@ -1,6 +1,7 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -27,7 +28,7 @@ public class LoginPage implements ActionListener {
     HashMap<String,User> loginfo = new HashMap<String,User>();
 
     public LoginPage(){
-        loginfo = JsonManager.hashMapFromJson(JsonManager.JSON_USERS);
+        loginfo = JsonUser.hashMapFromJson(JsonManager.JSON_USERS);
 
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");

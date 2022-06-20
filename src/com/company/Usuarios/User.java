@@ -1,6 +1,8 @@
 package com.company.Usuarios;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonTransaction;
+import com.company.JSON.JsonUser;
 import com.company.Transferencias.Transaction;
 import com.company.Visuals.Menu;
 import com.company.Visuals.ProgramAdmin;
@@ -30,6 +32,7 @@ public class User {
     private boolean admin;
 
     public User() {
+        this.fee = 0.02;
     }
 
     public User(String userName, String name, String lastName, String dateOfBirth, String email, String password) {
@@ -147,7 +150,7 @@ public class User {
                 wallet.getCoins().set(indexFrom,from);
                 wallet.getCoins().set(indexTo,to);
 
-                JsonManager.updateUser(this);
+                JsonUser.updateUser(this);
                 possible=true;
             }
         }
@@ -164,11 +167,11 @@ public class User {
         // checkear previamente si el emisor puede pagar el monto + fee
         //user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).setAmount(user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).getAmount() + t.getCoin().getAmount());
         this.wallet.searchCoinByName(coinName).setAmount(this.getWallet().searchCoinByName(coinName).getAmount() - (amount + amount*fee));
-        List<Transaction> pendingList = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
+        List<Transaction> pendingList = JsonTransaction.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
         pendingList.add(t);
         JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
         this.wallet.getTransferList().add(t);
-        JsonManager.updateUser(this);
+        JsonUser.updateUser(this);
 //        List<Coin> receiverCoins = user.getWallet().getCoins();
 
     }

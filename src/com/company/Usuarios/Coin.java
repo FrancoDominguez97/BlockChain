@@ -1,15 +1,20 @@
 package com.company.Usuarios;
 
 import com.company.enums.CoinName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Coin {
 
     private CoinName coinName;
-    private String coinSymbol; //3 ó 4 caracteres que representan la moneda por ej: BTC para bitcoin.
+    @JsonIgnore
+    private  String coinSymbol; //3 ó 4 caracteres que representan la moneda por ej: BTC para bitcoin.
     //private icon
-    private double amount;
+    private  double amount;
+    @JsonIgnore
     private String description;
-    private double valueUSD;
+    @JsonIgnore
+    private  double valueUSD;
 
     public Coin() {
 

@@ -1,6 +1,8 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonTransaction;
+import com.company.JSON.JsonUser;
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.Coin;
 import com.company.Usuarios.User;
@@ -72,7 +74,7 @@ public class Minar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == startDigging) {
-                List<Transaction> pendingTransactions = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
+                List<Transaction> pendingTransactions = JsonTransaction.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
 
                 if(!pendingTransactions.isEmpty())
                 {
@@ -89,9 +91,9 @@ public class Minar implements ActionListener{
                         }
                     }
                     totalReward = (double) countFullyValidated * reward;
-                    User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+                    User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
                     user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).setAmount(user.getWallet().searchCoinByName(CoinName.UTNCOIN.name()).getAmount() + totalReward);
-                    JsonManager.updateUser(user);
+                    JsonUser.updateUser(user);
                 }
                 else
                 {
@@ -102,7 +104,7 @@ public class Minar implements ActionListener{
             }
             if (e.getSource() == back){
                 frame.dispose();
-                User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+                User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
                 user.obtenerMenu().show();
             }
         }

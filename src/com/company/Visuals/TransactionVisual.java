@@ -1,6 +1,7 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Transferencias.Transaction;
 import com.company.Usuarios.Coin;
 import com.company.Usuarios.User;
@@ -122,7 +123,7 @@ public class TransactionVisual implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+        User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
         if (e.getSource() == search){
             if(jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.NUEVA_TRANSFERENCIA.name())){
                 //NUEVA TRANSACCION
@@ -178,7 +179,7 @@ public class TransactionVisual implements ActionListener {
 
             System.out.println("comienzo send");
             //validar lo q hay que mandar
-            User userReceiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
+            User userReceiver = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
             Transaction newTransaction = new Transaction();
             newTransaction.setSenderId(user.getWalletId());
             newTransaction.setReason(Reason.valueOf(Objects.requireNonNull(reasonBox.getSelectedItem()).toString()));

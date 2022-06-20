@@ -1,6 +1,7 @@
 package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
+import com.company.JSON.JsonUser;
 import com.company.Usuarios.User;
 
 import javax.swing.*;
@@ -27,7 +28,7 @@ public class Options implements ActionListener {
     User user;
     public Options(String UserID) {
         this.userConnected = UserID;
-        this.user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+        this.user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
 
         frame.setTitle("TP FINAL LABORATORIO 3");
         ImageIcon image = new ImageIcon("logo.png");
@@ -89,14 +90,14 @@ public class Options implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == back){
             frame.dispose();
-            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+            User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             user.obtenerMenu().show();
         }
         if(e.getSource() == save){
             this.user.setName(nameField.getText());
             this.user.setPassword(String.valueOf(passwordField.getPassword()));
             this.user.setLastName(lastNameField.getText());
-            JsonManager.updateUser(this.user);
+            JsonUser.updateUser(this.user);
         }
     }
 }
