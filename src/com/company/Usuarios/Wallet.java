@@ -41,10 +41,8 @@ public class Wallet {
 
     @Override
     public String toString() {
-        return "Wallet{" +
-                "Coins=" + coinList +
-                "Transaction=" + transferList +
-                '}';
+        return "\nCoin: " + coinList + "\n" +
+               "Transferencias: " + transferList + "\n";
     }
 
     public void initialize()

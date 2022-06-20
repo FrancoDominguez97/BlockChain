@@ -188,11 +188,11 @@ public class User {
                "Nombre: " + name + '\n' +
                "Apellido: " + lastName + "\n" +
                "Fecha de Nacimiento: " + dateOfBirth + "\n" +
-               "Wallet: " + wallet + "\n" +
                "Email: " + email + "\n" +
                "Contraseña: " + password + "\n" +
                "Comision: " + fee + "\n" +
-               "Es admin: " + admin + "\n";
+               "Es admin: " + admin + "\n\n" +
+               "Wallet: " + wallet + "\n";
     }
 
     public boolean calcutaleAge(String ageBorn) {

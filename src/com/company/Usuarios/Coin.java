@@ -47,9 +47,16 @@ public class Coin {
         this.valueUSD = valueUSD;
     }
 
+    public String showAmount(){ return new DecimalFormat("#.00000").format(amount)+ " " + coinName; }
+
     @Override
     public String toString() {
-        return new DecimalFormat("#.00000").format(amount) + " " + coinName;
+
+        return "\nNombre de la Moneda: " + coinName + "\n" +
+               "Monto: " + new DecimalFormat("#.00000").format(amount) + "\n" +
+               "Valor de la moneda en USD: " + valueUSD + "\n" +
+               "Monto total en USD: " + calculateValueInUSD() + "\n";
+
     }
 
     public double calculateValueInUSD()
