@@ -212,11 +212,11 @@
     "transferList" : [ ],
     "coins" : [ {
       "coinName" : "UTNCOIN",
-      "amount" : 130.0,
+      "amount" : 1625.4000000000015,
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
-      "amount" : 0.0,
+      "amount" : 9.885159408629187,
       "valueUSD" : 19886.0
     }, {
       "coinName" : "ETHEREUM",
@@ -224,7 +224,7 @@
       "valueUSD" : 1092.0
     }, {
       "coinName" : "LUNA",
-      "amount" : 0.0,
+      "amount" : 20010.0,
       "valueUSD" : 5.0E-4
     } ]
   },
