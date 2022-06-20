@@ -1,6 +1,7 @@
 package com.company.Usuarios;
 
 import com.company.JSON.JsonManager;
+import com.company.Transferencias.Transaction;
 import com.company.Visuals.Menu;
 import com.company.Visuals.ProgramAdmin;
 import com.company.Visuals.ProgramUser;
@@ -10,6 +11,8 @@ import com.company.enums.CoinName;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -149,6 +152,26 @@ public class User {
             }
         }
         return possible;
+    }
+
+    // Metodo que descuenta la moneda del sender (con fee) y la suma al receiver, Luego las agrega a los archivos Json y a la lista
+    // de transacciones de la wallet del user emisor
+    public void transfer(Transaction t)
+    {
+        User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,t.getReceiverId());
+
+        // checkear previamente si el emisor puede pagar el monto + fee
+        //user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).setAmount(user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).getAmount() + t.getCoin().getAmount());
+        this.wallet.searchCoinByName(t.getCoin().getCoinName().name()).setAmount(user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).getAmount() - (t.getCoin().getAmount()+t.getCoin().getAmount()*fee));
+        List<Transaction> pendingList = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
+        pendingList.add(t);
+        JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
+        this.wallet.getTransferList().add(t);
+        JsonManager.updateUser(this);
+
+
+//        List<Coin> receiverCoins = user.getWallet().getCoins();
+
     }
 
 

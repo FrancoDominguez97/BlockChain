@@ -111,7 +111,7 @@ public class JsonManager {
                 e.printStackTrace();
             }
         }
-        return null;
+        return new ArrayList<>();
     }
     ///Este seria el prototipo de la validacion de las transferencias. Hay que mejorarlo mucho todavia
     ///Podemos hacer varios metodos primero para achicar lo que seria el metodo de validacion.

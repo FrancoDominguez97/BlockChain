@@ -14,20 +14,20 @@ import java.util.UUID;
 public class Transaction {
 
     private UUID id = UUID.randomUUID();
-    private UUID senderId;
-    private UUID receiverId;
+    private String senderId;
+    private String receiverId;
     private LocalDateTime dateTime;
     private Coin coin;
     private List<String> userValidations = new ArrayList<>(); //Lista de walletID que validaron la transaccion
     private Status status;
     private Reason reason;
 
-    public Transaction(UUID senderId, UUID receiverId, LocalDateTime dateTime, Coin coin, Status status, Reason reason) {
+    public Transaction(String senderId, String receiverId, Coin coin, Reason reason) {
         this.senderId = senderId;
         this.receiverId = receiverId;
-        this.dateTime = dateTime;
+        this.dateTime = LocalDateTime.now();
         this.coin = coin;
-        this.status = status;
+        this.status = Status.PENDING;
         this.reason = reason;
     }
 
@@ -39,10 +39,10 @@ public class Transaction {
     }
     //Aca en los get de RECEIVERID y SENDERID deberia devolver el usuario tipo los datos principales del usuario.
 
-    public UUID getSenderId() {
+    public String getSenderId() {
         return senderId;
     }
-    public UUID getReceiverId() {
+    public String getReceiverId() {
         return receiverId;
     }
     public LocalDateTime getDateTime() {
@@ -111,7 +111,11 @@ public class Transaction {
             userValidations.add(userID);
             if(userValidations.size()==3)
             {
-                // remover de lista pendiente, sumar a aceptada.
+                // remover de lista pendiente, sumar a aceptada, y SUMAR MONTO al receptor
+                User receiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,this.receiverId);
+
+                receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).setAmount(receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).getAmount() + this.coin.getAmount());
+                
                 this.moveToBlockchain();
                 return 1;
             }

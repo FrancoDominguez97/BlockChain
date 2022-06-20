@@ -98,12 +98,11 @@ public class Wallet {
         return possible;
     }*/
 
-    public Transaction sendCoin(UUID sender, UUID receiver, Coin coin, double amount, Reason reason){
-        LocalDateTime dateTransfer = LocalDateTime.now();
+    public Transaction sendCoin(String sender, String receiver, Coin coin, double amount, Reason reason){
         for (Coin sendCoin: coinList) {
             if(sendCoin.getCoinName() == coin.getCoinName()){
                 if(sendCoin.getAmount() >= amount){
-                    Transaction transfer = new Transaction(sender, receiver, dateTransfer,coin,Status.PENDING,reason);
+                    Transaction transfer = new Transaction(sender, receiver,coin,reason);
                     ///ACA HAY QUE HACER UNA FUNCION DONDE SE HAGA LA VALIDACION DE LA TRANSFERENCIA;
                     transferList.add(transfer);
                     addTransferPendinJson(transfer);
