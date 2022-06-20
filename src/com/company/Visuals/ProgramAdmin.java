@@ -76,7 +76,6 @@ public class ProgramAdmin implements Menu, ActionListener {
     public void actionPerformed(ActionEvent e) {
         //wip
         if (e.getSource() == verUsers){
-            //codigo de ver Users
             frame.dispose();
             AdminCheckUsers adminCheckUsers = new AdminCheckUsers(userConnected);
         }
@@ -93,7 +92,7 @@ public class ProgramAdmin implements Menu, ActionListener {
 
         if (e.getSource() == verTransactions){
             frame.dispose();
-            //codigo de historial de transacciones de todos los usuarios
+            AdminTransactionsList adminTransactionsList = new AdminTransactionsList(userConnected);
         }
 
         if (e.getSource() == cerrarSesion){
