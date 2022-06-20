@@ -1,6 +1,8 @@
 package com.company.JSON;
 
 import com.company.Transferencias.Transaction;
+import com.company.Usuarios.User;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -42,5 +44,15 @@ public abstract class JsonTransaction extends JsonManager{
         }
         return new ArrayList<>();
     }
+    public static List<Transaction> printBlockChain() {
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            List<Transaction> blockChain = objectMapper.readValue(new File(JsonTransaction.JSON_BLOCKCHAIN), new TypeReference<List<Transaction>>(){});
+            return blockChain;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 }
