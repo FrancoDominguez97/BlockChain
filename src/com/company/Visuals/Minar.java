@@ -31,6 +31,7 @@ public class Minar implements ActionListener{
         JButton startDigging = new JButton("Minar!");
         JButton back = new JButton();
         JLabel label = new JLabel("No hay Transacciones Pendientes de Validacion.");
+        JLabel messageMine = new JLabel("Minado Finalizado!");
 
         String userConnected;
         public Minar(String userID) {
@@ -40,6 +41,7 @@ public class Minar implements ActionListener{
             label.setFont((new Font(null,Font.BOLD,17)));
             label.setVisible(false);
             frame.add(label);
+            frame.add(messageMine);
 
             frame.setTitle("TP FINAL LABORATORIO 3");
             ImageIcon image = new ImageIcon("logo.png");
@@ -51,6 +53,10 @@ public class Minar implements ActionListener{
             back.setBounds(0,0, 50,25);
             startDigging.setBounds(100, 150, 250, 150);
             text.setBounds(100,50,400,35);
+            messageMine.setBounds(100,380,400,35);
+
+            messageMine.setFont((new Font(null,Font.PLAIN,30)));
+            messageMine.setVisible(false);
 
             startDigging.setFont((new Font(null,Font.PLAIN,30)));
             text.setFont((new Font(null,Font.PLAIN,20)));
@@ -94,6 +100,7 @@ public class Minar implements ActionListener{
                     }
                     if(countValidatedOnce>0)
                     {
+                        messageMine.setVisible(true);
                         System.out.println("validatedOnce: "+ countValidatedOnce);
                         totalReward = (double) countFullyValidated * reward;
                         if(totalReward>0)

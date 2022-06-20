@@ -1,19 +1,12 @@
 package com.company.Usuarios;
 
 import com.company.enums.CoinName;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Coin {
 
     private CoinName coinName;
-    @JsonIgnore
-    private  String coinSymbol; //3 ó 4 caracteres que representan la moneda por ej: BTC para bitcoin.
     //private icon
     private  double amount;
-    @JsonIgnore
-    private String description;
-    @JsonIgnore
     private  double valueUSD;
 
     public Coin() {
@@ -26,20 +19,14 @@ public class Coin {
         this.amount = amount;
     }
 
-    public Coin(CoinName coinName, String coinSymbol, double amount, String description, double valueUSD) {
+    public Coin(CoinName coinName, double amount, double valueUSD) {
         this.coinName = coinName;
-        this.coinSymbol = coinSymbol;
         this.amount = amount;
-        this.description = description;
         this.valueUSD = valueUSD;
     }
 
     public CoinName getCoinName() {
         return coinName;
-    }
-
-    public String getCoinSymbol() {
-        return coinSymbol;
     }
 
     public double getAmount() {
@@ -48,10 +35,6 @@ public class Coin {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public double getValueUSD() {

@@ -218,6 +218,7 @@ public class TransactionVisual implements ActionListener {
             newTransaction.setReason(Reason.valueOf(Objects.requireNonNull(reasonBox.getSelectedItem()).toString()));
             double amount = Double.parseDouble(amountField.getText());
             CoinName coinName = CoinName.valueOf(Objects.requireNonNull(coinBox.getSelectedItem()).toString());
+            double valueUSD = user.getWallet().searchCoinByName(coinName.name()).getValueUSD();
 
             if(!(user.getWalletId().equals(nameField.getText())))
             {
@@ -228,7 +229,7 @@ public class TransactionVisual implements ActionListener {
 
                     if(user.getWallet().validateAmount(amount + amount*user.getFee(),coinName.name()))
                     {
-                        Coin newCoin = new Coin(coinName,amount);
+                        Coin newCoin = new Coin(coinName,amount,valueUSD);
                         newTransaction.setCoin(newCoin);
                         System.out.println(newTransaction);
                         user.transfer(newTransaction);

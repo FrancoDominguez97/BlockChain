@@ -17,6 +17,10 @@ public class Main {
         User user1 = new User("fran","fran", "Miranda", "18/04/1998","fran@gmail.com", "tutuca123");
         User user2 = new User("tomi","tomi", "Miranda", "18/04/1998","tomi@gmail.com", "tutuca123");
         User admin = new User("admin","admin", "istrador", "21/06/1986","admin@gmail.com", "tutuca123");
+        user.getWallet().initialize();
+        user1.getWallet().initialize();
+        user2.getWallet().initialize();
+        admin.getWallet().initialize();
 
         admin.setAdmin(true);
 
