@@ -1,10 +1,10 @@
 package com.company.enums;
 
 public enum Reason {
-    OTHERS(1),
-    FEE(2),
-    RENT(3),
-    SALARY(4);
+    OTHERS(0),
+    FEE(1),
+    RENT(2),
+    SALARY(3);
 
     private int value;
 

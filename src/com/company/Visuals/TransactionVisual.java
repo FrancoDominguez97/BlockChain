@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class TransactionVisual implements ActionListener {
 
@@ -121,8 +122,8 @@ public class TransactionVisual implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
         if (e.getSource() == search){
-            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             if(jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.NUEVA_TRANSFERENCIA.name())){
                 //NUEVA TRANSACCION
                 jLabel.setText("Nueva transaccion:");
@@ -138,52 +139,11 @@ public class TransactionVisual implements ActionListener {
                 reasonVisual.setVisible(true);
                 send.setVisible(true);
 
-
-                if (e.getSource() == send) {
-
-                    //validar lo q hay que mandar
-                    User userReceiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
-                    Transaction newTransaction = new Transaction();
-                    newTransaction.setSenderId(user.getWalletId());
-                    newTransaction.setReason((Reason) reasonBox.getItemAt(reasonBox.getSelectedIndex()));
-                    double amount = Double.parseDouble(amountField.getText());
-                    CoinName coinName = (CoinName) coinBox.getItemAt(coinBox.getSelectedIndex());
-
-                    if(userReceiver!=null)
-                    {
-                        newTransaction.setReceiverId(userReceiver.getWalletId());
-
-                        if(user.getWallet().validateAmount(amount + amount*user.getFee(),coinName.name()))
-                        {
-                            Coin newCoin = new Coin(coinName,amount);
-                            newTransaction.setCoin(newCoin);
-                            user.transfer(newTransaction);
-                        }
-                        else
-                        {
-                            JOptionPane.showMessageDialog(null, "Monto Insuficiente En Wallet.");
-                        }
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(null, "No se Encontro la Wallet, Reingrese.");
-                    }
+                System.out.println("apreto search");
 
 
-
-
-                    // Mostrar en visual cuánto es la fee que se le cobraría al usuario.
-
-                    //transferencias.setNameField(nameField.getText());
-                    //user.getCoin((coinBox.getName()))
-                    //Transaction.getReason((reasonBox.getName()))
-                    // y asi con todos
-                    //JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,"06255cf0-b915-4de6-94dd-126d84c91d33");
-
-                    //if(coinBox.getItemAt(coinBox.getSelectedIndex()).equals(user.getCoin((coinBox.getName())))){
-                    //}
-                }
             }
+
             else if(jComboBox.getItemAt(jComboBox.getSelectedIndex()).equals(TransactionToDo.HISTORIAL_TRANSFERENCIAS.name())){
                 //HISTORIAL DE TRANSACCIONES
                 jLabel.setText("Historial de transacciones:");
@@ -213,9 +173,66 @@ public class TransactionVisual implements ActionListener {
                 send.setVisible(false);
             }
         }
+
+        if (e.getSource() == send) {
+
+            System.out.println("comienzo send");
+            //validar lo q hay que mandar
+            User userReceiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
+            Transaction newTransaction = new Transaction();
+            newTransaction.setSenderId(user.getWalletId());
+            newTransaction.setReason(Reason.valueOf(Objects.requireNonNull(reasonBox.getSelectedItem()).toString()));
+            double amount = Double.parseDouble(amountField.getText());
+            CoinName coinName = CoinName.valueOf(Objects.requireNonNull(coinBox.getSelectedItem()).toString());
+
+            if(!(user.getWalletId().equals(nameField.getText())))
+            {
+                if(userReceiver!=null)
+                {
+
+                    newTransaction.setReceiverId(userReceiver.getWalletId());
+
+                    if(user.getWallet().validateAmount(amount + amount*user.getFee(),coinName.name()))
+                    {
+                        Coin newCoin = new Coin(coinName,amount);
+                        newTransaction.setCoin(newCoin);
+                        System.out.println(newTransaction);
+                        user.transfer(newTransaction);
+                        System.out.println("se hizo transfer");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Monto Insuficiente En Wallet.");
+                    }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "No Se Encontro la Wallet.");
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No Puede Transferirse a Si Mismo!");
+            }
+
+            System.out.println("final");
+
+
+            // Mostrar en visual cuánto es la fee que se le cobraría al usuario.
+
+            //transferencias.setNameField(nameField.getText());
+            //user.getCoin((coinBox.getName()))
+            //Transaction.getReason((reasonBox.getName()))
+            // y asi con todos
+            //JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,"06255cf0-b915-4de6-94dd-126d84c91d33");
+
+            //if(coinBox.getItemAt(coinBox.getSelectedIndex()).equals(user.getCoin((coinBox.getName())))){
+            //}
+        }
+
         if (e.getSource() == back){
             frame.dispose();
-            User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
+            //User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             user.obtenerMenu().show();
         }
     }

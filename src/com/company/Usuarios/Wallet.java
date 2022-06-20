@@ -68,7 +68,7 @@ public class Wallet {
     {
         for(Coin c : coinList)
         {
-            if(c.getCoinName().equals(coin))
+            if(c.getCoinName().name().equals(coin))
                 return c;
         }
         return null;
