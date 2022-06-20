@@ -183,15 +183,16 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                ", userName='" + userName + '\'' +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", wallet='" + wallet + '\'' +
-                '}';
+        return "\nWallet ID: " + walletId.toString() + "\n" +
+               "Username: " + userName + "\n" +
+               "Nombre: " + name + '\n' +
+               "Apellido: " + lastName + "\n" +
+               "Fecha de Nacimiento: " + dateOfBirth + "\n" +
+               "Wallet: " + wallet + "\n" +
+               "Email: " + email + "\n" +
+               "Contraseña: " + password + "\n" +
+               "Comision: " + fee + "\n" +
+               "Es admin: " + admin + "\n";
     }
 
     public boolean calcutaleAge(String ageBorn) {
