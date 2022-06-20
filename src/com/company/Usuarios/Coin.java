@@ -2,6 +2,8 @@ package com.company.Usuarios;
 
 import com.company.enums.CoinName;
 
+import java.text.DecimalFormat;
+
 public class Coin {
 
     private CoinName coinName;
@@ -47,7 +49,7 @@ public class Coin {
 
     @Override
     public String toString() {
-        return amount + " " + coinName;
+        return new DecimalFormat("#.00000").format(amount) + " " + coinName;
     }
 
     public double calculateValueInUSD()
