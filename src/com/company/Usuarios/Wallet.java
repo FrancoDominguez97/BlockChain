@@ -74,6 +74,18 @@ public class Wallet {
         return null;
     }
 
+    //Método que checkea si hay suficientes fondos de una coin especifica en la wallet
+    public boolean validateAmount(double amount,String coinName)
+    {
+        Coin coin = this.searchCoinByName(coinName);
+        if (coin!=null && coin.getAmount()>=amount)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
 /*    public boolean swapCoin(String coinFrom, String coinTo, double amount){
         // Habría que checkear que amount sea positivo distinto de 0 en el parámetro
         Coin from = searchCoinByName(coinFrom);

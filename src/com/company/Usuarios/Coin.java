@@ -15,6 +15,12 @@ public class Coin {
 
     }
 
+    public Coin(CoinName coinName, double amount)
+    {
+        this.coinName = coinName;
+        this.amount = amount;
+    }
+
     public Coin(CoinName coinName, String coinSymbol, double amount, String description, double valueUSD) {
         this.coinName = coinName;
         this.coinSymbol = coinSymbol;

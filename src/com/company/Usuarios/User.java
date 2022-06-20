@@ -158,18 +158,17 @@ public class User {
     // de transacciones de la wallet del user emisor
     public void transfer(Transaction t)
     {
-        User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,t.getReceiverId());
+        String coinName = t.getCoin().getCoinName().name();
+        double amount = t.getCoin().getAmount();
 
         // checkear previamente si el emisor puede pagar el monto + fee
         //user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).setAmount(user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).getAmount() + t.getCoin().getAmount());
-        this.wallet.searchCoinByName(t.getCoin().getCoinName().name()).setAmount(user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).getAmount() - (t.getCoin().getAmount()+t.getCoin().getAmount()*fee));
+        this.wallet.searchCoinByName(coinName).setAmount(this.getWallet().searchCoinByName(coinName).getAmount() - (amount + amount*fee));
         List<Transaction> pendingList = JsonManager.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
         pendingList.add(t);
         JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
         this.wallet.getTransferList().add(t);
         JsonManager.updateUser(this);
-
-
 //        List<Coin> receiverCoins = user.getWallet().getCoins();
 
     }

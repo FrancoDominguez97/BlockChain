@@ -2,6 +2,7 @@ package com.company.Visuals;
 
 import com.company.JSON.JsonManager;
 import com.company.Transferencias.Transaction;
+import com.company.Usuarios.Coin;
 import com.company.Usuarios.User;
 import com.company.enums.CoinName;
 import com.company.enums.Reason;
@@ -143,13 +144,29 @@ public class TransactionVisual implements ActionListener {
                     //validar lo q hay que mandar
                     User userReceiver = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
                     Transaction newTransaction = new Transaction();
+                    newTransaction.setSenderId(user.getWalletId());
+                    newTransaction.setReason((Reason) reasonBox.getItemAt(reasonBox.getSelectedIndex()));
+                    double amount = Double.parseDouble(amountField.getText());
+                    CoinName coinName = (CoinName) coinBox.getItemAt(coinBox.getSelectedIndex());
+
                     if(userReceiver!=null)
                     {
                         newTransaction.setReceiverId(userReceiver.getWalletId());
+
+                        if(user.getWallet().validateAmount(amount + amount*user.getFee(),coinName.name()))
+                        {
+                            Coin newCoin = new Coin(coinName,amount);
+                            newTransaction.setCoin(newCoin);
+                            user.transfer(newTransaction);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Monto Insuficiente En Wallet.");
+                        }
                     }
                     else
                     {
-                        // "Wallet No Encontrada."
+                        JOptionPane.showMessageDialog(null, "No se Encontro la Wallet, Reingrese.");
                     }
 
 
