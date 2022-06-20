@@ -28,6 +28,8 @@ public class Registro implements ActionListener {
     JTextField dateField = new JTextField();
     JLabel emailVisual = new JLabel("Email");
     JTextField emailField = new JTextField();
+    JTextField walletField = new JTextField();
+    JLabel walletVisual = new JLabel("Tu Wallet: ");
 
     JButton guardar = new JButton();
     JButton limpiar = new JButton();
@@ -64,6 +66,12 @@ public class Registro implements ActionListener {
         emailVisual.setBounds(50, 240, 75, 25);
         emailField.setBounds(160, 240, 200, 25);
 
+        walletVisual.setBounds(50,350,75,25);
+        walletField.setBounds(150,350,230,25);
+
+        walletVisual.setVisible(false);
+        walletField.setVisible(false);
+
         guardar.setBounds(160, 300, 100, 25);
         guardar.addActionListener(this);
         guardar.setText("Guardar");
@@ -79,6 +87,8 @@ public class Registro implements ActionListener {
 
         back.setFocusable(false);
 
+        frame.add(walletVisual);
+        frame.add(walletField);
 
         frame.add(nameVisual);
         frame.add(nameField);
@@ -140,8 +150,14 @@ public class Registro implements ActionListener {
          /*   loginfo.forEach((k, v) -> {
                 System.out.format("key: %s, value: %s", k,v); //Imprimir el hashmap para debuggeo
             });*/
-
             JsonUser.hashMapToJson(JsonManager.JSON_USERS,loginfo);
+            walletField.setText(user.getWalletId());
+            walletField.setVisible(true);
+            walletVisual.setVisible(true);
+            JOptionPane.showMessageDialog(null,"Creacion de usuario Exitoso");
+
+            //LoginPage loginPage = new LoginPage();
+            //frame.dispose();
         }
         if (e.getSource()==limpiar){
             nameField.setText("");
