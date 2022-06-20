@@ -92,7 +92,7 @@ public class Minar implements ActionListener{
                             countFullyValidated += t.validate(userConnected);
                         }
                     }
-                    if(countValidatedOnce<0)
+                    if(countValidatedOnce>0)
                     {
                         totalReward = (double) countFullyValidated * reward;
                         if(totalReward>0)

@@ -29,6 +29,14 @@ public class Wallet {
         return transferList;
     }
 
+    public void setCoinList(List<Coin> coinList) {
+        this.coinList = coinList;
+    }
+
+    public void setTransferList(List<Transaction> transferList) {
+        this.transferList = transferList;
+    }
+
     @Override
     public String toString() {
         return "Wallet{" +
@@ -131,4 +139,6 @@ public class Wallet {
         pendingList.add(transaction);
         JsonManager.writeToJson(JSON_PENDING_TRANSACTIONS,pendingList);
     }
+
+
 }

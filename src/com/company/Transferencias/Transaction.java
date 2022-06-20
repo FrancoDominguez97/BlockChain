@@ -108,13 +108,16 @@ public class Transaction {
     public boolean checkValidated(String userID)
     {
         //User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userID);
-
-        for(String validationUser : userValidations)
+        if(!senderId.equals(userID) && !receiverId.equals(userID))
         {
-            if(validationUser.equals(userID) && !senderId.equals(userID) && !receiverId.equals(userID))
+            for(String validationUser : userValidations)
             {
-                return true;
+                if(validationUser.equals(userID))
+                {
+                    return false;
+                }
             }
+            return true;
         }
         return false;
     }
@@ -126,6 +129,7 @@ public class Transaction {
             userValidations.add(userID);
             JsonTransaction.updateTransaction(this);
             User emitter = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,this.senderId);
+            //emitter.getWallet().setTransferList(); ------------------------------------------------------------------------------------------------------
 
             JsonUser.updateUser(emitter);
             if(userValidations.size()==3)
