@@ -32,6 +32,7 @@ public class Transaction {
     }
 
     public Transaction() {
+        this.status = Status.PENDING;
     }
 
     public UUID getId() {
@@ -74,6 +75,18 @@ public class Transaction {
 
     public void setReason(Reason reason) {
         this.reason = reason;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
+    }
+
+    public void setCoin(Coin coin) {
+        this.coin = coin;
     }
 
     @Override
