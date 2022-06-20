@@ -72,6 +72,11 @@ public abstract class JsonUser extends JsonManager {
         User user = list.stream().filter(us -> us.getWalletId().equals(walletId)).findFirst().orElse(null);
         return user;
     }
+    public static User searchUserByUserName(String file, String userName) {
+        List<User> list = readJsonUser(file);
+        User user = list.stream().filter(us -> us.getUserName().equals(userName)).findFirst().orElse(null);
+        return user;
+    }
 
     public static void updateUser (User user){
         List<User> usersToUpdate = readJsonUser(JsonManager.JSON_USERS);
