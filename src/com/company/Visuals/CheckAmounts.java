@@ -94,7 +94,7 @@ public class CheckAmounts implements ActionListener {
         if (e.getSource() == search) {
             String selected = "Seleccionaste: " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
             jLabel.setText(selected);
-            messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
+            messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())).showAmount());
             messageUSD.setText("Valor en U$D: " + new DecimalFormat("#.00000").format(user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())).calculateValueInUSD()));
             swap.setVisible(true);
             confirmSwap.setVisible(false);
@@ -117,8 +117,13 @@ public class CheckAmounts implements ActionListener {
             //el codigo del swapeo de monedas.
             double amount = Double.parseDouble(swapBox.getText());
             System.out.println(amount);
-            user.swapCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex()),swapComboBox.getItemAt(swapComboBox.getSelectedIndex()),amount);
-            JOptionPane.showMessageDialog(null, "Cambio de moneda exitoso!");
+            if(user.swapCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex()),swapComboBox.getItemAt(swapComboBox.getSelectedIndex()),amount))
+            {
+                JOptionPane.showMessageDialog(null, "Cambio de moneda exitoso!");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "No se pudo realizar el cambio de moneda");
+            }
             confirmSwap.setVisible(false);
             swapComboBox.setVisible(false);
             swapBox.setVisible(false);
