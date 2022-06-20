@@ -145,8 +145,12 @@ public class User {
             {
                 int indexFrom = wallet.getCoins().indexOf(from);
                 int indexTo = wallet.getCoins().indexOf(to);
-                from.setAmount(from.getAmount()-(amount+amount*fee));
-                to.setAmount(to.getAmount()+amount);
+                if (to.getValueUSD() != 0) {
+
+                    double amountTotal = amount * from.getValueUSD()/to.getValueUSD();
+                    from.setAmount(from.getAmount()-(amount+amount*fee));
+                    to.setAmount(to.getAmount()+amountTotal);
+                }
                 wallet.getCoins().set(indexFrom,from);
                 wallet.getCoins().set(indexTo,to);
 
