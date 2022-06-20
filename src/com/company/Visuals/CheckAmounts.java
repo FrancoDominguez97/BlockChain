@@ -18,8 +18,9 @@ public class CheckAmounts implements ActionListener {
     JButton jButton = new JButton("Buscar");
     JLabel jLabel = new JLabel();
     JLabel messageLabel = new JLabel();
+    JLabel messageUSD = new JLabel();
     JButton back = new JButton();
-
+    JButton swap = new JButton("Transformar");
     String userConnected;
 
     public CheckAmounts(String userID) {
@@ -34,15 +35,22 @@ public class CheckAmounts implements ActionListener {
         jComboBox.setBounds(80, 50, 140, 20);
         back.setBounds(0,0, 50,25);
         messageLabel.setBounds(90, 200, 400,100);
+        messageUSD.setBounds(90, 280, 400,100);
         jButton.setBounds(100, 100, 90, 20);
 
         jLabel.setBounds(90, 100, 400, 100);
 
+        frame.add(swap);
         frame.add(jComboBox);
         frame.add(jButton);
         frame.add(jLabel);
         frame.add(messageLabel);
+        frame.add(messageUSD);
         frame.add(back);
+
+        swap.setVisible(false);
+        swap.setBounds(100,350,130,30);
+        swap.addActionListener(this);
 
         jButton.addActionListener(this);
         back.addActionListener(this);
@@ -62,11 +70,16 @@ public class CheckAmounts implements ActionListener {
             String selected = "Seleccionaste: " + jComboBox.getItemAt(jComboBox.getSelectedIndex());
             jLabel.setText(selected);
             messageLabel.setText("Tenes: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())));
+            messageUSD.setText("Valor en U$D: " + user.getCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex())).calculateValueInUSD());
+            swap.setVisible(true);
         }
         if (e.getSource() == back){
             frame.dispose();
             User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             user.obtenerMenu().show();
+        }
+        if (e.getSource() == swap) {
+
         }
     }
 }
