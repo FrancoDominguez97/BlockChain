@@ -158,4 +158,18 @@ public class JsonManager {
 
         writeToJson(JSON_USERS,usersUpdated);
     }
+
+    public static void updateTransaction (Transaction transaction){
+        List<Transaction> transactions = readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
+        // funciona igual que un foreach
+        List<Transaction> transactions1 = transactions.stream()
+                .map(t -> {
+                    if (t.getId().toString().equals(transaction.getId().toString()))
+                        t = transaction;
+                    return t;
+                })
+                .collect(Collectors.toList());
+
+        writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,transactions1);
+    }
 }

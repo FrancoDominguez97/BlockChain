@@ -122,6 +122,7 @@ public class Transaction {
         if(userValidations.size()<3)
         {
             userValidations.add(userID);
+            JsonManager.updateTransaction(this);
             if(userValidations.size()==3)
             {
                 // remover de lista pendiente, sumar a aceptada, y SUMAR MONTO al receptor
@@ -136,6 +137,8 @@ public class Transaction {
         }
         return 0;
     }
+
+
 
     public void moveToBlockchain()
     {

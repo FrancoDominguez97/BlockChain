@@ -76,12 +76,15 @@ public class Minar implements ActionListener{
 
                 if(!pendingTransactions.isEmpty())
                 {
+                    System.out.println("Lista no vacia");
                     int countFullyValidated = 0;
                     double totalReward = 0.0;
                     for (Transaction t : pendingTransactions)
                     {
+                        System.out.println("Recorro transactions");
                         if(!t.checkValidated(userConnected))
                         {
+                            System.out.println("entro validacion");
                             countFullyValidated += t.validate(userConnected);
                         }
                     }
@@ -93,7 +96,8 @@ public class Minar implements ActionListener{
                 else
                 {
                     // imprimir "no hay transacciones pendientes"
-                    label.setVisible(true);
+                    JOptionPane.showMessageDialog(null, "No Hay Transacciones Para Validar.");
+                    //label.setVisible(true);
                 }
             }
             if (e.getSource() == back){

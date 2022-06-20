@@ -8,10 +8,10 @@
   "password" : "tutuca123",
   "wallet" : {
     "transferList" : [ {
-      "id" : "ac7daa0f-a950-4398-9616-1e5eff8792cf",
+      "id" : "8ca0f166-4497-429f-b56a-b6f7d1a5cec7",
       "senderId" : "06255cf0-b915-4de6-94dd-126d84c91d33",
       "receiverId" : "9a078115-ebae-4602-bebc-8722a2c39c25",
-      "dateTime" : "20/06/2022 00:34:36",
+      "dateTime" : "20/06/2022 00:58:46",
       "coin" : {
         "coinName" : "UTNCOIN",
         "coinSymbol" : null,
@@ -34,6 +34,26 @@
   "fee" : 0.0,
   "admin" : false
 }, {
+  "walletId" : "7eafb264-e034-44fa-b5e2-67fc27f054a8",
+  "userName" : "a",
+  "name" : "a",
+  "lastName" : "a",
+  "dateOfBirth" : "01/01/1998",
+  "email" : "a@gmail.com",
+  "password" : "tutuca123",
+  "wallet" : {
+    "transferList" : [ ],
+    "coins" : [ {
+      "coinName" : "UTNCOIN",
+      "coinSymbol" : "UTN",
+      "amount" : 100.0,
+      "description" : "La mejor moneda de Mar del Plata",
+      "valueUSD" : 1.0
+    } ]
+  },
+  "fee" : 0.0,
+  "admin" : false
+}, {
   "walletId" : "9a078115-ebae-4602-bebc-8722a2c39c25",
   "userName" : "Tincho",
   "name" : "Martin",
@@ -46,12 +66,12 @@
     "coins" : [ {
       "coinName" : "UTNCOIN",
       "coinSymbol" : "UTN",
-      "amount" : 100.0,
+      "amount" : 105.0,
       "description" : "La mejor moneda de Mar del Plata",
       "valueUSD" : 0.0
     } ]
   },
-  "fee" : 0.02,
+  "fee" : 0.0,
   "admin" : false
 }, {
   "walletId" : "f46d13f0-9726-48e3-8397-e583d6d698ab",
@@ -71,7 +91,7 @@
       "valueUSD" : 0.0
     } ]
   },
-  "fee" : 0.02,
+  "fee" : 0.0,
   "admin" : false
 }, {
   "walletId" : "81ee7256-342b-4e80-9089-4860e31b83c2",
@@ -111,6 +131,6 @@
       "valueUSD" : 0.0
     } ]
   },
-  "fee" : 0.04,
+  "fee" : 0.0,
   "admin" : false
 } ]
