@@ -84,24 +84,20 @@ public class Minar implements ActionListener{
 
                 if(!pendingTransactions.isEmpty())
                 {
-                    System.out.println("Lista no vacia");
                     int countFullyValidated = 0;
                     int countValidatedOnce = 0;
                     double totalReward = 0.0;
                     for (Transaction t : pendingTransactions)
                     {
-                        System.out.println("Recorro transactions");
                         if(t.checkValidated(userConnected))
                         {
                             countValidatedOnce+=1;
-                            System.out.println("entro validacion");
                             countFullyValidated += t.validate(userConnected);
                         }
                     }
                     if(countValidatedOnce>0)
                     {
                         messageMine.setVisible(true);
-                        System.out.println("validatedOnce: "+ countValidatedOnce);
                         totalReward = (double) countFullyValidated * reward;
                         if(totalReward>0)
                         {

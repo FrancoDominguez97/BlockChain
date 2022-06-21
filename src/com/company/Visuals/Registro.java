@@ -135,6 +135,11 @@ public class Registro implements ActionListener {
                 System.exit(1);
             }
             user.setUserName(userNameField.getText());
+            if(JsonUser.searchUserByUserName(JsonManager.JSON_USERS,user.getUserName())==null)
+            {
+                JOptionPane.showMessageDialog(null, "Username ya existente.");
+                user.setEmail(emailField.getText());
+            }
             //searchUserName(userName); Aca realizar una funcion para que busque si no esta en uso el username.
             user.setEmail(emailField.getText());
             if(user.emailVerify(user.getEmail()) == false){
@@ -147,9 +152,6 @@ public class Registro implements ActionListener {
             user.getWallet().initialize();
 
             loginfo.put(user.getWalletId(),user);
-         /*   loginfo.forEach((k, v) -> {
-                System.out.format("key: %s, value: %s", k,v); //Imprimir el hashmap para debuggeo
-            });*/
             JsonUser.hashMapToJson(JsonManager.JSON_USERS,loginfo);
             walletField.setEditable(false);
             walletField.setText(user.getWalletId());
@@ -157,8 +159,6 @@ public class Registro implements ActionListener {
             walletVisual.setVisible(true);
             JOptionPane.showMessageDialog(null,"Creacion de usuario Exitoso");
 
-            //LoginPage loginPage = new LoginPage();
-            //frame.dispose();
         }
         if (e.getSource()==limpiar){
             nameField.setText("");
@@ -170,7 +170,6 @@ public class Registro implements ActionListener {
         }
         if (e.getSource() == back){
             frame.dispose();
-            //LoginData loginData = new LoginData();
             LoginPage loginPage = new LoginPage();
         }
     }

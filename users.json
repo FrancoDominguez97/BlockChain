@@ -172,9 +172,22 @@
         "amount" : 15.0,
         "valueUSD" : 1.0
       },
-      "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f" ],
+      "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
       "status" : "PENDING",
       "reason" : "SALARY"
+    }, {
+      "id" : "e8f5a91e-9611-40e8-864a-54e57466cca0",
+      "senderId" : "2dc1909a-150f-4b3e-9651-2ba85d30c775",
+      "receiverId" : "1290c479-d37e-4648-9357-33864f6e97c6",
+      "dateTime" : "20/06/2022 22:04:26",
+      "coin" : {
+        "coinName" : "BITCOIN",
+        "amount" : 1.0,
+        "valueUSD" : 20000.0
+      },
+      "userValidations" : [ "652dbf56-dadb-40b2-9858-24e2957e44e1", "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
+      "status" : "ACCEPTED",
+      "reason" : "FEE"
     } ],
     "coins" : [ {
       "coinName" : "UTNCOIN",
@@ -182,7 +195,7 @@
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
-      "amount" : 0.0,
+      "amount" : 1.0,
       "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
@@ -228,8 +241,8 @@
         "amount" : 1.0,
         "valueUSD" : 20000.0
       },
-      "userValidations" : [ "652dbf56-dadb-40b2-9858-24e2957e44e1", "833f0214-de1d-43ed-b421-f85acd8a543f" ],
-      "status" : "PENDING",
+      "userValidations" : [ "652dbf56-dadb-40b2-9858-24e2957e44e1", "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
+      "status" : "ACCEPTED",
       "reason" : "FEE"
     }, {
       "id" : "1015d1fa-59d5-4f14-b494-2b0aed9121be",
@@ -241,7 +254,7 @@
         "amount" : 0.5,
         "valueUSD" : 20000.0
       },
-      "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f" ],
+      "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
       "status" : "PENDING",
       "reason" : "OTHERS"
     }, {
@@ -254,7 +267,7 @@
         "amount" : 1.0,
         "valueUSD" : 20000.0
       },
-      "userValidations" : [ ],
+      "userValidations" : [ "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
       "status" : "PENDING",
       "reason" : "OTHERS"
     } ],
@@ -340,7 +353,7 @@
         "amount" : 0.02,
         "valueUSD" : 1092.0
       },
-      "userValidations" : [ ],
+      "userValidations" : [ "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
       "status" : "PENDING",
       "reason" : "FEE"
     } ],
@@ -625,11 +638,11 @@
     "transferList" : [ ],
     "coins" : [ {
       "coinName" : "UTNCOIN",
-      "amount" : 89.8,
+      "amount" : 48.699999999999996,
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
-      "amount" : 0.0,
+      "amount" : 0.00275,
       "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
