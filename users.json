@@ -739,14 +739,27 @@
       "userValidations" : [ "3847e348-86f5-44f9-be5f-407d8db5f7bf", "2c293e7a-abc3-4743-a33b-71523a9a5265" ],
       "status" : "PENDING",
       "reason" : "RENT"
+    }, {
+      "id" : "d48fec03-add6-44e1-8f76-86667ab1998b",
+      "senderId" : "fc27bec0-c75a-4888-9c6c-92292d419c4b",
+      "receiverId" : "3847e348-86f5-44f9-be5f-407d8db5f7bf",
+      "dateTime" : "20/06/2022 23:56:25",
+      "coin" : {
+        "coinName" : "UTNCOIN",
+        "amount" : 4.0,
+        "valueUSD" : 1.0
+      },
+      "userValidations" : [ ],
+      "status" : "PENDING",
+      "reason" : "OTHERS"
     } ],
     "coins" : [ {
       "coinName" : "UTNCOIN",
-      "amount" : 12.999999999999993,
+      "amount" : 4.839999999999993,
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
-      "amount" : 0.00275,
+      "amount" : 0.00295,
       "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",

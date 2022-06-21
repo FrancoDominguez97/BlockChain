@@ -114,18 +114,26 @@ public class CheckAmounts implements ActionListener {
 
         }
         if(e.getSource() == confirmSwap){
-            double amount = Double.parseDouble(swapBox.getText());
-            if(user.swapCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex()),swapComboBox.getItemAt(swapComboBox.getSelectedIndex()),amount))
+            if (JOptionPane.showConfirmDialog(null,"Desea realizar el cambio de moneda?","CONFIRMAR CAMBIO",2) == 0)
             {
-                JOptionPane.showMessageDialog(null, "Cambio de moneda exitoso!");
+
+                double amount = Double.parseDouble(swapBox.getText());
+                if(user.swapCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex()),swapComboBox.getItemAt(swapComboBox.getSelectedIndex()),amount))
+                {
+                    JOptionPane.showMessageDialog(null, "Cambio de moneda exitoso!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "No se pudo realizar el cambio de moneda");
+                }
+                confirmSwap.setVisible(false);
+                swapComboBox.setVisible(false);
+                swapBox.setVisible(false);
+                swapText.setVisible(false);
             }
-            else {
-                JOptionPane.showMessageDialog(null, "No se pudo realizar el cambio de moneda");
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Cambios cancelados.");
             }
-            confirmSwap.setVisible(false);
-            swapComboBox.setVisible(false);
-            swapBox.setVisible(false);
-            swapText.setVisible(false);
 
         }
 

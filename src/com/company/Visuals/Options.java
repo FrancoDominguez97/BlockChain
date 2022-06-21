@@ -94,10 +94,21 @@ public class Options implements ActionListener {
             user.obtenerMenu().show();
         }
         if(e.getSource() == save){
-            this.user.setName(nameField.getText());
-            this.user.setPassword(String.valueOf(passwordField.getPassword()));
-            this.user.setLastName(lastNameField.getText());
-            JsonUser.updateUser(this.user);
+            if(JOptionPane.showConfirmDialog(null,"Desea guardar los cambios?", "GUARDAR CAMBIOS",2)==0)
+            {
+                this.user.setName(nameField.getText());
+                this.user.setPassword(String.valueOf(passwordField.getPassword()));
+                this.user.setLastName(lastNameField.getText());
+                JsonUser.updateUser(this.user);
+                JOptionPane.showMessageDialog(null,"Cambios guardados correctamente.");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"No se guardaron los cambios.");
+                lastNameField.setText(this.user.getLastName());
+                nameField.setText(this.user.getName());
+                passwordField.setText(this.user.getPassword());
+            }
         }
     }
 }

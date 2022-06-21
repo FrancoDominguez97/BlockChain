@@ -50,4 +50,17 @@
   "userValidations" : [ ],
   "status" : "PENDING",
   "reason" : "SALARY"
+}, {
+  "id" : "d48fec03-add6-44e1-8f76-86667ab1998b",
+  "senderId" : "fc27bec0-c75a-4888-9c6c-92292d419c4b",
+  "receiverId" : "3847e348-86f5-44f9-be5f-407d8db5f7bf",
+  "dateTime" : "20/06/2022 23:56:25",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 4.0,
+    "valueUSD" : 1.0
+  },
+  "userValidations" : [ ],
+  "status" : "PENDING",
+  "reason" : "OTHERS"
 } ]

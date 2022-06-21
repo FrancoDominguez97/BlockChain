@@ -307,9 +307,15 @@ public class TransactionVisual implements ActionListener {
                     {
                         Coin newCoin = new Coin(coinName,amount,valueUSD);
                         newTransaction.setCoin(newCoin);
-                        System.out.println(newTransaction);
-                        user.transfer(newTransaction);
-                        JOptionPane.showMessageDialog(null, "Transaccion Exitosa! El Monto ha Sido Descontado, Esperando Validaciones.");
+                        if(JOptionPane.showConfirmDialog(null,"Quiere realizar esta Transacción?","ENVIAR",2) == 0)
+                        {
+                            user.transfer(newTransaction);
+                            JOptionPane.showMessageDialog(null, "Transaccion Exitosa! El Monto ha Sido Descontado, Esperando Validaciones.");
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Transacción Cancelada.");
+                        }
                     }
                     else
                     {
