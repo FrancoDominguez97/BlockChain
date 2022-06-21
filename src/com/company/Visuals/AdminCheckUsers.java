@@ -26,7 +26,6 @@ public class AdminCheckUsers implements ActionListener {
 
     JButton back = new JButton();
     JButton search = new JButton("Buscar");
-    JButton delete = new JButton("Eliminar");
     JTextField datos = new JTextField();
     JComboBox<String> userList;
 
@@ -45,7 +44,6 @@ public class AdminCheckUsers implements ActionListener {
         back.setBounds(0,0, 50,25);
         search.setBounds(260,60,90,25);
         userList.setBounds(60, 60, 200, 25);
-        delete.setBounds(350,60,90,25);
         datos.setBounds(100,200,300,250);
 
         //Ventana User
@@ -87,15 +85,12 @@ public class AdminCheckUsers implements ActionListener {
 
         back.addActionListener(this);
         search.addActionListener(this);
-        delete.addActionListener(this);
 
         frame.add(back);
         frame.add(search);
         frame.add(userList);
-        frame.add(delete);
         frame.add(datos);
 
-        delete.setFocusable(false);
         search.setFocusable(false);
         datos.setVisible(false);
 
@@ -133,11 +128,6 @@ public class AdminCheckUsers implements ActionListener {
         if (e.getSource() == back){
             frame.dispose();
             user.obtenerMenu().show();
-        }
-        if (e.getSource() == delete){
-            datos.setVisible(false);
-            //elimina el usuario del archivo json.
-
         }
     }
 }

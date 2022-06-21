@@ -78,7 +78,6 @@ public class ProgramAdmin implements Menu, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //wip
         if (e.getSource() == verUsers){
             frame.dispose();
             AdminCheckUsers adminCheckUsers = new AdminCheckUsers(userConnected);
@@ -87,20 +86,6 @@ public class ProgramAdmin implements Menu, ActionListener {
         if (e.getSource() == changeValue){
             frame.dispose();
             AdminChangeValue adminChangeValue = new AdminChangeValue(userConnected);
-
-//            double newValueUSD = 0;
-//            if (newValueUSD>0)
-//            {
-//                JsonUser.changeUSDvalueOfCoin(coinName, newValueUSD);
-//            }
-//            else
-//            {
-//                System.out.println("el valor nuevo debe ser mayor que 0.");
-//            }
-
-
-
-            //codigo de cambio de valor de coin
         }
 
         if (e.getSource() == coinMovements){

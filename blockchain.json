@@ -37,4 +37,30 @@
   "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f", "2c293e7a-abc3-4743-a33b-71523a9a5265", "1290c479-d37e-4648-9357-33864f6e97c6" ],
   "status" : "ACCEPTED",
   "reason" : "OTHERS"
+}, {
+  "id" : "d2e9ea77-e05e-46dd-96c4-70299e79d82c",
+  "senderId" : "652dbf56-dadb-40b2-9858-24e2957e44e1",
+  "receiverId" : "f8d13ebe-1e90-4923-b1e5-f80e79df4822",
+  "dateTime" : "20/06/2022 22:10:48",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 50.0,
+    "valueUSD" : 1.0
+  },
+  "userValidations" : [ "1290c479-d37e-4648-9357-33864f6e97c6", "2dc1909a-150f-4b3e-9651-2ba85d30c775", "833f0214-de1d-43ed-b421-f85acd8a543f" ],
+  "status" : "ACCEPTED",
+  "reason" : "FEE"
+}, {
+  "id" : "d37dd779-dae7-4491-b4e1-44f67dac9857",
+  "senderId" : "652dbf56-dadb-40b2-9858-24e2957e44e1",
+  "receiverId" : "8a695a43-76e4-4aff-8df3-8a96a448dcd8",
+  "dateTime" : "20/06/2022 22:11:32",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 13.0,
+    "valueUSD" : 1.0
+  },
+  "userValidations" : [ "1290c479-d37e-4648-9357-33864f6e97c6", "2dc1909a-150f-4b3e-9651-2ba85d30c775", "833f0214-de1d-43ed-b421-f85acd8a543f" ],
+  "status" : "ACCEPTED",
+  "reason" : "RENT"
 } ]
