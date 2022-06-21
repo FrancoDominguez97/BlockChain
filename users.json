@@ -195,7 +195,7 @@
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
-      "amount" : 1.0,
+      "amount" : 5.0,
       "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
@@ -635,10 +635,36 @@
   "email" : "mariano@gmail.com",
   "password" : "mariano",
   "wallet" : {
-    "transferList" : [ ],
+    "transferList" : [ {
+      "id" : "0027ef7a-579d-4c01-a156-832c01ca11c0",
+      "senderId" : "fc27bec0-c75a-4888-9c6c-92292d419c4b",
+      "receiverId" : "3847e348-86f5-44f9-be5f-407d8db5f7bf",
+      "dateTime" : "20/06/2022 22:50:27",
+      "coin" : {
+        "coinName" : "LUNA",
+        "amount" : 15000.0,
+        "valueUSD" : 5.0E-4
+      },
+      "userValidations" : [ ],
+      "status" : "PENDING",
+      "reason" : "FEE"
+    }, {
+      "id" : "fbfb482d-9686-424c-a597-851844e8f2d7",
+      "senderId" : "fc27bec0-c75a-4888-9c6c-92292d419c4b",
+      "receiverId" : "ee398e0e-e6e1-4822-a194-6b13946872aa",
+      "dateTime" : "20/06/2022 22:50:57",
+      "coin" : {
+        "coinName" : "UTNCOIN",
+        "amount" : 35.0,
+        "valueUSD" : 1.0
+      },
+      "userValidations" : [ ],
+      "status" : "PENDING",
+      "reason" : "RENT"
+    } ],
     "coins" : [ {
       "coinName" : "UTNCOIN",
-      "amount" : 48.699999999999996,
+      "amount" : 12.999999999999993,
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
@@ -650,7 +676,7 @@
       "valueUSD" : 1092.0
     }, {
       "coinName" : "LUNA",
-      "amount" : 20000.0,
+      "amount" : 4700.0,
       "valueUSD" : 5.0E-4
     } ]
   },

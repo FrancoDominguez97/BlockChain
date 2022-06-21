@@ -108,7 +108,7 @@ public abstract class JsonUser extends JsonManager {
         }
     }
 
-    public static void addAmountToUser(String userName,String coinName, double toAdd)
+    public static boolean addAmountToUser(String userName,String coinName, double toAdd)
     { // toAdd puede ser negativo, para poder restar de la wallet.
         User user = searchUserByUserName(JsonUser.JSON_USERS,userName);
         if(user!=null)
@@ -120,7 +120,10 @@ public abstract class JsonUser extends JsonManager {
                 currentAmount += toAdd;
                 user.getWallet().searchCoinByName(coinName).setAmount(currentAmount);
                 JsonUser.updateUser(user);
+                return true;
             }
+            return false;
         }
+        return false;
     }
 }

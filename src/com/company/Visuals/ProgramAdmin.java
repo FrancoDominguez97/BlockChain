@@ -89,8 +89,8 @@ public class ProgramAdmin implements Menu, ActionListener {
         }
 
         if (e.getSource() == coinMovements){
-            //codigo de agregado y retirado de coins
-
+            frame.dispose();
+            new AdminAddCoins(userConnected);
         }
 
         if (e.getSource() == verTransactions){

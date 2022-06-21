@@ -27,7 +27,8 @@ public class LoginPage implements ActionListener {
 
     HashMap<String,User> loginfo = new HashMap<String,User>();
 
-    public LoginPage(){
+    public LoginPage(){ // Al pastear datos en los campos del login, arroja excepciones no catcheables desde acá. Según investigamos, dependen de la JVM y es un bug conocido, supuestamente corregido en versiones más nuevas de IDEA.
+
         loginfo = JsonUser.hashMapFromJson(JsonManager.JSON_USERS);
 
         frame.setTitle("TP FINAL LABORATORIO 3");
@@ -71,35 +72,36 @@ public class LoginPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource()==registerButton){
-            User user = new User();
-            frame.dispose();
-            user.register();
-        }
-        if(e.getSource()==loginButton){
+            if (e.getSource()==registerButton){
+                User user = new User();
+                frame.dispose();
+                user.register();
+            }
+            if(e.getSource()==loginButton){
 
-            String uuidPass = String.valueOf(UUIDpassField.getPassword()); //asi seria para comparar tambien el uuid password para el ingreso.
-            String pass = String.valueOf(userPasswordField.getPassword());
-            String userID = userIDField.getText();
-            if(loginfo.containsKey(uuidPass)){
-                User auxUser = loginfo.get(uuidPass);
-                if(auxUser.getPassword().equals(pass) && auxUser.getUserName().equals(userID)){
-                    messageLabel.setForeground(Color.green);
-                    messageLabel.setText("Login exitoso");
-                    frame.dispose();
+                String uuidPass = String.valueOf(UUIDpassField.getPassword()); //asi seria para comparar tambien el uuid password para el ingreso.
+                String pass = String.valueOf(userPasswordField.getPassword());
+                String userID = userIDField.getText();
+                if(loginfo.containsKey(uuidPass)){
+                    User auxUser = loginfo.get(uuidPass);
+                    if(auxUser.getPassword().equals(pass) && auxUser.getUserName().equals(userID)){
+                        messageLabel.setForeground(Color.green);
+                        messageLabel.setText("Login exitoso");
+                        frame.dispose();
 
-                    auxUser.obtenerMenu().show();
+                        auxUser.obtenerMenu().show();
 
+                    }
+                    else{
+                        messageLabel.setForeground(Color.red);
+                        messageLabel.setText("Contraseña incorrecta");
+                    }
                 }
                 else{
                     messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Contraseña incorrecta");
+                    messageLabel.setText("Usuario incorrecto");
                 }
             }
-            else{
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Usuario incorrecto");
-            }
-        }
+
     }
 }
