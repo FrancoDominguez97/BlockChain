@@ -7,7 +7,6 @@ import java.text.DecimalFormat;
 public class Coin {
 
     private CoinName coinName;
-    //private icon
     private  double amount;
     private  double valueUSD;
 
@@ -58,7 +57,6 @@ public class Coin {
                "Monto total en USD: " + calculateValueInUSD() + "\n";
 
     }
-
     public double calculateValueInUSD()
     {
         return amount*valueUSD;

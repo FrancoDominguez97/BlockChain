@@ -159,7 +159,7 @@ public class TransactionVisual implements ActionListener {
         scrollbar.setViewportView(text);
         window.getContentPane().add(scrollbar);
         window.setResizable(false);
-//Desde aca pegue
+
         blockChain.setBounds(30,30,400,200);
         blockChain.setVisible(false);
         textBlockChain.setBounds(10,20,400,800);
@@ -179,7 +179,7 @@ public class TransactionVisual implements ActionListener {
         scrollbarBlockChain.setViewportView(textBlockChain);
         windowBlockChain.getContentPane().add(scrollbarBlockChain);
         windowBlockChain.setResizable(false);
-/// Hasta aca
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLayout(null);
@@ -288,7 +288,6 @@ public class TransactionVisual implements ActionListener {
         }
 
         if (e.getSource() == send) {
-            //validar lo q hay que mandar
             User userReceiver = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,nameField.getText());
             Transaction newTransaction = new Transaction();
             newTransaction.setSenderId(user.getWalletId());
@@ -327,21 +326,10 @@ public class TransactionVisual implements ActionListener {
                 JOptionPane.showMessageDialog(null, "No Puede Transferirse a Si Mismo!");
             }
 
-            // Mostrar en visual cuánto es la fee que se le cobraría al usuario.
-
-            //transferencias.setNameField(nameField.getText());
-            //user.getCoin((coinBox.getName()))
-            //Transaction.getReason((reasonBox.getName()))
-            // y asi con todos
-            //JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,"06255cf0-b915-4de6-94dd-126d84c91d33");
-
-            //if(coinBox.getItemAt(coinBox.getSelectedIndex()).equals(user.getCoin((coinBox.getName())))){
-            //}
         }
 
         if (e.getSource() == back){
             frame.dispose();
-            //User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
             user.obtenerMenu().show();
         }
     }

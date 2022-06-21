@@ -76,4 +76,56 @@
   "userValidations" : [ "652dbf56-dadb-40b2-9858-24e2957e44e1", "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b" ],
   "status" : "ACCEPTED",
   "reason" : "FEE"
+}, {
+  "id" : "4edf1a24-18a0-42d4-b4bd-268d03794e0b",
+  "senderId" : "1290c479-d37e-4648-9357-33864f6e97c6",
+  "receiverId" : "2dc1909a-150f-4b3e-9651-2ba85d30c775",
+  "dateTime" : "20/06/2022 22:12:33",
+  "coin" : {
+    "coinName" : "UTNCOIN",
+    "amount" : 15.0,
+    "valueUSD" : 1.0
+  },
+  "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b", "3847e348-86f5-44f9-be5f-407d8db5f7bf" ],
+  "status" : "ACCEPTED",
+  "reason" : "SALARY"
+}, {
+  "id" : "1015d1fa-59d5-4f14-b494-2b0aed9121be",
+  "senderId" : "2dc1909a-150f-4b3e-9651-2ba85d30c775",
+  "receiverId" : "f9adee18-e28f-4771-bdf7-bc9a3739170d",
+  "dateTime" : "20/06/2022 22:13:15",
+  "coin" : {
+    "coinName" : "BITCOIN",
+    "amount" : 0.5,
+    "valueUSD" : 20000.0
+  },
+  "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f", "fc27bec0-c75a-4888-9c6c-92292d419c4b", "3847e348-86f5-44f9-be5f-407d8db5f7bf" ],
+  "status" : "ACCEPTED",
+  "reason" : "OTHERS"
+}, {
+  "id" : "78224c23-6497-462a-b52e-26e4795673eb",
+  "senderId" : "2dc1909a-150f-4b3e-9651-2ba85d30c775",
+  "receiverId" : "833f0214-de1d-43ed-b421-f85acd8a543f",
+  "dateTime" : "20/06/2022 22:13:34",
+  "coin" : {
+    "coinName" : "BITCOIN",
+    "amount" : 1.0,
+    "valueUSD" : 20000.0
+  },
+  "userValidations" : [ "fc27bec0-c75a-4888-9c6c-92292d419c4b", "3847e348-86f5-44f9-be5f-407d8db5f7bf", "2c293e7a-abc3-4743-a33b-71523a9a5265" ],
+  "status" : "ACCEPTED",
+  "reason" : "OTHERS"
+}, {
+  "id" : "d49da71e-7152-4969-afa4-dcd0c3c98eec",
+  "senderId" : "833f0214-de1d-43ed-b421-f85acd8a543f",
+  "receiverId" : "b8a1c2dc-37b2-4987-b2b3-b941887dd2f5",
+  "dateTime" : "20/06/2022 22:14:54",
+  "coin" : {
+    "coinName" : "ETHEREUM",
+    "amount" : 0.02,
+    "valueUSD" : 1092.0
+  },
+  "userValidations" : [ "fc27bec0-c75a-4888-9c6c-92292d419c4b", "3847e348-86f5-44f9-be5f-407d8db5f7bf", "2c293e7a-abc3-4743-a33b-71523a9a5265" ],
+  "status" : "ACCEPTED",
+  "reason" : "FEE"
 } ]

@@ -15,7 +15,6 @@ public abstract class JsonTransaction extends JsonManager{
 
     public static void updateTransaction (Transaction transaction){
         List<Transaction> transactions = readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
-        // funciona igual que un foreach
         List<Transaction> transactions1 = transactions.stream()
                 .map(t -> {
                     if (t.getId().toString().equals(transaction.getId().toString()))

@@ -116,14 +116,12 @@ public class AdminCheckUsers implements ActionListener {
         User user = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,userConnected);
         if (e.getSource() == search){
             User aux = JsonUser.searchUserByUserName(JsonManager.JSON_USERS, Objects.requireNonNull(userList.getSelectedItem()).toString());
-            //if((userList.getSelectedItem())){
             windowUserDate.setVisible(true);
             userDateLabel.setVisible(true);
             userDateScroll.setVisible(true);
             userDateVertical.setVisible(true);
             userDateText.setText(aux.toString());
             userDateText.setVisible(true);
-            //}
         }
         if (e.getSource() == back){
             frame.dispose();

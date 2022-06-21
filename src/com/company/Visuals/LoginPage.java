@@ -79,7 +79,7 @@ public class LoginPage implements ActionListener {
             }
             if(e.getSource()==loginButton){
 
-                String uuidPass = String.valueOf(UUIDpassField.getPassword()); //asi seria para comparar tambien el uuid password para el ingreso.
+                String uuidPass = String.valueOf(UUIDpassField.getPassword());
                 String pass = String.valueOf(userPasswordField.getPassword());
                 String userID = userIDField.getText();
                 if(loginfo.containsKey(uuidPass)){

@@ -1,17 +1,10 @@
 package com.company.Usuarios;
 
-import com.company.JSON.JsonManager;
-import com.company.JSON.JsonTransaction;
-import com.company.JSON.JsonUser;
+
 import com.company.Transferencias.Transaction;
 import com.company.enums.CoinName;
-import com.company.enums.Reason;
-import com.company.enums.Status;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Wallet {
@@ -20,7 +13,7 @@ public class Wallet {
     private List<Coin> coinList = new ArrayList<>();
     private List<Transaction>transferList = new ArrayList<>();
 
-    public Wallet(){ //Vacío, antes creaba 100 UTNcoins y las añadía a la coinList. Eso traía duplicados al leer el json con ObjectMapper
+    public Wallet(){
     }
 
     public List<Coin> getCoins() {
@@ -58,6 +51,7 @@ public class Wallet {
     }
 
     // método que calcula toodo el valor en dólares que contiene la wallet
+    // No se llegó a implementar.
     public double totalUSDvalue()
     {
         double total = 0.0;
@@ -104,7 +98,6 @@ public class Wallet {
 
     public void updateTransactionInList(Transaction transaction)
     {
-        // funciona igual que un foreach
         List<Transaction> transactionUpdated = this.transferList.stream()
                 .map(t -> {
                     if (t.getId().toString().equals(transaction.getId().toString()))
@@ -114,8 +107,5 @@ public class Wallet {
                 .collect(Collectors.toList());
         this.setTransferList(transactionUpdated);
     }
-
-
-
 
 }

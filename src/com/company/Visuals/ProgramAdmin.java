@@ -40,7 +40,7 @@ public class ProgramAdmin implements Menu, ActionListener {
         verTransactions.setBounds(250,200,250,200);
         cerrarSesion.setBounds(0,400,500,100);
 
-        verUsers.setText("Ver Users"); // con lista desplegable por usuario, cuando selecciona un user le tira todos los datos. Ahi mismo que haya un boton de borrado de user.
+        verUsers.setText("Ver Users");
         verUsers.setFont(new Font(null,Font.ITALIC,25));
         changeValue.setText("Cambiar valor de coin");
         changeValue.setFont(new Font(null,Font.ITALIC,20));

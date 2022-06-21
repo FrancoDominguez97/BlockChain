@@ -122,8 +122,7 @@ public class Registro implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==guardar){
             User user = new User();
-            JsonManager admin = new JsonManager(); // este admin es para que me deje guardar en el archivo JSON
-            //aca creo la lista para guardar el nuevo dato ahi y pasarlo al archivo JSON.
+            JsonManager admin = new JsonManager();
             List<User> users = new ArrayList<>();
 
 

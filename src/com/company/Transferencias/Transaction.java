@@ -40,7 +40,6 @@ public class Transaction {
     public UUID getId() {
         return id;
     }
-    //Aca en los get de RECEIVERID y SENDERID deberia devolver el usuario tipo los datos principales del usuario.
 
     public String getSenderId() {
         return senderId;
@@ -104,7 +103,6 @@ public class Transaction {
 
     public boolean checkValidated(String userID)
     {
-        //User user = JsonManager.searchUserByIdWallet(JsonManager.JSON_USERS,userID);
         if(!senderId.equals(userID) && !receiverId.equals(userID))
         {
             for(String validationUser : userValidations)
@@ -131,7 +129,6 @@ public class Transaction {
             JsonUser.updateUser(emitter);
             if(userValidations.size()==3)
             {
-                // remover de lista pendiente, sumar a aceptada, y SUMAR MONTO al receptor
                 User receiver = JsonUser.searchUserByIdWallet(JsonManager.JSON_USERS,this.receiverId);
 
                 receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).setAmount(receiver.getWallet().searchCoinByName(this.getCoin().getCoinName().name()).getAmount() + this.coin.getAmount());
@@ -161,7 +158,6 @@ public class Transaction {
             if(t.getId().equals(this.id))
             {
                 aux = t;
-                //break;
             }
         }
         if (aux!=null)
@@ -174,7 +170,4 @@ public class Transaction {
             JsonManager.writeToJson(JsonManager.JSON_BLOCKCHAIN,acceptedList);
         }
     }
-
-
-    // logo en 2D para tiempo de espera de aprobacion de transaccion.
 }

@@ -13,7 +13,6 @@ import com.company.enums.CoinName;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -139,9 +138,9 @@ public class User {
         Coin to = wallet.searchCoinByName(coinTo);
         boolean possible = false;
 
-        if(to!=null && from!=null && amount>0) // Si alguna de las coins o el amount no cumplen, hay que informarlo por pantalla en la app
+        if(to!=null && from!=null && amount>0)
         {
-            if(from.getAmount()>=(amount+amount*fee)) // Si la wallet no tiene monto suficiente de esa coin para swappear, hay que informarlo tambien
+            if(from.getAmount()>=(amount+amount*fee))
             {
                 int indexFrom = wallet.getCoins().indexOf(from);
                 int indexTo = wallet.getCoins().indexOf(to);
@@ -167,17 +166,12 @@ public class User {
     {
         String coinName = t.getCoin().getCoinName().name();
         double amount = t.getCoin().getAmount();
-
-        // checkear previamente si el emisor puede pagar el monto + fee
-        //user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).setAmount(user.getWallet().searchCoinByName(t.getCoin().getCoinName().name()).getAmount() + t.getCoin().getAmount());
         this.wallet.searchCoinByName(coinName).setAmount(this.getWallet().searchCoinByName(coinName).getAmount() - (amount + amount*fee));
         List<Transaction> pendingList = JsonTransaction.readJsonTransfer(JsonManager.JSON_PENDING_TRANSACTIONS);
         pendingList.add(t);
         JsonManager.writeToJson(JsonManager.JSON_PENDING_TRANSACTIONS,pendingList);
         this.wallet.getTransferList().add(t);
         JsonUser.updateUser(this);
-//        List<Coin> receiverCoins = user.getWallet().getCoins();
-
     }
 
 
@@ -221,30 +215,6 @@ public class User {
         }
         return null;
     }
-
-//    public boolean swapCoin(String coinFrom, String coinTo, double amount){
-//        // Habría que checkear que amount sea positivo distinto de 0 en el parámetro
-//        Coin from = this.getWallet().searchCoinByName(coinFrom);
-//        Coin to = this.getWallet().searchCoinByName(coinTo);
-//        boolean possible = false;
-//
-//        if(to!=null && from!=null && amount>0)
-//        {
-//            if(from.getAmount()>=(amount + amount*fee)) // Fee está en user, mover a wallet??? --------------------------------------------------------------
-//            {
-//                int indexFrom = this.getWallet().getCoins().indexOf(from);
-//                int indexTo = this.getWallet().getCoins().indexOf(to);
-//                from.setAmount(from.getAmount()-(amount+fee));
-//                to.setAmount(to.getAmount()+amount);
-//                this.getWallet().getCoins().set(indexFrom,from);
-//                this.getWallet().getCoins().set(indexTo,to);
-//
-//                JsonUser.updateUser(this);
-//            }
-//        }
-//
-//        return possible;
-//    }
 
 }
 

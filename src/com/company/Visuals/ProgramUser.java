@@ -76,9 +76,7 @@ public class ProgramUser implements Menu, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //wip
         if (e.getSource() == transferencias){
-            //codigo de transferencias
             frame.dispose();
             TransactionVisual transactionVisual = new TransactionVisual(userConnected);
         }
@@ -86,11 +84,9 @@ public class ProgramUser implements Menu, ActionListener {
         if (e.getSource() == opcionesUser){
             frame.dispose();
             Options options = new Options(userConnected);
-            //codigo de opcionesUser
         }
 
         if (e.getSource() == minar){
-            //codigo de validaciones de blockchains
             frame.dispose();
             Minar minar = new Minar(userConnected);
         }

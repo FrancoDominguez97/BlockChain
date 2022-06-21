@@ -114,7 +114,6 @@ public class CheckAmounts implements ActionListener {
 
         }
         if(e.getSource() == confirmSwap){
-            //el codigo del swapeo de monedas.
             double amount = Double.parseDouble(swapBox.getText());
             if(user.swapCoin(jComboBox.getItemAt(jComboBox.getSelectedIndex()),swapComboBox.getItemAt(swapComboBox.getSelectedIndex()),amount))
             {

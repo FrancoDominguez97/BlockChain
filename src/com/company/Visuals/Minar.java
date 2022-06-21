@@ -18,14 +18,6 @@ public class Minar implements ActionListener{
 
     private double reward = 15.0;
 
-    // produce menu visual al tocar boton de MINAR.
-    // "Comenzar minado" boton que corra metodo de minado. Donde recorra todas las transacciones pendientes del Json
-    //y valide una por una (si no fue validada previamente por el mismo user). Si alguna transaccion llega a 3 validaciones,
-    //que la pase al archivo de aceptadas (blockchain) y la elimine de pendientes. Que se premie al user que mina en UTNcoin
-
-    //
-
-
         JFrame frame = new JFrame();
         JLabel text = new JLabel("Presione el boton para minar");
         JButton startDigging = new JButton("Minar!");
@@ -114,9 +106,7 @@ public class Minar implements ActionListener{
                 }
                 else
                 {
-                    // imprimir "no hay transacciones pendientes"
                     JOptionPane.showMessageDialog(null, "No Hay Transacciones Para Validar.");
-                    //label.setVisible(true);
                 }
             }
             if (e.getSource() == back){

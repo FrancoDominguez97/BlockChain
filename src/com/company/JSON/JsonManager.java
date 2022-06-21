@@ -1,18 +1,14 @@
 package com.company.JSON;
 
-import com.company.Transferencias.Transaction;
-import com.company.Usuarios.User;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class JsonManager {
 
@@ -20,12 +16,10 @@ public class JsonManager {
     public static final String JSON_USERS = "users.json"; //Archivo con registros de todos los usuarios
     public static final String JSON_PENDING_TRANSACTIONS = "pending_transactions.json"; //Archivo con registros de transacciones pendientes (todavía no fueron validadas por completo)
 
-
     // metodo para escribir en un json una lista generica.
     public static <T> void writeToJson(String file, List<T> list) {
         if (list.isEmpty())
             list = new ArrayList<>();
-
         ObjectMapper mapper = new ObjectMapper();
         try {
             File f = new File(file);

@@ -44,7 +44,6 @@ public abstract class JsonUser extends JsonManager {
         }
     }
 
-    // se puede generalizar? ----------------------------------------------------------------------------------------------------
     public static HashMap<String, User> hashMapFromJson(String file) {
         List<User> users = readJsonUser(file);
         HashMap<String, User> loginInfo = new HashMap<>();
@@ -56,7 +55,6 @@ public abstract class JsonUser extends JsonManager {
         return loginInfo;
     }
 
-    // se puede generalizar? ----------------------------------------------------------------------------------------------------
     public static void hashMapToJson(String file, HashMap<String, User> hashMap) {
         List<User> users = new ArrayList<>();
         hashMap.forEach((k, v) -> {
@@ -79,7 +77,6 @@ public abstract class JsonUser extends JsonManager {
 
     public static void updateUser (User user){
         List<User> usersToUpdate = readJsonUser(JsonManager.JSON_USERS);
-        // funciona igual que un foreach
         List<User> usersUpdated = usersToUpdate.stream()
                 .map(us -> {
                     if (us.getWalletId().equals(user.getWalletId()))
