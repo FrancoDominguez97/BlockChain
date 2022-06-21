@@ -126,4 +126,9 @@ public abstract class JsonUser extends JsonManager {
         }
         return false;
     }
+
+    public static User searchUserByEmail(String file, String email) {
+        List<User> list = readJsonUser(file);
+        return list.stream().filter(us -> us.getEmail().equals(email)).findFirst().orElse(null);
+    }
 }

@@ -130,34 +130,49 @@ public class Registro implements ActionListener {
             user.setName(nameField.getText());
             user.setLastName(lastNameField.getText());
             user.setDateOfBirth(dateField.getText());
-            if (user.calcutaleAge((user.getDateOfBirth()))== false) {
-                JOptionPane.showMessageDialog(null, "Usted es menor de edad, no se puede registrar.");;
-                System.exit(1);
+            if (!user.calcutaleAge((user.getDateOfBirth()))) {
+                JOptionPane.showMessageDialog(null, "Usted es menor de edad, no se puede registrar. Reingrese la fecha de nacimiento");;
+                dateField.requestFocus();
+                dateField.setText("");
+                user.setDateOfBirth(dateField.getText());
             }
-            user.setUserName(userNameField.getText());
-            if(JsonUser.searchUserByUserName(JsonManager.JSON_USERS,user.getUserName())==null)
-            {
-                JOptionPane.showMessageDialog(null, "Username ya existente.");
-                user.setEmail(emailField.getText());
+            else {
+                user.setUserName(userNameField.getText());
+                if(JsonUser.searchUserByUserName(JsonManager.JSON_USERS,user.getUserName()) != null){
+                    JOptionPane.showMessageDialog(null, "Nombre de Usuario ya existe. Reingrese uno nuevo");
+                    userNameField.requestFocus();
+                    userNameField.setText("");
+                    user.setUserName(userNameField.getText());
+                }
+                else {
+                    user.setEmail(emailField.getText());
+                    if(!user.emailVerify(user.getEmail())){
+                        JOptionPane.showMessageDialog(null, "Mail invalido, reingrese.");
+                        emailField.requestFocus();
+                        emailField.setText(null);
+                        user.setEmail(emailField.getText());
+                    }else {
+                        if(JsonUser.searchUserByEmail(JsonManager.JSON_USERS,user.getEmail()) != null){
+                            JOptionPane.showMessageDialog(null,"El email esta en uso, reingrese uno nuevo.");
+                            emailField.requestFocus();
+                            emailField.setText("");
+                            user.setEmail(emailField.getText());
+                        }
+                        else {
+                            user.setEmail(emailField.getText());
+                            user.setPassword(String.valueOf(passwordField.getPassword()));
+                            user.getWallet().initialize();
+                            loginfo.put(user.getWalletId(), user);
+                            JsonUser.hashMapToJson(JsonManager.JSON_USERS, loginfo);
+                            JOptionPane.showMessageDialog(null, "Creacion de usuario Exitoso");
+                            walletField.setEditable(false);
+                            walletField.setText(user.getWalletId());
+                            walletField.setVisible(true);
+                            walletVisual.setVisible(true);
+                        }
+                    }
+                }
             }
-            //searchUserName(userName); Aca realizar una funcion para que busque si no esta en uso el username.
-            user.setEmail(emailField.getText());
-            if(user.emailVerify(user.getEmail()) == false){
-                JOptionPane.showMessageDialog(null, "Mail invalido, reingrese:");
-                user.setEmail(emailField.getText());
-            }
-            //searchMail(email); Aca realizar una funcion para que busque si esta en uso o no el mail, basicamente es la misma q para username.
-            user.setPassword(String.valueOf(passwordField.getPassword()));
-
-            user.getWallet().initialize();
-
-            loginfo.put(user.getWalletId(),user);
-            JsonUser.hashMapToJson(JsonManager.JSON_USERS,loginfo);
-            walletField.setEditable(false);
-            walletField.setText(user.getWalletId());
-            walletField.setVisible(true);
-            walletVisual.setVisible(true);
-            JOptionPane.showMessageDialog(null,"Creacion de usuario Exitoso");
 
         }
         if (e.getSource()==limpiar){
