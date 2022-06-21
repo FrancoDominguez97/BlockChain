@@ -91,4 +91,37 @@ public abstract class JsonUser extends JsonManager {
 
         writeToJson(JSON_USERS,usersUpdated);
     }
+
+    public static void changeUSDvalueOfCoin(String coinName, double newValueUSD)
+    {
+        List<User> users = readJsonUser(JsonUser.JSON_USERS);
+
+        if (!users.isEmpty())
+        {
+            for (User u : users)
+            {
+                if (u.getWallet().searchCoinByName(coinName)!=null)
+                {
+                    u.getWallet().searchCoinByName(coinName).setValueUSD(newValueUSD);
+                }
+            }
+            JsonUser.writeToJson(JsonUser.JSON_USERS,users);
+        }
+    }
+
+    public static void addAmountToUser(String userName,String coinName, double toAdd)
+    { // toAdd puede ser negativo, para poder restar de la wallet.
+        User user = searchUserByUserName(JsonUser.JSON_USERS,userName);
+        if(user!=null)
+        {
+            double currentAmount = user.getWallet().searchCoinByName(coinName).getAmount();
+
+            if((currentAmount+toAdd)>=0)
+            {
+                currentAmount += toAdd;
+                user.getWallet().searchCoinByName(coinName).setAmount(currentAmount);
+                JsonUser.updateUser(user);
+            }
+        }
+    }
 }

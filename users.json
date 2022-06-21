@@ -15,7 +15,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -45,7 +45,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -75,7 +75,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -118,7 +118,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -153,15 +153,28 @@
       "userValidations" : [ "833f0214-de1d-43ed-b421-f85acd8a543f", "2c293e7a-abc3-4743-a33b-71523a9a5265", "1290c479-d37e-4648-9357-33864f6e97c6" ],
       "status" : "ACCEPTED",
       "reason" : "OTHERS"
+    }, {
+      "id" : "e8f5a91e-9611-40e8-864a-54e57466cca0",
+      "senderId" : "2dc1909a-150f-4b3e-9651-2ba85d30c775",
+      "receiverId" : "1290c479-d37e-4648-9357-33864f6e97c6",
+      "dateTime" : "20/06/2022 22:04:26",
+      "coin" : {
+        "coinName" : "BITCOIN",
+        "amount" : 1.0,
+        "valueUSD" : 20000.0
+      },
+      "userValidations" : [ ],
+      "status" : "PENDING",
+      "reason" : "FEE"
     } ],
     "coins" : [ {
       "coinName" : "UTNCOIN",
-      "amount" : 1123.3800000000015,
+      "amount" : 21123.38,
       "valueUSD" : 1.0
     }, {
       "coinName" : "BITCOIN",
-      "amount" : 8.865159408629188,
-      "valueUSD" : 19886.0
+      "amount" : 6.8251594086291885,
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.45787545787545786,
@@ -191,7 +204,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -234,7 +247,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -264,7 +277,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -294,7 +307,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -324,7 +337,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -354,7 +367,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -423,7 +436,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 1.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -453,7 +466,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -483,7 +496,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,
@@ -513,7 +526,7 @@
     }, {
       "coinName" : "BITCOIN",
       "amount" : 0.0,
-      "valueUSD" : 19886.0
+      "valueUSD" : 20000.0
     }, {
       "coinName" : "ETHEREUM",
       "amount" : 0.0,

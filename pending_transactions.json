@@ -1,1 +1,14 @@
-[ ]
+[ {
+  "id" : "e8f5a91e-9611-40e8-864a-54e57466cca0",
+  "senderId" : "2dc1909a-150f-4b3e-9651-2ba85d30c775",
+  "receiverId" : "1290c479-d37e-4648-9357-33864f6e97c6",
+  "dateTime" : "20/06/2022 22:04:26",
+  "coin" : {
+    "coinName" : "BITCOIN",
+    "amount" : 1.0,
+    "valueUSD" : 20000.0
+  },
+  "userValidations" : [ ],
+  "status" : "PENDING",
+  "reason" : "FEE"
+} ]

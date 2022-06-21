@@ -1,5 +1,7 @@
 package com.company.Visuals;
 
+import com.company.JSON.JsonUser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -84,12 +86,26 @@ public class ProgramAdmin implements Menu, ActionListener {
 
         if (e.getSource() == changeValue){
             frame.dispose();
+            AdminChangeValue adminChangeValue = new AdminChangeValue(userConnected);
+
+//            double newValueUSD = 0;
+//            if (newValueUSD>0)
+//            {
+//                JsonUser.changeUSDvalueOfCoin(coinName, newValueUSD);
+//            }
+//            else
+//            {
+//                System.out.println("el valor nuevo debe ser mayor que 0.");
+//            }
+
+
 
             //codigo de cambio de valor de coin
         }
 
         if (e.getSource() == coinMovements){
             //codigo de agregado y retirado de coins
+
         }
 
         if (e.getSource() == verTransactions){
